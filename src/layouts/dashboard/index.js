@@ -16,6 +16,9 @@
 
 */
 
+import React from "react";
+import VuiInput from "components/VuiInput";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
@@ -111,7 +114,20 @@ function Dashboard() {
 
         </VuiBox>
 
-        
+        {/* PUT SEARCH INPUT BOX HERE */}
+        <VuiInput
+                placeholder="Enter your zip code"
+                icon={{ component: "search", direction: "left" }}
+                sx={({ breakpoints }) => ({
+                  [breakpoints.down("sm")]: {
+                    maxWidth: "160px",
+                  },
+                  [breakpoints.only("sm")]: {
+                    maxWidth: "160px",
+                  },
+                  backgroundColor: "info.main !important",
+                })}
+              />
 
 
         <VuiBox mb={3}>
