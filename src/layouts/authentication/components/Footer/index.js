@@ -49,30 +49,42 @@ function Footer() {
             sx={{ textAlign: "center", fontWeight: "400 !important" }}
             color="text"
           >
-            @ 2021, Made with ❤️&nbsp;&nbsp;&nbsp; by{" "}
-            <VuiTypography
-              component="a"
-              variant="button"
-              href="#"
-              sx={{ textAlign: "center", fontWeight: "500 !important" }}
-              color="text"
-              mr="2px"
-            >
-              Simmmple
-            </VuiTypography>
-            &
-            <VuiTypography
-              ml="2px"
-              mr="2px"
-              component="a"
-              variant="button"
-              href="#"
-              sx={{ textAlign: "center", fontWeight: "500 !important" }}
-              color="text"
-            >
-              Creative Tim
-            </VuiTypography>
-            for a better web
+            @ 2023, Made by{" "}
+          <VuiTypography
+            component="a"
+            variant="button"
+            href="https://simmmple.com/"
+            sx={{ textAlign: "center", fontWeight: "500 !important" }}
+            color="white"
+            mr="2px"
+          >
+            Justina Lam
+          </VuiTypography>
+          &
+          <VuiTypography
+            ml="2px"
+            mr="2px"
+            component="a"
+            variant="button"
+            href="https://www.creative-tim.com/"
+            sx={{ textAlign: "center", fontWeight: "500 !important" }}
+            color="white"
+          >
+            Jeffrey Gao
+          </VuiTypography>
+          &
+          <VuiTypography
+            ml="2px"
+            mr="2px"
+            component="a"
+            variant="button"
+            href="https://www.creative-tim.com/"
+            sx={{ textAlign: "center", fontWeight: "500 !important" }}
+            color="white"
+          >
+            Christina Qiu
+          </VuiTypography>
+          for a better world??
           </VuiTypography>
         </Grid>
         <Grid item xs={10}>
