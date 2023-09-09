@@ -71,11 +71,11 @@ function Dashboard() {
     <DashboardLayout>
       <DashboardNavbar />
       <VuiBox py={3}>
-        <VuiBox mb={3}>
+        {/*<VuiBox mb={3}>
 
               
 
-          {/* <Grid container spacing={3}>
+           <Grid container spacing={3}>
             <Grid item xs={12} md={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "today's money", fontWeight: "regular" }}
@@ -108,11 +108,11 @@ function Dashboard() {
                 icon={{ color: "info", component: <FaShoppingCart size="20px" color="white" /> }}
               />
             </Grid>
-          </Grid> */}
+          </Grid> 
 
 
 
-        </VuiBox>
+        </VuiBox>*/}
 
         {/* PUT SEARCH INPUT BOX HERE */}
         <VuiInput
@@ -129,6 +129,7 @@ function Dashboard() {
                 })}
               />
 
+<VuiBox mb={3}></VuiBox>
 
         <VuiBox mb={3}>
           <Grid container spacing="18px">
