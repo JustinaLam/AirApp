@@ -190,7 +190,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 sx={navbarMobileMenu}
                 onClick={handleMiniSidenav}
               >
-                <Icon className={"text-white"}>{miniSidenav ? "menu_open" : "menu"}</Icon>
+                {/* <Icon className={"text-white"}>{miniSidenav ? "menu_open" : "menu"}</Icon> */}
               </IconButton>
               <IconButton
                 size="small"

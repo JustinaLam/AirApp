@@ -64,7 +64,7 @@ function Footer() {
         </VuiTypography>
       </VuiBox>
       <VuiBox item xs={10}>
-        <VuiBox display="flex" justifyContent="center" flexWrap="wrap" mb={3}>
+        {/* <VuiBox display="flex" justifyContent="center" flexWrap="wrap" mb={3}>
           <VuiBox mr={{ xs: "20px", lg: "46px" }}>
             <VuiTypography
               component="a"
@@ -95,7 +95,7 @@ function Footer() {
               License
             </VuiTypography>
           </VuiBox>
-        </VuiBox>
+        </VuiBox> */}
       </VuiBox>
     </VuiBox>
   );
