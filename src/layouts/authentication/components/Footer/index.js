@@ -84,11 +84,10 @@ function Footer() {
           >
             Christina Qiu
           </VuiTypography>
-          for a better world??
           </VuiTypography>
         </Grid>
         <Grid item xs={10}>
-          <VuiBox display="flex" justifyContent="center" flexWrap="wrap" mb={3}>
+          {/* <VuiBox display="flex" justifyContent="center" flexWrap="wrap" mb={3}>
             <VuiBox mr={{ xs: "20px", lg: "46px" }}>
               <VuiTypography component="a" href="#" variant="body2" color="text">
                 Marketplace
@@ -104,7 +103,7 @@ function Footer() {
                 License
               </VuiTypography>
             </VuiBox>
-          </VuiBox>
+          </VuiBox> */}
         </Grid>
       </Grid>
     </VuiBox>

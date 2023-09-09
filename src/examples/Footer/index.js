@@ -72,7 +72,6 @@ function Footer() {
           >
             Christina Qiu
           </VuiTypography>
-          for a better world??
         </VuiTypography>
       </VuiBox>
       <VuiBox item xs={10}>
