@@ -25,7 +25,7 @@ function Footer() {
     <VuiBox
       display="flex"
       flexDirection={{ xs: "column", lg: "row" }}
-      justifyContent="space-between"
+      justifyContent="center"
       direction="row"
       component="footer"
       py={2}

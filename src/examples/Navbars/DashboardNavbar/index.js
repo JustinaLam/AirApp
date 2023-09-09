@@ -61,6 +61,7 @@ import {
 import team2 from "assets/images/team-2.jpg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 import VuiButton from "components/VuiButton";
+import VuiAvatar from "components/VuiAvatar";
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
@@ -148,6 +149,21 @@ function DashboardNavbar({ absolute, light, isMini }) {
       <Toolbar sx={(theme) => navbarContainer(theme)}>
         <VuiBox color="inherit" mb={{ xs: 1, md: 0 }} sx={(theme) => navbarRow(theme, { isMini })}>
           {/* <Breadcrumbs icon="home" title={route[route.length - 1]} route={route} light={light} /> */}
+        
+          <icon
+            sx={({ palette: { dark, white } }) => ({
+              color: light ? white.main : dark.main,
+            })}
+          >
+            <img src="https://github.com/JustinaLam/AirApp/assets/113264414/5b0911e9-fe76-482c-a42b-56e143e0a811
+" alt="logo" width="50" height="75" />
+
+          </icon>
+            
+            
+            <VuiBox pr={1}>
+            </VuiBox>
+
           <VuiTypography
                     variant="h6"
                     fontWeight="medium"
@@ -156,25 +172,13 @@ function DashboardNavbar({ absolute, light, isMini }) {
                     AirWatch
                   </VuiTypography>
 
+            
+            
             <VuiBox pr={1}>
             </VuiBox>
 
 
-            <VuiBox pr={1}>
-              <VuiInput
-                placeholder="Enter your zip code"
-                icon={{ component: "search", direction: "left" }}
-                sx={({ breakpoints }) => ({
-                  [breakpoints.down("sm")]: {
-                    maxWidth: "80px",
-                  },
-                  [breakpoints.only("sm")]: {
-                    maxWidth: "80px",
-                  },
-                  backgroundColor: "info.main !important",
-                })}
-              />
-            </VuiBox>
+            
 
 
 
@@ -283,7 +287,15 @@ function DashboardNavbar({ absolute, light, isMini }) {
             </VuiBox>
           </VuiBox>
         )}
+
+          
+
       </Toolbar>
+
+
+    
+
+
     </AppBar>
   );
 }
