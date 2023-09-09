@@ -61,27 +61,15 @@ function Sidenav({ color, brandName, routes, ...rest }) {
 
   useEffect(() => {
     // A function that sets the mini state of the sidenav.
-    function handleMiniSidenav() {
-      setMiniSidenav(dispatch, window.innerWidth < 1200);
-    }
+    //setMiniSidenav(dispatch, true);
+    closeSidenav();
+  }, [dispatch]);
 
-    /** 
-     The event listener that's calling the handleMiniSidenav function when resizing the window.
-    */
-    window.addEventListener("resize", handleMiniSidenav);
-
-    // Call the handleMiniSidenav function to set the state with the initial value.
-    handleMiniSidenav();
-
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleMiniSidenav);
-  }, [dispatch, location]);
-
-  useEffect(() => {
-    if (window.innerWidth < 1440) {
-      setTransparentSidenav(dispatch, false);
-    }
-  }, []);
+  //useEffect(() => {
+  //  if (window.innerWidth < 1440) {
+  //    setTransparentSidenav(dispatch, false);
+  //  }
+  //}, []);
 
   // Render all the routes from the routes.js (All the visible items on the Sidenav)
   const renderRoutes = routes.map(({ type, name, icon, title, noCollapse, key, route, href }) => {
@@ -142,104 +130,7 @@ function Sidenav({ color, brandName, routes, ...rest }) {
 
   return (
     <SidenavRoot {...rest} variant="permanent" ownerState={{ transparentSidenav, miniSidenav }}>
-      <VuiBox
-        pt={3.5}
-        pb={0.5}
-        px={4}
-        textAlign="center"
-        sx={{
-          overflow: "unset !important",
-        }}
-      >
-        <VuiBox
-          display={{ xs: "block", xl: "none" }}
-          position="absolute"
-          top={0}
-          right={0}
-          p={1.625}
-          onClick={closeSidenav}
-          sx={{ cursor: "pointer" }}
-        >
-          <VuiTypography variant="h6" color="text">
-            <Icon sx={{ fontWeight: "bold" }}>close</Icon>
-          </VuiTypography>
-        </VuiBox>
-        <VuiBox component={NavLink} to="/" display="flex" alignItems="center">
-          <VuiBox
-            sx={
-              ((theme) => sidenavLogoLabel(theme, { miniSidenav }),
-              {
-                display: "flex",
-                alignItems: "center",
-                margin: "0 auto",
-              })
-            }
-          >
-            <VuiBox
-              display="flex"
-              sx={
-                ((theme) => sidenavLogoLabel(theme, { miniSidenav, transparentSidenav }),
-                {
-                  mr: miniSidenav || (miniSidenav && transparentSidenav) ? 0 : 1,
-                })
-              }
-            >
-              <SimmmpleLogo size="24px" />
-            </VuiBox>
-            <VuiTypography
-              variant="button"
-              textGradient={true}
-              color="logo"
-              fontSize={14}
-              letterSpacing={2}
-              fontWeight="medium"
-              sx={
-                ((theme) => sidenavLogoLabel(theme, { miniSidenav, transparentSidenav }),
-                {
-                  opacity: miniSidenav || (miniSidenav && transparentSidenav) ? 0 : 1,
-                  maxWidth: miniSidenav || (miniSidenav && transparentSidenav) ? 0 : "100%",
-                  margin: "0 auto",
-                })
-              }
-            >
-              {brandName}
-            </VuiTypography>
-          </VuiBox>
-        </VuiBox>
-      </VuiBox>
-      <Divider light />
-      <List>{renderRoutes}</List>
-      <VuiBox
-        my={2}
-        mx={2}
-        mt="auto"
-        sx={({ breakpoints }) => ({
-          [breakpoints.up("xl")]: {
-            pt: 2,
-          },
-          [breakpoints.only("xl")]: {
-            pt: 1,
-          },
-          [breakpoints.down("xl")]: {
-            pt: 2,
-          },
-        })}
-      >
-        <SidenavCard color={color} />
-        <VuiBox mt={2}>
-          <VuiButton
-            component="a"
-            href="https://creative-tim.com/product/vision-ui-dashboard-pro-react"
-            target="_blank"
-            rel="noreferrer"
-            variant="gradient"
-            color={color}
-            fullWidth
-          >
-            Upgrade to PRO
-          </VuiButton>
-        </VuiBox>
-      </VuiBox>
+      
     </SidenavRoot>
   );
 }

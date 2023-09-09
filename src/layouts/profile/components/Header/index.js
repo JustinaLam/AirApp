@@ -45,9 +45,7 @@ function Header() {
   useEffect(() => {
     // A function that sets the orientation state of the tabs.
     function handleTabsOrientation() {
-      return window.innerWidth < breakpoints.values.lg
-        ? setTabsOrientation("vertical")
-        : setTabsOrientation("horizontal");
+      return setTabsOrientation("vertical");
     }
 
     /** 

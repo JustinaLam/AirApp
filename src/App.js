@@ -67,18 +67,12 @@ export default function App() {
 
   // Open sidenav when mouse enter on mini sidenav
   const handleOnMouseEnter = () => {
-    if (miniSidenav && !onMouseEnter) {
-      setMiniSidenav(dispatch, false);
-      setOnMouseEnter(true);
-    }
+    
   };
 
   // Close sidenav when mouse leave mini sidenav
   const handleOnMouseLeave = () => {
-    if (onMouseEnter) {
-      setMiniSidenav(dispatch, true);
-      setOnMouseEnter(false);
-    }
+    
   };
 
   // Change the openConfigurator state
@@ -138,15 +132,7 @@ export default function App() {
         <CssBaseline />
         {layout === "dashboard" && (
           <>
-            <Sidenav
-              color={sidenavColor}
-              brand=""
-              brandName="VISION UI FREE"
-              routes={routes}
-              onMouseEnter={handleOnMouseEnter}
-              onMouseLeave={handleOnMouseLeave}
-            />
-            <Configurator />
+            
             {configsButton}
           </>
         )}
