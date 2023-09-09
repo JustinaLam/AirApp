@@ -45,13 +45,13 @@ function DashboardLayout({ children }) {
         p: 3,
         position: "relative",
 
-        [breakpoints.up("xl")]: {
-          marginLeft: miniSidenav ? pxToRem(120) : pxToRem(274),
-          transition: transitions.create(["margin-left", "margin-right"], {
-            easing: transitions.easing.easeInOut,
-            duration: transitions.duration.standard,
-          }),
-        },
+        // [breakpoints.up("xl")]: {
+        //   marginLeft: miniSidenav ? pxToRem(120) : pxToRem(274),
+        //   transition: transitions.create(["margin-left", "margin-right"], {
+        //     easing: transitions.easing.easeInOut,
+        //     duration: transitions.duration.standard,
+        //   }),
+        // },
       })}
     >
       {children}

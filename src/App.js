@@ -133,7 +133,7 @@ export default function App() {
         {layout === "dashboard" && (
           <>
             
-            {configsButton}
+            {/* {configsButton} */}
           </>
         )}
         {layout === "vr" && <Configurator />}
