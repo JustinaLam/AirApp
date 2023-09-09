@@ -60,6 +60,7 @@ import {
 // Images
 import team2 from "assets/images/team-2.jpg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
+import VuiButton from "components/VuiButton";
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
@@ -146,13 +147,22 @@ function DashboardNavbar({ absolute, light, isMini }) {
     >
       <Toolbar sx={(theme) => navbarContainer(theme)}>
         <VuiBox color="inherit" mb={{ xs: 1, md: 0 }} sx={(theme) => navbarRow(theme, { isMini })}>
-          <Breadcrumbs icon="home" title={route[route.length - 1]} route={route} light={light} />
-        </VuiBox>
-        {isMini ? null : (
-          <VuiBox sx={(theme) => navbarRow(theme, { isMini })}>
+          {/* <Breadcrumbs icon="home" title={route[route.length - 1]} route={route} light={light} /> */}
+          <VuiTypography
+                    variant="h6"
+                    fontWeight="medium"
+                    color={light ? "white" : "dark"}
+                  >
+                    AirWatch
+                  </VuiTypography>
+
+            <VuiBox pr={1}>
+            </VuiBox>
+
+
             <VuiBox pr={1}>
               <VuiInput
-                placeholder="Type here..."
+                placeholder="Enter your zip code"
                 icon={{ component: "search", direction: "left" }}
                 sx={({ breakpoints }) => ({
                   [breakpoints.down("sm")]: {
@@ -165,8 +175,66 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 })}
               />
             </VuiBox>
+
+
+
+        </VuiBox>
+        {isMini ? null : (
+          <VuiBox sx={(theme) => navbarRow(theme, { isMini })}>
+            
+
+            <VuiBox pr={1}>
+            </VuiBox>
+
+{/* ADD NAME NUMBER SIGN Up */}
+            <VuiBox pr={1}>
+              <VuiInput
+                placeholder="Name"
+                sx={({ breakpoints }) => ({
+                  [breakpoints.down("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  [breakpoints.only("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  backgroundColor: "info.main !important",
+                })}
+              />
+            </VuiBox>
+
+            <VuiBox pr={1}>
+              <VuiInput
+                placeholder="Phone #"
+                sx={({ breakpoints }) => ({
+                  [breakpoints.down("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  [breakpoints.only("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  backgroundColor: "info.main !important",
+                })}
+              />
+            </VuiBox>
+
+            <VuiBox pr={1}></VuiBox>
+
+            <VuiBox pr={1}>
+              <VuiButton
+                variant="gradient"
+                color="info"
+                size="medium">
+                Sign up for text alerts!
+              </VuiButton>
+
+            </VuiBox>
+
+
             <VuiBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in">
+              
+
+          
+              {/* <Link to="/authentication/sign-in">
                 <IconButton sx={navbarIconButton} size="small">
                   <Icon
                     sx={({ palette: { dark, white } }) => ({
@@ -183,7 +251,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                     Sign in
                   </VuiTypography>
                 </IconButton>
-              </Link>
+              </Link> */}
               {/* <IconButton
                 size="small"
                 color="inherit"
