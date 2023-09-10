@@ -49,7 +49,7 @@ export default function data() {
     columns: [
       { name: "Pollutants", align: "left" },
       { name: "Concentration", align: "center" },
-      { name: "completion", align: "center" },
+      { name: "Risk_Level", align: "center" },
     ],
 
     rows: [
@@ -67,7 +67,7 @@ export default function data() {
             $14,000
           </VuiTypography>
         ),
-        completion: (
+        Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
               60%
@@ -90,7 +90,7 @@ export default function data() {
             $3,000
           </VuiTypography>
         ),
-        completion: (
+        Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
               10%
@@ -113,7 +113,7 @@ export default function data() {
             Not set
           </VuiTypography>
         ),
-        completion: (
+        Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
               100%
@@ -136,7 +136,7 @@ export default function data() {
             $20,500
           </VuiTypography>
         ),
-        completion: (
+        Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
               100%
@@ -159,7 +159,7 @@ export default function data() {
             $500
           </VuiTypography>
         ),
-        completion: (
+        Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
               25%
@@ -182,7 +182,53 @@ export default function data() {
             $2,000
           </VuiTypography>
         ),
-        completion: (
+        Risk_Level: (
+          <VuiBox width="8rem" textAlign="left">
+            <VuiTypography color="white" variant="button" fontWeight="bold">
+              40%
+            </VuiTypography>
+            <VuiProgress value={40} color="info" label={false} sx={{ background: "#2D2E5F" }} />
+          </VuiBox>
+        ),
+      },
+      {
+        Pollutants: (
+          <VuiBox display="flex" alignItems="center">
+            <Invision size="20px" />
+            <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
+              Nitrogen Monoxide 
+            </VuiTypography>
+          </VuiBox>
+        ),
+        Concentration: (
+          <VuiTypography variant="button" color="white" fontWeight="bold">
+            $2,000
+          </VuiTypography>
+        ),
+        Risk_Level: (
+          <VuiBox width="8rem" textAlign="left">
+            <VuiTypography color="white" variant="button" fontWeight="bold">
+              40%
+            </VuiTypography>
+            <VuiProgress value={40} color="info" label={false} sx={{ background: "#2D2E5F" }} />
+          </VuiBox>
+        ),
+      },
+      {
+        Pollutants: (
+          <VuiBox display="flex" alignItems="center">
+            <Invision size="20px" />
+            <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
+              Ammonia
+            </VuiTypography>
+          </VuiBox>
+        ),
+        Concentration: (
+          <VuiTypography variant="button" color="white" fontWeight="bold">
+            $2,000
+          </VuiTypography>
+        ),
+        Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
               40%
