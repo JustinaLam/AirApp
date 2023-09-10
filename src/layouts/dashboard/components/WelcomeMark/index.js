@@ -12,12 +12,13 @@ const WelcomeMark = ({zipcode, setZipcode}) => {
   const zipcodeInputOnChange = (e) => {
     console.log(e.key, e.keyCode)
     if (e.key === 'Enter' || e.keyCode === 13) {
-        // Enter pressed
+        // User pressed Enter
         setZipcode(e.target.value)
         console.log("User entered zipcode: ", e.target.value)
     }
   }
 
+  // Component to return
   return (
     <Card sx={() => ({
       height: "340px",

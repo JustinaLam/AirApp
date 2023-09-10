@@ -133,10 +133,13 @@ function Dashboard() {
         <VuiBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={6} xl={7}>
+
+              {/* Pollutant curve graphs */}
+              {/* const timestampMillis = Date.now(); */}
               <Card>
                 <VuiBox sx={{ height: "100%" }}>
                   <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-                    Sales Overview
+                    Air Concentration of Fine Particles and Coarse Particulate Matter (μg/m<sup>3</sup>)
                   </VuiTypography>
                   <VuiBox display="flex" alignItems="center" mb="40px">
                     <VuiTypography variant="button" color="success" fontWeight="bold">

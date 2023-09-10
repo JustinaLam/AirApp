@@ -16,6 +16,27 @@
 
 */
 
+import { lineChartDataDashboard } from "./lineChartData";
+
+const getLineChartXCategories = () => {
+  console.log("HI")
+  var categories = Array(count)
+  var currDtMillis = Date.now()
+  currDtMillis.setMinutes(0)
+  var tempDt = currDtMillis
+
+  console.log(currDtMillis.toUTCString())
+  
+  var count = lineChartDataDashboard.length;
+  for (var i = count; i > 0; i++)
+  {
+      tempDt.setHours(tempDt.getHours() - 1)
+      categories[i] = tempDt
+  }
+
+  return categories
+}
+
 export const lineChartOptionsDashboard = {
   chart: {
     toolbar: {
@@ -33,6 +54,12 @@ export const lineChartOptionsDashboard = {
   },
   xaxis: {
     type: "datetime",
+      // Reference snippets:
+      // const changedX = x.map(({ a, b }) => ({ a: a.toFixed(3), b }));
+      // x.forEach((data) => data.a = data.a.toFixed(3));
+      // categories: lineChartDataDashboard[0].data.map(({ a, b }) => ({ a: a.toFixed(3), b }))
+      
+    // categories: getLineChartXCategories,
     categories: [
       "Jan",
       "Feb",
