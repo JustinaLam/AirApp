@@ -7,7 +7,17 @@ import VuiInput from "components/VuiInput";
 
 import gif from "assets/images/welcome-profile.png";
 
-const WelcomeMark = () => {
+const WelcomeMark = ({zipcode, setZipcode}) => {
+  // Function: onChange for Zipcode input field 
+  const zipcodeInputOnChange = (e) => {
+    console.log(e.key, e.keyCode)
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        // Enter pressed
+        setZipcode(e.target.value)
+        console.log("User entered zipcode: ", e.target.value)
+    }
+  }
+
   return (
     <Card sx={() => ({
       height: "340px",
@@ -30,19 +40,24 @@ const WelcomeMark = () => {
           </VuiTypography>
         </VuiBox>
 
+        {/* --------------------- ZIP CODE INPUT BOX --------------------- */}
         <VuiInput
                 placeholder="Enter your zip code"
+                onKeyDown={zipcodeInputOnChange}
+
                 icon={{ component: "search", direction: "left" }}
                 sx={({ breakpoints }) => ({
                   [breakpoints.down("sm")]: {
-                    maxWidth: "80px",
+                    maxWidth: "160px",
                   },
                   [breakpoints.only("sm")]: {
-                    maxWidth: "80px",
+                    maxWidth: "160px",
                   },
                   backgroundColor: "info.main !important",
                 })}
               />
+        {/* --------------------------------------------------------------- */}
+
         {/* <VuiTypography
           component="a"
           href="#"

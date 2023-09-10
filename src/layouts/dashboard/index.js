@@ -69,16 +69,6 @@ function Dashboard() {
   const { gradients } = colors;
   const { cardContent } = gradients;
   const [ zipcode, setZipcode ] = useState("")
-
-  // onChange for Zipcode input field
-  const zipcodeInputOnChange = (e) => {
-    console.log(e.key, e.keyCode)
-    if (e.key === 'Enter' || e.keyCode === 13) {
-        // Enter pressed
-        setZipcode(e.target.value)
-        console.log("User entered zipcode: ", e.target.value)
-    }
-  }
   
   return (
     <DashboardLayout>
@@ -121,31 +111,16 @@ function Dashboard() {
           </Grid> 
         </VuiBox> */}
 
-        {/* --------------------- ZIP CODE INPUT BOX --------------------- */}
-        <VuiInput
-                placeholder="Enter your zip code"
-                onKeyDown={zipcodeInputOnChange}
-
-                icon={{ component: "search", direction: "left" }}
-                sx={({ breakpoints }) => ({
-                  [breakpoints.down("sm")]: {
-                    maxWidth: "160px",
-                  },
-                  [breakpoints.only("sm")]: {
-                    maxWidth: "160px",
-                  },
-                  backgroundColor: "info.main !important",
-                })}
-              />
-        {/* --------------------------------------------------------------- */}
-
         <VuiBox mb={3}></VuiBox>
 
         <VuiBox mb={3}>
           <Grid container spacing="18px">
             
             <Grid item xs={12} lg={12} xl={5}>
-              <WelcomeMark />
+              <WelcomeMark
+                zipcode={zipcode}
+                setZipcode={setZipcode}
+              />
             </Grid>
             <Grid item xs={12} lg={6} xl={3}>
               <SatisfactionRate />
