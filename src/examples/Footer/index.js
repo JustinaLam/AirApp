@@ -25,9 +25,7 @@ import VuiButton from "components/VuiButton";
 function Footer() {
   return (
 
-
-
-    
+    <VuiBox>
 
 
     <VuiBox
@@ -39,10 +37,9 @@ function Footer() {
       py={2}
       pb={0}
     >
-
-      <VuiBox pr={1}>
+        <VuiBox pr={1}>
               <VuiInput
-                placeholder="Name"
+                placeholder="Phone #"
                 sx={({ breakpoints }) => ({
                   [breakpoints.down("sm")]: {
                     maxWidth: "80px",
@@ -57,7 +54,7 @@ function Footer() {
 
             <VuiBox pr={1}>
               <VuiInput
-                placeholder="Phone #"
+                placeholder="Zip Code (optional)"
                 sx={({ breakpoints }) => ({
                   [breakpoints.down("sm")]: {
                     maxWidth: "80px",
@@ -77,10 +74,33 @@ function Footer() {
                 variant="gradient"
                 color="info"
                 size="medium">
-                Sign up for text alerts!
+                Unsubscribe from text alerts
               </VuiButton>
 
             </VuiBox>
+      </VuiBox>
+
+
+    <VuiBox
+      display="flex"
+      flexDirection={{ xs: "column", lg: "row" }}
+      justifyContent="center"
+      direction="row"
+      component="footer"
+      py={2}
+      pb={0}
+    >
+
+      
+
+
+
+
+
+
+
+
+
 
 
 
@@ -161,6 +181,7 @@ function Footer() {
           </VuiBox>
         </VuiBox> */}
       </VuiBox>
+    </VuiBox>
     </VuiBox>
   );
 }
