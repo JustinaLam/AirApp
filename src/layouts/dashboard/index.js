@@ -31,6 +31,7 @@ import VuiTypography from "components/VuiTypography";
 import VuiProgress from "components/VuiProgress";
 import VuiButton from "components/VuiButton";
 import PMCurves from "components/PMCurves/PMCurves";
+import PolltBars from "components/PolltBars/PolltBars";
 // import InputField from "components/VuiInput";
 // import ZipcodeInput from "components/VuiInput";
 
@@ -128,13 +129,13 @@ function Dashboard() {
   const concsMapInitial = new Map()
   concsMapInitial.set('pm2_5', {
     name: "PM_2.5 (Fine Particles Matter)", 
-    data: [],
-    // data: [500, 250, 300, 220, 500, 250, 300, 230, 300, 350, 250, 400],
+    // data: [],
+    data: [500, 250, 300, 220, 500, 250, 300, 230, 300, 350, 250, 400],
   })
   concsMapInitial.set('pm10', {
     name: "PM_10 (Coarse Particulate Matter)",
-    data: [],
-    // data: [200, 230, 300, 350, 370, 420, 550, 350, 400, 500, 330, 550],
+    // data: [],
+    data: [200, 230, 300, 350, 370, 420, 550, 350, 400, 500, 330, 550],
   })
   concsMapInitial.set('co', {
     name: "Carbon Monoxide", 
@@ -179,7 +180,7 @@ function Dashboard() {
         return {name: pm.name, data: [...dataNow,conc]}
       }
       else {
-        console.log("pm name: ", pm.name, " ", pm, " ", pollutant)
+        // console.log("pm name: ", pm.name, " ", pm, " ", pollutant)
         return pm
       }
     })
@@ -193,12 +194,15 @@ function Dashboard() {
   const [ no2, setNo2 ] = useState([])
   const [ o3, setO3 ] = useState([])
   const [ so2, setSo2 ] = useState([])
+
+  const pollutantNameMap = new Map([
+    ["CO", co],
+    ["NO2", no2],
+    ["O3", o3],
+    ["SO2", so2],
+  ])
   
   
-  // console.log(concsMap.get('co'))
-  // console.log(concsMap.get('co').data)
-  // concsMap.get('co').data.push(100)
-  // setConcsMap(concsMap)
 
   // Historical graph x-axis labels (dates)
   const [ xLabels, setXLabels ] = useState([])
@@ -362,16 +366,16 @@ function Dashboard() {
         console.log(data)
         setXLabels(xLabels.filter(x => false))
         // Clear existing historical pollutant concs
-        for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
-          concsMap.get(pollutant).data = []
+        // for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
+        //   concsMap.get(pollutant).data = []
           // setConcsMap(concsMap)
           
-          setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: []}))
+          // setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: []}))
           // setConcsMap(new Map(concsMap.set(pollutant, {
           //   name: pollutInfo.name,
           //   data: [],
           // })))
-        }
+        // }
         setConcsMap(map => new Map(concsMapCleared))
         console.log("CONCS MAP CLEARED")
         console.log(concsMap)
@@ -385,7 +389,7 @@ function Dashboard() {
             // console.log("pollutant: ", pollutant, "conc: ", resConc)
             // setConcsMap(map => new Map(map.set(pollutant, {name: concsMap.get(pollutant).name, data: [...concsMap.get(pollutant).data, resConc]})));
             // setConcsMap(map => new Map(map.set(pollutant, {name: concsMap.get(pollutant).name, data: concsMap.get(pollutant).data.concat(resConc)})));
-            // updateConcsMap(pollutant, resConc)
+            updateConcsMap(pollutant, resConc)
             concsMap.get(pollutant).data.push(resConc)
             concsMap.get(pollutant).data = concsMap.get(pollutant).data.splice(-24)
             
@@ -393,12 +397,12 @@ function Dashboard() {
             // setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: [concsMap.get(pollutant).data, resConc]}))
             // setXLabels([xLabels, new Date(data.list[i].dt * 1000).toUTCString()])
 
-            xLabels.push(new Date(data.list[i].dt * 1000).toUTCString())
+            // xLabels.push(new Date(data.list[i].dt * 1000).toUTCString())
             // setXLabels(xLabels.concat(new Date(data.list[i].dt * 1000)))
           }
           setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
           setConcsMap(concsMap)
-          setXLabels(xLabels)
+          // setXLabels(xLabels)
         }
         setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
 
@@ -511,13 +515,17 @@ function Dashboard() {
                       borderRadius: "20px",
                     }}
                   >
-                    <BarChart
+                    <PolltBars
+                      pollt={pollt}
+                      pollutantNameMap={pollutantNameMap}
+                    />
+                    {/* <BarChart
                       // barChartData={barChartDataDashboard}
                       // barChartOptions={barChartOptionsDashboard}
-                      // barChartData={[{name: "AQI", data: currConcs}]}
-                      barChartData={[{name: {pollt}, data: co}]}
+                      // barChartData={[{name: "AQI", data: co}]}
+                      barChartData={[{name: pollt, data: pollutantNameMap.get(pollt)}]}
                       barChartOptions={barChartOptionsDashboard}
-                    />
+                    /> */}
                   </VuiBox>
                   <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
                     Historical Data

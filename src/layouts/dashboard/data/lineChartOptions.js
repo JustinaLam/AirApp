@@ -63,7 +63,7 @@ export const lineChartOptionsDashboard = {
       // x.forEach((data) => data.a = data.a.toFixed(3));
       // categories: lineChartDataDashboard[0].data.map(({ a, b }) => ({ a: a.toFixed(3), b }))
 
-    categories: getLineChartXCategories,
+    categories: getLineChartXCategories(),
     // categories: [
     //   x-11,
     //   x-10,
@@ -127,7 +127,7 @@ export const lineChartOptionsDashboard = {
       gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
       inverseColors: true,
       opacityFrom: 0.8,
-      opacityTo: 0,
+      opacityTo: 0.3,
       stops: [],
     },
     colors: ["#0075FF", "#2CD9FF"],
