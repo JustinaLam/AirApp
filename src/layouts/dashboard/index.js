@@ -1,14 +1,13 @@
 /*!
 
 =========================================================
-* Vision UI Free React - v1.0.0
+* PennApps Contest - AirApp - v1.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
 
-* Design and Coded by Simmmple & Creative Tim
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
 
 =========================================================
 
@@ -17,17 +16,14 @@
 */
 
 import React, { useState } from "react";
-import VuiInput from "components/VuiInput";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
-import Icon from "@mui/material/Icon";
 import { Card, LinearProgress, Stack } from "@mui/material";
 
 // Vision UI Dashboard React components
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
-import VuiProgress from "components/VuiProgress";
 import VuiButton from "components/VuiButton";
 // import InputField from "components/VuiInput";
 // import ZipcodeInput from "components/VuiInput";
@@ -36,11 +32,9 @@ import VuiButton from "components/VuiButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
 import linearGradient from "assets/theme/functions/linearGradient";
 
 // Vision UI Dashboard React base styles
-import typography from "assets/theme/base/typography";
 import colors from "assets/theme/base/colors";
 
 // Dashboard layout components
@@ -51,7 +45,6 @@ import SatisfactionRate from "layouts/dashboard/components/SatisfactionRate";
 import Three from "layouts/dashboard/components/Three";
 
 // React icons
-import { TbLetterC, TbLetterN, TbLetterO, TbLetterS } from "react-icons/tb";
 import gif from "assets/images/HeatMap.png";
 
 // Data
