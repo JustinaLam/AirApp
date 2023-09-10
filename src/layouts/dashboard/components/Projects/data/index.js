@@ -133,9 +133,9 @@ export default function data() {
         Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
-              100%
+              80%
             </VuiTypography>
-            <VuiProgress value={100} color="info" label={false} sx={{ background: "#2D2E5F" }} />
+            <VuiProgress value={80} color="info" label={false} sx={{ background: "#2D2E5F" }} />
           </VuiBox>
         ),
       },
@@ -156,9 +156,9 @@ export default function data() {
         Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
-              100%
+              70%
             </VuiTypography>
-            <VuiProgress value={100} color="info" label={false} sx={{ background: "#2D2E5F" }} />
+            <VuiProgress value={70} color="info" label={false} sx={{ background: "#2D2E5F" }} />
           </VuiBox>
         ),
       },
