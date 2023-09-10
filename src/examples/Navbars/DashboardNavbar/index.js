@@ -213,7 +213,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                   backgroundColor: "info.main !important",
                 })}
                 color="white !important"
-                size="medium"
+                //size="medium"
                 
                 />
             </VuiBox>

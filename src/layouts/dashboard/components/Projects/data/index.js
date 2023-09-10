@@ -47,33 +47,22 @@ export default function data() {
 
   return {
     columns: [
-      { name: "companies", align: "left" },
-      { name: "members", align: "left" },
-      { name: "budget", align: "center" },
+      { name: "Pollutants", align: "left" },
+      { name: "Concentration", align: "center" },
       { name: "completion", align: "center" },
     ],
 
     rows: [
       {
-        companies: (
+        Pollutants: (
           <VuiBox display="flex" alignItems="center">
             <AdobeXD size="20px" />
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
-              Chakra Vision UI Version
+            Particulate Matter 2.5
             </VuiTypography>
           </VuiBox>
         ),
-        members: (
-          <VuiBox display="flex" py={1}>
-            {avatars([
-              [avatar1, "Ryan Tompson"],
-              [avatar2, "Romina Hadid"],
-              [avatar3, "Alexander Smith"],
-              [avatar4, "Jessica Doe"],
-            ])}
-          </VuiBox>
-        ),
-        budget: (
+        Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
             $14,000
           </VuiTypography>
@@ -88,23 +77,15 @@ export default function data() {
         ),
       },
       {
-        companies: (
+        Pollutants: (
           <VuiBox display="flex" alignItems="center">
             <Atlassian size="20px" />
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
-              Add Progress Track
+              Particulate Matter 10
             </VuiTypography>
           </VuiBox>
         ),
-        members: (
-          <VuiBox display="flex" py={1}>
-            {avatars([
-              [avatar2, "Romina Hadid"],
-              [avatar4, "Jessica Doe"],
-            ])}
-          </VuiBox>
-        ),
-        budget: (
+        Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
             $3,000
           </VuiTypography>
@@ -119,23 +100,15 @@ export default function data() {
         ),
       },
       {
-        companies: (
+        Pollutants: (
           <VuiBox display="flex" alignItems="center">
             <Slack size="20px" />
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
-              Fix Platform Errors
+              Ozone
             </VuiTypography>
           </VuiBox>
         ),
-        members: (
-          <VuiBox display="flex" py={1}>
-            {avatars([
-              [avatar1, "Ryan Tompson"],
-              [avatar3, "Alexander Smith"],
-            ])}
-          </VuiBox>
-        ),
-        budget: (
+        Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
             Not set
           </VuiTypography>
@@ -150,25 +123,15 @@ export default function data() {
         ),
       },
       {
-        companies: (
+        Pollutants: (
           <VuiBox display="flex" alignItems="center">
             <Spotify size="20px" />
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
-              Launch our Mobile App
+              Nitrogen Dioxide
             </VuiTypography>
           </VuiBox>
         ),
-        members: (
-          <VuiBox display="flex" py={1}>
-            {avatars([
-              [avatar4, "Jessica Doe"],
-              [avatar3, "Alexander Smith"],
-              [avatar2, "Romina Hadid"],
-              [avatar1, "Ryan Tompson"],
-            ])}
-          </VuiBox>
-        ),
-        budget: (
+        Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
             $20,500
           </VuiTypography>
@@ -183,20 +146,15 @@ export default function data() {
         ),
       },
       {
-        companies: (
+        Pollutants: (
           <VuiBox display="flex" alignItems="center">
             <Jira size="20px" />
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
-              Add the New Pricing Page
+              Sulfur Dioxide
             </VuiTypography>
           </VuiBox>
         ),
-        members: (
-          <VuiBox display="flex" py={1}>
-            {avatars([[avatar4, "Jessica Doe"]])}
-          </VuiBox>
-        ),
-        budget: (
+        Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
             $500
           </VuiTypography>
@@ -211,23 +169,15 @@ export default function data() {
         ),
       },
       {
-        companies: (
+        Pollutants: (
           <VuiBox display="flex" alignItems="center">
             <Invision size="20px" />
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
-              Redesign New Online Shop
+              Carbon Monoxide 
             </VuiTypography>
           </VuiBox>
         ),
-        members: (
-          <VuiBox display="flex" py={1}>
-            {avatars([
-              [avatar1, "Ryan Tompson"],
-              [avatar4, "Jessica Doe"],
-            ])}
-          </VuiBox>
-        ),
-        budget: (
+        Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
             $2,000
           </VuiTypography>

@@ -40,7 +40,7 @@ export default styled("div")(({ theme, ownerState }) => {
   return {
     display: "flex",
     alignItems: "center",
-    backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
+    backgroundColor: disabled ? grey[1000] : inputColors2.backgroundColor,
     border: `${borderWidth[1]} solid`,
     borderRadius: borderRadius.lg,
     borderColor: "white !important",
@@ -60,7 +60,7 @@ export default styled("div")(({ theme, ownerState }) => {
       color: "black",
       height: "100%",
       paddingX: pxToRem(20),
-      backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
+      backgroundColor: disabled ? grey[1000] : inputColors2.backgroundColor,
       
       borderColorValue: "white !important",
       borderColor: "white !important",
@@ -89,7 +89,7 @@ export default styled("div")(({ theme, ownerState }) => {
       borderTopLeftRadius: "0px",
       borderBottomLeftRadius: "0px",
       borderWidth: "10px",
-      backgroundColor: `${disabled ? grey[600] : inputColors2.backgroundColor} !important`,
+      backgroundColor: `${disabled ? grey[1000] : inputColors2.backgroundColor} !important`,
       "& ::placeholder": {
         color: `black !important`,
         fontSize: "18px !important",
