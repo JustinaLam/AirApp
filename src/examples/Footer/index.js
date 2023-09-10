@@ -48,7 +48,7 @@ function Footer() {
                   },
                   backgroundColor: "info.main !important",
                 })}
-                size="medium"
+                //size="medium"
                 color="white !important"
               />
             </VuiBox>
@@ -65,7 +65,7 @@ function Footer() {
                   },
                   backgroundColor: "info.main !important",
                 })}
-                size="medium"
+                //size="medium"
                 color="white !important"
               />
             </VuiBox>

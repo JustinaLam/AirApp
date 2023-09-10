@@ -83,8 +83,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
     }
 
     /** 
-    The event listener that's calling the handleTransparentNavbar function when 
-    scrolling the window.
+     The event listener that's calling the handleTransparentNavbar function when 
+     scrolling the window.
     */
     window.addEventListener("scroll", handleTransparentNavbar);
 
@@ -163,7 +163,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
             <VuiBox pr={2}>
             </VuiBox>
 
-          <VuiTypography
+           <VuiTypography
                     fontSize="3rem"
                     fontWeight="medium"
                     color="white"
@@ -211,9 +211,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
                   },
                   backgroundColor: "info.main !important",
                 })}
-                color="white !important"
                 //size="medium"
-                
+                color="white !important"
                 />
             </VuiBox>
 
@@ -229,7 +228,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                   },
                   backgroundColor: "info.main !important",
                 })}
-                size="medium"
+                //size="medium"
                 color="white !important"
               />
             </VuiBox>

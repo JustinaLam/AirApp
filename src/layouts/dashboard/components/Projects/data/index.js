@@ -73,7 +73,7 @@ export default function data() {
       {
         Pollutants: (
           <VuiBox display="flex" alignItems="center">
-            <AdobeXD size="20px" />
+            {/* <AdobeXD size="20px" /> */}
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
             Particulate Matter 2.5
             </VuiTypography>
@@ -96,7 +96,7 @@ export default function data() {
       {
         Pollutants: (
           <VuiBox display="flex" alignItems="center">
-            <Atlassian size="20px" />
+            {/* <Atlassian size="20px" /> */}
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
               Particulate Matter 10
             </VuiTypography>
@@ -119,7 +119,7 @@ export default function data() {
       {
         Pollutants: (
           <VuiBox display="flex" alignItems="center">
-            <Slack size="20px" />
+            {/* <Slack size="20px" /> */}
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
               Ozone
             </VuiTypography>
@@ -142,7 +142,7 @@ export default function data() {
       {
         Pollutants: (
           <VuiBox display="flex" alignItems="center">
-            <Spotify size="20px" />
+            {/* <Spotify size="20px" /> */}
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
               Nitrogen Dioxide
             </VuiTypography>
@@ -165,7 +165,7 @@ export default function data() {
       {
         Pollutants: (
           <VuiBox display="flex" alignItems="center">
-            <Jira size="20px" />
+            {/* <Jira size="20px" /> */}
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
               Sulfur Dioxide
             </VuiTypography>
@@ -188,7 +188,7 @@ export default function data() {
       {
         Pollutants: (
           <VuiBox display="flex" alignItems="center">
-            <Invision size="20px" />
+            {/* <Invision size="20px" /> */}
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
               Carbon Monoxide 
             </VuiTypography>
@@ -211,7 +211,7 @@ export default function data() {
       {
         Pollutants: (
           <VuiBox display="flex" alignItems="center">
-            <Invision size="20px" />
+            {/* <Invision size="20px" /> */}
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
               Nitrogen Monoxide 
             </VuiTypography>
@@ -234,7 +234,7 @@ export default function data() {
       {
         Pollutants: (
           <VuiBox display="flex" alignItems="center">
-            <Invision size="20px" />
+            {/* <Invision size="20px" /> */}
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
               Ammonia
             </VuiTypography>

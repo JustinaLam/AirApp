@@ -82,9 +82,9 @@ function Projects() {
           </VuiBox>
         </VuiBox>
         <VuiBox color="text" px={2}>
-          <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
+          {/* <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
             more_vert
-          </Icon>
+          </Icon> */}
         </VuiBox>
         {renderMenu}
       </VuiBox>
