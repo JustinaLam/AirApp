@@ -72,7 +72,7 @@ function Footer() {
             <VuiBox pr={1}>
               <VuiButton
                 variant="gradient"
-                color="info"
+                color="warning"
                 size="medium">
                 Unsubscribe from text alerts
               </VuiButton>
@@ -127,7 +127,7 @@ function Footer() {
             mr="2px"
             component="a"
             variant="button"
-            href="https://www.creative-tim.com/"
+            href="https://www.linkedin.com/in/jeffrey-gao-88589215b/"
             sx={{ textAlign: "center", fontWeight: "500 !important" }}
             color="white"
           >
