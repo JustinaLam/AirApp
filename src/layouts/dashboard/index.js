@@ -568,30 +568,26 @@ function Dashboard() {
 
 
         <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
-          {/* Ways to Reduce AQI Card */}
-          <Grid item xs={12} md={6} lg={4}>
-            <OrderOverview />
-          </Grid>
+          
           {/* Projects Card */}
           <Grid item xs={12} md={6} lg={8}>
              <Projects />
+          </Grid>
+          {/* Ways to Reduce AQI Card */}
+          <Grid item xs={12} md={6} lg={4}>
+            <OrderOverview />
           </Grid>
         </Grid>
 
         <VuiBox py={5}></VuiBox>
 
-        <Grid container spacing={3} justifyContent="center" alignItems="stretch">
-        <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
+        <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
+        <Card sx={() => ({width: "1500px",})}>
+        <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px" alignItems="center" textAlign="center">
               Air Pollution Levels Around the World
           </VuiTypography>
-        </Grid>
-
-        <Grid item xs={12} md={6} lg={4}>
-        <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-              Air Pollution Levels Around the World
-          </VuiTypography>
+          </Card>
           </Grid>
-
         <VuiBox py={3}></VuiBox>
 
         <Grid container spacing={3} justifyContent="center" alignItems="stretch">
