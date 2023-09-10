@@ -48,14 +48,10 @@ import Projects from "layouts/dashboard/components/Projects";
 import OrderOverview from "layouts/dashboard/components/OrderOverview";
 import SatisfactionRate from "layouts/dashboard/components/SatisfactionRate";
 import ReferralTracking from "layouts/dashboard/components/ReferralTracking";
+import Three from "layouts/dashboard/components/Three";
 
 // React icons
-import { IoIosRocket } from "react-icons/io";
-import { IoGlobe } from "react-icons/io5";
-import { IoBuild } from "react-icons/io5";
-import { IoWallet } from "react-icons/io5";
-import { IoDocumentText } from "react-icons/io5";
-import { FaShoppingCart } from "react-icons/fa";
+import { TbLetterC, TbLetterN, TbLetterO, TbLetterS } from "react-icons/tb";
 
 // Data
 import LineChart from "examples/Charts/LineCharts/LineChart";
@@ -68,14 +64,16 @@ import { barChartOptionsDashboard } from "layouts/dashboard/data/barChartOptions
 function Dashboard() {
   const { gradients } = colors;
   const { cardContent } = gradients;
-  const [ zipcode, setZipcode ] = useState("")
+  const [ zipcode, setZipcode ] = useState("");
+  const { type, setType } = useState("O2");
   
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <VuiBox py={3}>
-        {/* <VuiBox mb={3}>
-           <Grid container spacing={3}>
+
+        <VuiBox py={3}>
+          {/* <VuiBox mb={3}>
+            <Grid container spacing={3}>
             <Grid item xs={12} md={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "today's money", fontWeight: "regular" }}
@@ -108,8 +106,8 @@ function Dashboard() {
                 icon={{ color: "info", component: <FaShoppingCart size="20px" color="white" /> }}
               />
             </Grid>
-          </Grid> 
-        </VuiBox> */}
+            </Grid> 
+          </VuiBox> */}
 
         <VuiBox mb={3}></VuiBox>
 
@@ -122,18 +120,34 @@ function Dashboard() {
                 setZipcode={setZipcode}
               />
             </Grid>
+
             <Grid item xs={12} lg={6} xl={3}>
               <SatisfactionRate />
             </Grid>
+
             <Grid item xs={12} lg={6} xl={4}>
-              <ReferralTracking />
+              {/* <ReferralTracking /> */}
+              <Card
+                  sx={{
+                    height: '100%',
+                    background: linearGradient(gradients.cardDark.main, gradients.cardDark.state, gradients.cardDark.deg)
+                  }}>
+                    {/* <ReferralTracking /> */}
+                <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
+                  Amount of Particles in the Air - Visualized
+                </VuiTypography>
+                  <Three />
+              </Card>
             </Grid>
           </Grid>
         </VuiBox>
+
+
         <VuiBox mb={3}>
           <Grid container spacing={3}>
-            <Grid item xs={12} lg={6} xl={7}>
 
+
+            <Grid item xs={12} lg={6} xl={7}>
               {/* Pollutant curve graphs */}
               {/* const timestampMillis = Date.now(); */}
               <Card>
@@ -158,12 +172,14 @@ function Dashboard() {
                 </VuiBox>
               </Card>
             </Grid>
+
+
             <Grid item xs={12} lg={6} xl={5}>
               <Card>
                 <VuiBox>
                   <VuiBox
                     mb="24px"
-                    height="220px"
+                    height="255px"
                     sx={{
                       background: linearGradient(
                         cardContent.main,
@@ -179,13 +195,13 @@ function Dashboard() {
                     />
                   </VuiBox>
                   <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-                    Active Users
+                    Historical Data
                   </VuiTypography>
                   <VuiBox display="flex" alignItems="center" mb="40px">
                     <VuiTypography variant="button" color="success" fontWeight="bold">
-                      (+23){" "}
+                      {type}{" "}
                       <VuiTypography variant="button" color="text" fontWeight="regular">
-                        than last week
+                        levels in the last week
                       </VuiTypography>
                     </VuiTypography>
                   </VuiBox>
@@ -203,17 +219,14 @@ function Dashboard() {
                           alignItems="center"
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
-                          <IoWallet color="#fff" size="12px" />
+                          <TbLetterC color="#fff" size="12px" />
                         </VuiBox>
                         <VuiTypography color="text" variant="button" fontWeight="medium">
-                          Users
+                          CO
                         </VuiTypography>
                       </Stack>
-                      <VuiTypography color="white" variant="lg" fontWeight="bold" mb="8px">
-                        32,984
-                      </VuiTypography>
-                      <VuiProgress value={60} color="info" sx={{ background: "#2D2E5F" }} />
                     </Grid>
+
                     <Grid item xs={6} md={3} lg={3}>
                       <Stack
                         direction="row"
@@ -227,17 +240,14 @@ function Dashboard() {
                           alignItems="center"
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
-                          <IoIosRocket color="#fff" size="12px" />
+                          <TbLetterN color="#fff" size="12px" />
                         </VuiBox>
                         <VuiTypography color="text" variant="button" fontWeight="medium">
-                          Clicks
+                          NO2
                         </VuiTypography>
                       </Stack>
-                      <VuiTypography color="white" variant="lg" fontWeight="bold" mb="8px">
-                        2,42M
-                      </VuiTypography>
-                      <VuiProgress value={60} color="info" sx={{ background: "#2D2E5F" }} />
                     </Grid>
+
                     <Grid item xs={6} md={3} lg={3}>
                       <Stack
                         direction="row"
@@ -251,17 +261,14 @@ function Dashboard() {
                           alignItems="center"
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
-                          <FaShoppingCart color="#fff" size="12px" />
+                          <TbLetterO color="#fff" size="12px" />
                         </VuiBox>
                         <VuiTypography color="text" variant="button" fontWeight="medium">
-                          Sales
+                          O3
                         </VuiTypography>
                       </Stack>
-                      <VuiTypography color="white" variant="lg" fontWeight="bold" mb="8px">
-                        2,400$
-                      </VuiTypography>
-                      <VuiProgress value={60} color="info" sx={{ background: "#2D2E5F" }} />
                     </Grid>
+
                     <Grid item xs={6} md={3} lg={3}>
                       <Stack
                         direction="row"
@@ -275,26 +282,25 @@ function Dashboard() {
                           alignItems="center"
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
-                          <IoBuild color="#fff" size="12px" />
+                          <TbLetterS color="#fff" size="12px" />
                         </VuiBox>
                         <VuiTypography color="text" variant="button" fontWeight="medium">
-                          Items
+                          SO2
                         </VuiTypography>
                       </Stack>
-                      <VuiTypography color="white" variant="lg" fontWeight="bold" mb="8px">
-                        320
-                      </VuiTypography>
-                      <VuiProgress value={60} color="info" sx={{ background: "#2D2E5F" }} />
                     </Grid>
-                  </Grid>
+                    </Grid>
                 </VuiBox>
               </Card>
             </Grid>
+
           </Grid>
         </VuiBox>
+
+
         <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
           <Grid item xs={12} md={6} lg={8}>
-             <Projects />
+            <Projects />
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <OrderOverview />
