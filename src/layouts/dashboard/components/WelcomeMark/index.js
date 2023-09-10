@@ -40,6 +40,7 @@ const WelcomeMark = ({zipcode, setZipcode}) => {
     <Card sx={() => ({
       height: "340px",
       py: "32px",
+      mt: "-15px",
       backgroundImage: `url(${gif})`,
       backgroundSize: "cover",
       backgroundPosition: "50%"

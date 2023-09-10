@@ -61,6 +61,7 @@ import team2 from "assets/images/team-2.jpg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 import VuiButton from "components/VuiButton";
 import VuiAvatar from "components/VuiAvatar";
+import { Air } from "@mui/icons-material";
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
@@ -114,26 +115,27 @@ function DashboardNavbar({ absolute, light, isMini }) {
       sx={{ mt: 2 }}
     >
       <NotificationItem
-        image={<img src={team2} alt="person" />}
-        title={["New message", "from Laur"]}
+        image={<img src={ team2 } alt="person" />}
+        title={["Unhealthy Air Quality Detected", ""]}
         date="13 minutes ago"
         onClick={handleCloseMenu}
       />
       <NotificationItem
-        image={<img src={logoSpotify} alt="person" />}
-        title={["New album", "by Travis Scott"]}
-        date="1 day"
+        image={<img src={team2} alt="person" />}
+        title={["Hazardous:", "avoid outdoor activity"]}
+        date="3 days ago"
         onClick={handleCloseMenu}
       />
       <NotificationItem
         color="text"
-        image={
-          <Icon fontSize="small" sx={{ color: ({ palette: { white } }) => white.main }}>
-            payment
-          </Icon>
-        }
-        title={["", "Payment successfully completed"]}
-        date="2 days"
+        image={<img src={team2} alt="person" />}
+        // image={
+        //   <Icon fontSize="small" sx={{ color: ({ palette: { white } }) => white.main }}>
+        //     payment
+        //   </Icon>
+        // }
+        title={["", "Unhealthy for sensitive groups"]}
+        date="2 weeks ago"
         onClick={handleCloseMenu}
       />
     </Menu>
@@ -179,16 +181,9 @@ function DashboardNavbar({ absolute, light, isMini }) {
             })}
           
           > AirWatch </icon>*/}
-
-            
             
             <VuiBox pr={1}>
             </VuiBox>
-
-
-            
-
-
 
         </VuiBox>
         {isMini ? null : (
