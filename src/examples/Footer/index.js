@@ -49,6 +49,7 @@ function Footer() {
                   },
                   backgroundColor: "info.main !important",
                 })}
+                size="medium"
               />
             </VuiBox>
 

@@ -17,13 +17,15 @@
 */
 
 import { styled } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
 
 export default styled("div")(({ theme, ownerState }) => {
-  const { palette, functions, borders } = theme;
+  const { palette, functions, borders, boxShadows } = theme;
   const { error, success, disabled } = ownerState;
+  const { inputBoxShadow } = boxShadows;
+  const { pxToRem, boxShadow } = functions;
 
   const { inputColors, inputColors2, grey, black } = palette;
-  const { pxToRem } = functions;
   const { borderRadius, borderWidth } = borders;
 
   // border color value
@@ -42,18 +44,34 @@ export default styled("div")(({ theme, ownerState }) => {
     border: `${borderWidth[1]} solid`,
     borderRadius: borderRadius.lg,
     borderColor: borderColorValue,
+    //padding: pxToRem(18),
     "& .MuiIcon-root": {
       color: "black",
     },
 
     "& .MuiInputBase-input": {
-      fontSize: "18px",
+      fontSize: "18px !important",
       color: "black",
       height: "100%",
-      paddingX: pxToRem(18),
+      paddingX: pxToRem(20),
       backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
       
+
+
+
+
+
     },
+
+    "&.Mui-focused": {
+      borderColor: inputColors.borderColor.focus,
+      paddingLeft: pxToRem(18),
+      paddingRight: pxToRem(18),
+      boxShadow: boxShadow([0, 0], [0, 2], inputColors.boxShadow, 1),
+      outline: 0,
+    },
+
+
     "& .MuiInputBase-root": {
       
       border: `unset`,
@@ -63,6 +81,7 @@ export default styled("div")(({ theme, ownerState }) => {
       backgroundColor: `${disabled ? grey[600] : inputColors2.backgroundColor} !important`,
       "& ::placeholder": {
         color: `${black} !important`,
+        fontSize: "18px !important",
       },
     },
   };

@@ -16,7 +16,7 @@
 
 */
 
-//REMPACED ALL 18px WITH 18px
+//REPACED ALL 12px WITH 18px
 
 
 import InputBase from "@mui/material/InputBase";
@@ -45,19 +45,19 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   // styles for the input with size="small"
   const smallStyles = () => ({
     fontSize: fontSize.xs,
-    padding: `${pxToRem(4)} ${pxToRem(18)}`,
+    padding: `${pxToRem(4)} ${pxToRem(12)}`,
   });
 
   // styles for the input with size="medium"
   const mediumStyles = () => ({
-    fontSize: "18px",
-    padding: `${pxToRem(8)} ${pxToRem(18)}`,
+    fontSize: "12px",
+    padding: `${pxToRem(8)} ${pxToRem(12)}`,
   });
 
   // styles for the input with size="large"
   const largeStyles = () => ({
-    fontSize: "18px",
-    padding: pxToRem(18),
+    fontSize: "12px",
+    //padding: pxToRem(12), //DONT CHANGE
   });
 
   // styles for the focused state of the input
@@ -69,29 +69,29 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     focusedBorderColorValue = inputColors.success;
   }
 
-  let focusedPaddingLeftValue;
+  let focusedPaddingLeftValue = pxToRem(18);
 
-  if (direction === "rtl" && iconDirection === "left") {
-    focusedPaddingLeftValue = pxToRem(18);
-  } else if (direction === "rtl" && iconDirection === "right") {
-    focusedPaddingLeftValue = pxToRem(18);
-  } else if (direction === "ltr" && iconDirection === "right") {
-    focusedPaddingLeftValue = pxToRem(18);
-  } else if (direction === "ltr" && iconDirection === "left") {
-    focusedPaddingLeftValue = pxToRem(18);
-  }
+  // if (direction === "rtl" && iconDirection === "left") {
+  //   focusedPaddingLeftValue = pxToRem(18);
+  // } else if (direction === "rtl" && iconDirection === "right") {
+  //   focusedPaddingLeftValue = pxToRem(18);
+  // } else if (direction === "ltr" && iconDirection === "right") {
+  //   focusedPaddingLeftValue = pxToRem(18);
+  // } else if (direction === "ltr" && iconDirection === "left") {
+  //   focusedPaddingLeftValue = pxToRem(18);
+  // }
 
-  let focusedPaddingRightValue;
+  let focusedPaddingRightValue = pxToRem(18);
 
-  if (direction === "rtl" && iconDirection === "left") {
-    focusedPaddingRightValue = pxToRem(18);
-  } else if (direction === "rtl" && iconDirection === "right") {
-    focusedPaddingRightValue = pxToRem(18);
-  } else if (direction === "ltr" && iconDirection === "right") {
-    focusedPaddingRightValue = pxToRem(18);
-  } else if (direction === "ltr" && iconDirection === "left") {
-    focusedPaddingRightValue = pxToRem(18);
-  }
+  // if (direction === "rtl" && iconDirection === "left") {
+  //   focusedPaddingRightValue = pxToRem(18);
+  // } else if (direction === "rtl" && iconDirection === "right") {
+  //   focusedPaddingRightValue = pxToRem(18);
+  // } else if (direction === "ltr" && iconDirection === "right") {
+  //   focusedPaddingRightValue = pxToRem(18);
+  // } else if (direction === "ltr" && iconDirection === "left") {
+  //   focusedPaddingRightValue = pxToRem(18);
+  // }
 
   let focusedBoxShadowValue = boxShadow([0, 0], [0, 2], inputColors.boxShadow, 1);
 
@@ -167,6 +167,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     pointerEvents: disabled ? "none" : "auto",
     backgroundColor: `${disabled ? grey[600] : inputColors.backgroundColor} !important`,
     color:  `${white.main} !important`, // Change text color based on the presence of an icon
+    fontSize: iconDirection !== "none" ? "18px" : "12px !important",
     borderRadius: borderRadius.lg,
     border: `0.5px solid ${grey[600]}`,
     ...(size === "small" && smallStyles()),
@@ -176,9 +177,9 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     ...(success && successStyles()),
     ...((iconDirection === "left" || iconDirection === "right") && withIconStyles()),
     "& ::placeholder": {
-      color: iconDirection !== "none" ? `${black.main} !important` : `${white.main} !important`, // Change text color based on the presence of an icon
+      color: "white", // Change text color based on the presence of an icon
 
-      fontSize: "18px",
+      fontSize: "12px",
     },
 
     "&.Mui-focused": {

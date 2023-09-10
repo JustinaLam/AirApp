@@ -25,6 +25,8 @@ export default styled(Icon)(({ theme, ownerState }) => {
 
   const { fontWeightBold, size: fontSize } = typography;
 
+
+  //icon color
   return {
     fontWeight: fontWeightBold,
     fontSize: size === "large" && `${fontSize.md} !important`,

@@ -35,7 +35,7 @@ export default {
       placeItems: "center !important",
       width: "100% !important",
       height: "auto !important",
-      padding: `${pxToRem(8)} ${pxToRem(18)}`,
+      padding: `${pxToRem(8)} ${pxToRem(12)}`,
       fontSize: `${size.sm} !important`,
       fontWeight: `${fontWeightRegular} !important`,
       lineHeight: "1.4 !important",
