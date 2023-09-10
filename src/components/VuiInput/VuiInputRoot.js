@@ -162,13 +162,13 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   };
 
   return {
-    backgroundColor: disabled ? `${grey[200]} !important` : white.main,
+    backgroundColor: disabled ? `${grey[1000]} !important` : white.main,
     pointerEvents: disabled ? "none" : "auto",
-    backgroundColor: `${disabled ? grey[600] : inputColors.backgroundColor} !important`,
+    backgroundColor: `${disabled ? grey[1000] : inputColors.backgroundColor} !important`,
     color:  `${white.main} !important`, // Change text color based on the presence of an icon
     fontSize: iconDirection !== "none" ? "18px" : "12px !important",
     borderRadius: borderRadius.lg,
-    border: `0.5px solid ${grey[600]}`,
+    border: `0.5px solid ${grey[1000]}`,
     ...(size === "small" && smallStyles()),
     ...(size === "medium" && mediumStyles()),
     ...(size === "large" && largeStyles()),
