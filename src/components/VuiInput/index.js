@@ -93,6 +93,7 @@ VuiInput.propTypes = {
   error: PropTypes.bool,
   success: PropTypes.bool,
   disabled: PropTypes.bool,
+  
 };
 
 export default VuiInput;

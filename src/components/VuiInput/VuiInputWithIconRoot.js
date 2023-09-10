@@ -43,11 +43,11 @@ export default styled("div")(({ theme, ownerState }) => {
     borderRadius: borderRadius.lg,
     borderColor: borderColorValue,
     "& .MuiIcon-root": {
-      color: black,
+      color: "black",
     },
 
     "& .MuiInputBase-input": {
-      color: black,
+      color: "black",
       height: "100%",
       paddingX: pxToRem(20),
       backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
