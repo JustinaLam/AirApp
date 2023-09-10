@@ -43,7 +43,8 @@ export const barChartOptionsDashboard = {
     "Two Days Ago",
     "Yesterday",
     "Today"
-    ], //["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    ], 
+    //["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     show: false,
     labels: {
       show: false,
