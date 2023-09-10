@@ -28,7 +28,7 @@ const getLineChartXCategories = () => {
   console.log(currDtMillis.toUTCString())
   
   var count = lineChartDataDashboard.length;
-  for (var i = count; i > 0; i++)
+  for (var i = count; i > 0; i--)
   {
       tempDt.setHours(tempDt.getHours() - 1)
       categories[i] = tempDt
@@ -58,22 +58,22 @@ export const lineChartOptionsDashboard = {
       // const changedX = x.map(({ a, b }) => ({ a: a.toFixed(3), b }));
       // x.forEach((data) => data.a = data.a.toFixed(3));
       // categories: lineChartDataDashboard[0].data.map(({ a, b }) => ({ a: a.toFixed(3), b }))
-      
+
     // categories: getLineChartXCategories,
-    categories: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
+    // categories: [
+    //   "Jan",
+    //   "Feb",
+    //   "Mar",
+    //   "Apr",
+    //   "May",
+    //   "Jun",
+    //   "Jul",
+    //   "Aug",
+    //   "Sep",
+    //   "Oct",
+    //   "Nov",
+    //   "Dec",
+    // ],
     labels: {
       style: {
         colors: "#c8cfca",

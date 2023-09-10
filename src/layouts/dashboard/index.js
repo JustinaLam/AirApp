@@ -16,7 +16,7 @@
 
 */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import VuiInput from "components/VuiInput";
 
 // @mui material components
@@ -65,11 +65,181 @@ import { lineChartOptionsDashboard } from "layouts/dashboard/data/lineChartOptio
 import { barChartDataDashboard } from "layouts/dashboard/data/barChartData";
 import { barChartOptionsDashboard } from "layouts/dashboard/data/barChartOptions";
 
+// Environment variables
+require('dotenv').config()
+// { path: '/.env' }
+
 function Dashboard() {
   const { gradients } = colors;
   const { cardContent } = gradients;
-  const [ zipcode, setZipcode ] = useState("")
+  const [ zipcode, setZipcode ] = useState("19104")
+  const [ city, setCity ] = useState("Philadelphia")
+  const [ latitude, setLatitude ] = useState(34.0901)
+  const [ longitude, setLongitude ] = useState(-118.4065)
   
+  // Start and end time
+  var nowMilli = Date.now()
+  var startDtInitial = new Date(nowMilli)
+  var endDtInitial = new Date(nowMilli)
+  // Round down to last hour mark
+  startDtInitial.setMinutes(0)
+  startDtInitial.setSeconds(0)
+  endDtInitial.setMinutes(0)
+  endDtInitial.setSeconds(0)
+  startDtInitial.setHours(startDtInitial.getHours() - 24)
+  const [ startDt, setStartDt ] = useState(startDtInitial)
+  const [ endDt, setEndDt ] = useState(endDtInitial)
+  
+  // console.log("StartDtInitial: ", startDt.toUTCString(), Math.floor(startDt.getTime() / 1000))
+  // console.log("EndDtInitial: ", endDt.toUTCString(), Math.floor(endDt.getTime() / 1000))
+
+  // Fine particle and coarse particular matter concentrations
+  const concsMapCleared = new Map([
+    ["pm2_5", {name: "PM_2.5 (Fine Particles Matter)", data: []}],
+    ["pm10", {name: "PM_10 (Coarse Particulate Matter)", data: []}],
+    ["co", {name: "Carbon Monoxide", data: []}],
+    ["no", {name: "Nitrogen Monoxide", data: []}],
+    ["no2", {name: "Nitrogen Dioxide", data: []}],
+    ["o3", {name: "Ozone", data: []}],
+    ["so2", {name: "Sulphur Dioxide", data: []}],
+    ["nh3", {name: "Ammonia", data: []}],
+  ])
+  const concsMapInitial = new Map()
+  concsMapInitial.set('pm2_5', {
+    name: "PM_2.5 (Fine Particles Matter)", 
+    data: [500, 250, 300, 220, 500, 250, 300, 230, 300, 350, 250, 400],
+  })
+  concsMapInitial.set('pm10', {
+    name: "PM_10 (Coarse Particulate Matter)",
+    data: [200, 230, 300, 350, 370, 420, 550, 350, 400, 500, 330, 550],
+  })
+  concsMapInitial.set('co', {
+    name: "Carbon Monoxide", 
+    data: [500, 250, 300, 220, 500, 250, 300, 230, 300, 350, 250, 400],
+  })
+  concsMapInitial.set('no', {
+    name: "Nitrogen Monoxide",
+    data: [200, 230, 300, 350, 370, 420, 550, 350, 400, 500, 330, 550],
+  })
+  concsMapInitial.set('no2', {
+    name: "Nitrogen Dioxide", 
+    data: [500, 250, 300, 220, 500, 250, 300, 230, 300, 350, 250, 400],
+  })
+  concsMapInitial.set('o3', {
+    name: "Ozone",
+    data: [200, 230, 300, 350, 370, 420, 550, 350, 400, 500, 330, 550],
+  })
+  concsMapInitial.set('so2', {
+    name: "Sulphur Dioxide", 
+    data: [500, 250, 300, 220, 500, 250, 300, 230, 300, 350, 250, 400],
+  })
+  concsMapInitial.set('nh3', {
+    name: "Ammonia",
+    data: [200, 230, 300, 350, 370, 420, 550, 350, 400, 500, 330, 550],
+  })
+
+  const [ concsMap, setConcsMap ] = useState(concsMapCleared)
+  const [ pmConcs, setPmConcs ] = useState([])
+  
+  
+  // console.log(concsMap.get('co'))
+  // console.log(concsMap.get('co').data)
+  // concsMap.get('co').data.push(100)
+  // setConcsMap(concsMap)
+
+  // Historical graph x-axis labels (dates)
+  const [ xLabels, setXLabels ] = useState([])
+
+  // When zipcode is entered/updated
+  useEffect( function(){
+    console.log("New zip: ", zipcode)  
+    if (zipcode.length > 0) {
+      callGeocodeAPI()
+    }
+  }, [ zipcode ]);
+  // When concs map is updated
+  useEffect( function(){
+    setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
+  }, [ concsMap ]);
+
+  // API Calls
+
+  // Geocode API: Get lat, long, and city name from zipcode
+  const callGeocodeAPI = () => {
+    console.log("Geocode API Key: ", process.env.REACT_APP_GEOCODE_API_KEY)
+    fetch('http://api.openweathermap.org/geo/1.0/zip?zip=' + zipcode + '&appid=' + process.env.REACT_APP_OPENWEATHER_API_KEY, { method: 'GET' })
+      .then(response => response.json()) // Parsing the data into a JavaScript object
+      .then(data => {
+        console.log(data)
+        console.log("City: ", data.name)
+        console.log("Lat: ", data.lat)
+        console.log("Long: ", data.lon)
+        setCity(data.name)
+        setLatitude(data.lat)
+        setLongitude(data.lon)
+
+        // Clear existing historical pollutant concs
+        // for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
+        //   concsMap.get(pollutant).data = []
+        //   setConcsMap(concsMap)
+        //   // setConcsMap(new Map(concsMap.set(pollutant, {
+        //   //   name: pollutInfo.name,
+        //   //   data: [],
+        //   // })))
+        // }
+        setConcsMap(concsMapCleared)
+        console.log("CONCS MAP CLEARED")
+        console.log(concsMap)
+
+        // Get pollution data
+        callOpenWeatherPollutionAPI()
+      })
+  }
+  
+  // OpenWeather Air Pollution API: 
+  // Get past 12 hours of pollution data
+  const callOpenWeatherPollutionAPI = () => {
+    
+    var startDtUnix = Math.floor(startDt.getTime() / 1000)
+    var endDtUnix = Math.floor(endDt.getTime() / 1000)
+
+    console.log("startDt: ", startDtUnix, " ", startDt.toUTCString())
+    console.log("endDt: ", endDtUnix, " ", new Date(endDt).toUTCString())
+
+    var request = 'http://api.openweathermap.org/data/2.5/air_pollution/history?'
+    request += 'lat=' + latitude + '&lon=' + longitude 
+    request += '&start=' + startDtUnix + '&end=' + endDtUnix 
+    request += '&appid=' + process.env.REACT_APP_OPENWEATHER_API_KEY
+
+    console.log(request)
+
+    fetch(request, { method: 'GET' })
+      .then(response => response.json()) // Parsing the data into a JavaScript object
+      .then(data => {
+        console.log(data)
+        setXLabels([])
+        // var aqis = []
+        // Iterate over each time point in list of historical data, in reverse order (least to most recent)
+        for (var i = data.list.length - 1; i >= 0; i--) {
+          // Iterate over components in this time point
+          for (const [pollutant, resConc] of Object.entries(data.list[i].components)) {
+            // console.log("pollutant: ", pollutant)
+            concsMap.get(pollutant).data.push(resConc)
+            setConcsMap(concsMap)
+            // setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: [concsMap.get(pollutant).data, resConc]}))
+            setXLabels([xLabels, new Date(data.list[i].dt * 1000).toUTCString()])
+
+            // aqis.push(data.list.main.aqi)
+          }
+        }
+        // console.log("AQIs: ", aqis)
+        console.log("XLabels: ", xLabels)
+        console.log("ConcsMap: ", concsMap)
+
+        lineChartOptionsDashboard.xaxis.categories = xLabels
+      }) 
+  }
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -115,7 +285,8 @@ function Dashboard() {
 
         <VuiBox mb={3}>
           <Grid container spacing="18px">
-            
+
+            {/* Primary card */}
             <Grid item xs={12} lg={12} xl={5}>
               <WelcomeMark
                 zipcode={zipcode}
@@ -143,15 +314,16 @@ function Dashboard() {
                   </VuiTypography>
                   <VuiBox display="flex" alignItems="center" mb="40px">
                     <VuiTypography variant="button" color="success" fontWeight="bold">
-                      +5% more{" "}
+                      {city}{" "}
                       <VuiTypography variant="button" color="text" fontWeight="regular">
-                        in 2021
+                      {zipcode}
                       </VuiTypography>
                     </VuiTypography>
                   </VuiBox>
                   <VuiBox sx={{ height: "310px" }}>
                     <LineChart
-                      lineChartData={lineChartDataDashboard}
+                      lineChartData={[concsMap.get('pm2_5'), concsMap.get('pm10')]}
+                      // lineChartData={pmConcs}
                       lineChartOptions={lineChartOptionsDashboard}
                     />
                   </VuiBox>
@@ -293,11 +465,13 @@ function Dashboard() {
           </Grid>
         </VuiBox>
         <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
-          <Grid item xs={12} md={6} lg={8}>
-             <Projects />
-          </Grid>
+          {/* Ways to Reduce AQI Card */}
           <Grid item xs={12} md={6} lg={4}>
             <OrderOverview />
+          </Grid>
+          {/* Projects Card */}
+          <Grid item xs={12} md={6} lg={8}>
+             <Projects />
           </Grid>
         </Grid>
       </VuiBox>

@@ -10,7 +10,7 @@ import gif from "assets/images/welcome-profile.png";
 const WelcomeMark = ({zipcode, setZipcode}) => {
   // Function: onChange for Zipcode input field 
   const zipcodeInputOnChange = (e) => {
-    console.log(e.key, e.keyCode)
+    // console.log(e.key, e.keyCode)
     if (e.key === 'Enter' || e.keyCode === 13) {
         // User pressed Enter
         setZipcode(e.target.value)
