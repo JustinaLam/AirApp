@@ -21,6 +21,6 @@ export const barChartDataDashboard = [
     //name: "Sales",
     //data: [330, 250, 110, 300, 490, 350, 270, 130, 425],
     name: "AQI",
-    data: [30, 40, 50, 60, 70, 80, 80, 700],
+    data: [30, 40, 50, 60, 70, 80, 80, 70],
   },
 ];
