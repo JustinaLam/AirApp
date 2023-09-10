@@ -155,7 +155,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
               color: light ? white.main : dark.main,
             })}
           >
-            <img src="https://github.com/JustinaLam/AirApp/assets/113264414/5b0911e9-fe76-482c-a42b-56e143e0a811
+            <img src="https://github.com/JustinaLam/AirApp/assets/113264414/5f05111e-3a1f-47e2-8c8a-0a7aa11e8d60
 " alt="logo" width="50" height="75" />
 
           </icon>

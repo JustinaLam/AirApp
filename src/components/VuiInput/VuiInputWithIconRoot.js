@@ -22,7 +22,7 @@ export default styled("div")(({ theme, ownerState }) => {
   const { palette, functions, borders } = theme;
   const { error, success, disabled } = ownerState;
 
-  const { inputColors, inputColors2, grey, white } = palette;
+  const { inputColors, inputColors2, grey, black } = palette;
   const { pxToRem } = functions;
   const { borderRadius, borderWidth } = borders;
 
@@ -43,11 +43,11 @@ export default styled("div")(({ theme, ownerState }) => {
     borderRadius: borderRadius.lg,
     borderColor: borderColorValue,
     "& .MuiIcon-root": {
-      color: grey[500],
+      color: black,
     },
 
     "& .MuiInputBase-input": {
-      color: white.main,
+      color: black,
       height: "100%",
       paddingX: pxToRem(20),
       backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
@@ -59,7 +59,7 @@ export default styled("div")(({ theme, ownerState }) => {
       borderBottomLeftRadius: "0px",
       backgroundColor: `${disabled ? grey[600] : inputColors2.backgroundColor} !important`,
       "& ::placeholder": {
-        color: `${white.main} !important`,
+        color: `${black} !important`,
       },
     },
   };

@@ -23,7 +23,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   const { palette, boxShadows, functions, typography, borders } = theme;
   const { size, error, success, iconDirection, direction, disabled } = ownerState;
 
-  const { inputColors, inputColors2, white, grey } = palette;
+  const { inputColors, white, black, grey } = palette;
   const { inputBoxShadow } = boxShadows;
   const { pxToRem, boxShadow } = functions;
   const { size: fontSize } = typography;
@@ -161,7 +161,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     backgroundColor: disabled ? `${grey[200]} !important` : white.main,
     pointerEvents: disabled ? "none" : "auto",
     backgroundColor: `${disabled ? grey[600] : inputColors.backgroundColor} !important`,
-    color: `${white.main} !important`,
+    color:  `${black.main} !important`, // Change text color based on the presence of an icon
     borderRadius: borderRadius.lg,
     border: `0.5px solid ${grey[600]}`,
     ...(size === "small" && smallStyles()),
@@ -171,7 +171,8 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     ...(success && successStyles()),
     ...((iconDirection === "left" || iconDirection === "right") && withIconStyles()),
     "& ::placeholder": {
-      color: `${white.main} !important`,
+      color: iconDirection !== "none" ? `${black.main} !important` : `${white.main} !important`, // Change text color based on the presence of an icon
+
       fontSize: "12px",
     },
 
