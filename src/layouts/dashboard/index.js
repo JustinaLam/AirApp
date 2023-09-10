@@ -374,8 +374,11 @@ function Dashboard() {
                   }}>
                     {/* <ReferralTracking /> */}
                 <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-                  Amount of Particles in the Air - Visualized
+                  Amount of Particles in the Air
                 </VuiTypography>
+                <VuiTypography variant='button' color='text' fontWeight='regular' mb='20px'>
+					        Visualized
+				        </VuiTypography>
                   <Three />
               </Card>
             </Grid>
@@ -580,10 +583,12 @@ function Dashboard() {
         <VuiBox py={3}></VuiBox>
 
         <Grid container spacing={3} justifyContent="center" alignItems="stretch">
+        
           <Card sx={() => ({
             height: "680px",
             width: "1500px",
             py: "32px",
+            ml: "24px",
             backgroundImage: `url(${gif})`,
             backgroundSize: "cover",
             backgroundPosition: "50%"
