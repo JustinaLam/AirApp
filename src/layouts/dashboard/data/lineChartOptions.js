@@ -18,6 +18,8 @@
 
 import { lineChartDataDashboard } from "./lineChartData";
 
+const x = 12;
+
 const getLineChartXCategories = () => {
   console.log("HI")
   var categories = Array(count)
@@ -61,18 +63,30 @@ export const lineChartOptionsDashboard = {
       
     // categories: getLineChartXCategories,
     categories: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
+      x-11,
+      x-10,
+      x-9,
+      x-8,
+      x-7,
+      x-6,
+      x-5,
+      x-4,
+      x-3,
+      x-2,
+      x-1,
+      x
+      // "Jan",
+      // "Feb",
+      // "Mar",
+      // "Apr",
+      // "May",
+      // "Jun",
+      // "Jul",
+      // "Aug",
+      // "Sep",
+      // "Oct",
+      // "Nov",
+      // "Dec",
     ],
     labels: {
       style: {

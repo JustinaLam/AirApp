@@ -178,9 +178,9 @@ function Dashboard() {
                   </VuiTypography>
                   <VuiBox display="flex" alignItems="center" mb="40px">
                     <VuiTypography variant="button" color="success" fontWeight="bold">
-                      +5% more{" "}
+                      +5% better air{" "}
                       <VuiTypography variant="button" color="text" fontWeight="regular">
-                        in 2021
+                        in 2023
                       </VuiTypography>
                     </VuiTypography>
                   </VuiBox>
@@ -246,8 +246,8 @@ function Dashboard() {
                           variant="gradient"
                           onClick={onClickSetCO}
                           color="info"
-                          size="large">
-                          CO
+                          size="medium">
+                          CO Levels
                         </VuiButton>
                       </Stack>
                     </Grid>
@@ -272,8 +272,8 @@ function Dashboard() {
                           variant="gradient"
                           onClick = {onClickSetNO2}
                           color="secondary"
-                          size="large">
-                          NO2
+                          size="medium">
+                          NO2 Levels
                         </VuiButton>
                       </Stack>
                     </Grid>
@@ -297,8 +297,8 @@ function Dashboard() {
                           variant="gradient"
                           onClick = {onClickSetO3}
                           color="secondary"
-                          size="large">
-                          O3
+                          size="medium">
+                          O3 Levels
                         </VuiButton>
                       </Stack>
                     </Grid>
@@ -322,8 +322,8 @@ function Dashboard() {
                           variant="gradient"
                           onClick = {onClickSetSO2}
                           color={"secondary"}
-                          size="large">
-                          SO2
+                          size="medium">
+                          SO2 Levels
                         </VuiButton>
                       </Stack>
                     </Grid>
