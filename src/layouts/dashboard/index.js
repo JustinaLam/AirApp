@@ -114,22 +114,7 @@ function Dashboard() {
 
         </VuiBox>*/}
 
-        {/* PUT SEARCH INPUT BOX HERE */}
-        <VuiInput
-                placeholder="Enter your zip code"
-                icon={{ component: "search", direction: "left" }}
-                sx={({ breakpoints }) => ({
-                  [breakpoints.down("sm")]: {
-                    maxWidth: "160px",
-                  },
-                  [breakpoints.only("sm")]: {
-                    maxWidth: "160px",
-                  },
-                  backgroundColor: "info.main !important",
-                })}
-              />
 
-<VuiBox mb={3}></VuiBox>
 
         <VuiBox mb={3}>
           <Grid container spacing="18px">
@@ -306,10 +291,10 @@ function Dashboard() {
         </VuiBox>
         <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
           <Grid item xs={12} md={6} lg={8}>
-             {/* <Projects /> */}
+             <Projects />
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
-            {/* <OrderOverview /> */}
+            <OrderOverview />
           </Grid>
         </Grid>
       </VuiBox>

@@ -19,9 +19,17 @@
 // Vision UI Dashboard React components
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
+import VuiInput from "components/VuiInput"; 
+import VuiButton from "components/VuiButton"; 
 
 function Footer() {
   return (
+
+
+
+    
+
+
     <VuiBox
       display="flex"
       flexDirection={{ xs: "column", lg: "row" }}
@@ -31,6 +39,51 @@ function Footer() {
       py={2}
       pb={0}
     >
+
+      <VuiBox pr={1}>
+              <VuiInput
+                placeholder="Name"
+                sx={({ breakpoints }) => ({
+                  [breakpoints.down("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  [breakpoints.only("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  backgroundColor: "info.main !important",
+                })}
+              />
+            </VuiBox>
+
+            <VuiBox pr={1}>
+              <VuiInput
+                placeholder="Phone #"
+                sx={({ breakpoints }) => ({
+                  [breakpoints.down("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  [breakpoints.only("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  backgroundColor: "info.main !important",
+                })}
+              />
+            </VuiBox>
+
+            <VuiBox pr={1}></VuiBox>
+
+            <VuiBox pr={1}>
+              <VuiButton
+                variant="gradient"
+                color="info"
+                size="medium">
+                Sign up for text alerts!
+              </VuiButton>
+
+            </VuiBox>
+
+
+
       <VuiBox item xs={12} sx={{ textAlign: "center" }}>
         <VuiTypography
           variant="button"
@@ -41,7 +94,7 @@ function Footer() {
           <VuiTypography
             component="a"
             variant="button"
-            href="https://simmmple.com/"
+            href="https://www.linkedin.com/in/justina-lam-cs/"
             sx={{ textAlign: "center", fontWeight: "500 !important" }}
             color="white"
             mr="2px"
@@ -66,7 +119,7 @@ function Footer() {
             mr="2px"
             component="a"
             variant="button"
-            href="https://www.creative-tim.com/"
+            href="https://www.linkedin.com/in/christina-qiu-6094301b6/"
             sx={{ textAlign: "center", fontWeight: "500 !important" }}
             color="white"
           >
