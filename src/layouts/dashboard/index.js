@@ -28,6 +28,7 @@ import { Card, LinearProgress, Stack } from "@mui/material";
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
 import VuiProgress from "components/VuiProgress";
+import VuiButton from "components/VuiButton";
 // import InputField from "components/VuiInput";
 // import ZipcodeInput from "components/VuiInput";
 
@@ -49,9 +50,11 @@ import OrderOverview from "layouts/dashboard/components/OrderOverview";
 import SatisfactionRate from "layouts/dashboard/components/SatisfactionRate";
 import ReferralTracking from "layouts/dashboard/components/ReferralTracking";
 import Three from "layouts/dashboard/components/Three";
+import Map from "layouts/dashboard/components/Map"
 
 // React icons
 import { TbLetterC, TbLetterN, TbLetterO, TbLetterS } from "react-icons/tb";
+import gif from "assets/images/HeatMap.png";
 
 // Data
 import LineChart from "examples/Charts/LineCharts/LineChart";
@@ -66,6 +69,26 @@ function Dashboard() {
   const { cardContent } = gradients;
   const [ zipcode, setZipcode ] = useState("");
   const { type, setType } = useState("O2");
+  
+  const onClickSetCO = () => {
+    setType('CO')
+  }
+
+  const onClickSetNO2 = () => {
+    setType('NO2')
+  }
+
+  const onClickSetO3 = () => {
+    setType('O3')
+  }
+
+  const onClickSetSO2 = () => {
+    setType('SO2')
+  }
+
+  const onClickColorChanger = () => {
+
+  }
   
   return (
     <DashboardLayout>
@@ -179,7 +202,7 @@ function Dashboard() {
                 <VuiBox>
                   <VuiBox
                     mb="24px"
-                    height="255px"
+                    height="232px"
                     sx={{
                       background: linearGradient(
                         cardContent.main,
@@ -212,7 +235,7 @@ function Dashboard() {
                         spacing={{ sm: "10px", xl: "4px", xxl: "10px" }}
                         mb="6px"
                       >
-                        <VuiBox
+                        {/* <VuiBox
                           bgColor="info"
                           display="flex"
                           justifyContent="center"
@@ -220,10 +243,14 @@ function Dashboard() {
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
                           <TbLetterC color="#fff" size="12px" />
-                        </VuiBox>
-                        <VuiTypography color="text" variant="button" fontWeight="medium">
+                        </VuiBox> */}
+                        <VuiButton
+                          variant="gradient"
+                          onClick={onClickSetCO}
+                          color="info"
+                          size="large">
                           CO
-                        </VuiTypography>
+                        </VuiButton>
                       </Stack>
                     </Grid>
 
@@ -233,7 +260,7 @@ function Dashboard() {
                         spacing={{ sm: "10px", xl: "4px", xxl: "10px" }}
                         mb="6px"
                       >
-                        <VuiBox
+                        {/* <VuiBox
                           bgColor="info"
                           display="flex"
                           justifyContent="center"
@@ -241,10 +268,15 @@ function Dashboard() {
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
                           <TbLetterN color="#fff" size="12px" />
-                        </VuiBox>
-                        <VuiTypography color="text" variant="button" fontWeight="medium">
+                        </VuiBox> */}
+                        
+                        <VuiButton
+                          variant="gradient"
+                          onClick = {onClickSetNO2}
+                          color="secondary"
+                          size="large">
                           NO2
-                        </VuiTypography>
+                        </VuiButton>
                       </Stack>
                     </Grid>
 
@@ -254,7 +286,7 @@ function Dashboard() {
                         spacing={{ sm: "10px", xl: "4px", xxl: "10px" }}
                         mb="6px"
                       >
-                        <VuiBox
+                        {/* <VuiBox
                           bgColor="info"
                           display="flex"
                           justifyContent="center"
@@ -262,10 +294,14 @@ function Dashboard() {
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
                           <TbLetterO color="#fff" size="12px" />
-                        </VuiBox>
-                        <VuiTypography color="text" variant="button" fontWeight="medium">
+                        </VuiBox> */}
+                        <VuiButton
+                          variant="gradient"
+                          onClick = {onClickSetO3}
+                          color="secondary"
+                          size="large">
                           O3
-                        </VuiTypography>
+                        </VuiButton>
                       </Stack>
                     </Grid>
 
@@ -275,7 +311,7 @@ function Dashboard() {
                         spacing={{ sm: "10px", xl: "4px", xxl: "10px" }}
                         mb="6px"
                       >
-                        <VuiBox
+                        {/* <VuiBox
                           bgColor="info"
                           display="flex"
                           justifyContent="center"
@@ -283,10 +319,14 @@ function Dashboard() {
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
                           <TbLetterS color="#fff" size="12px" />
-                        </VuiBox>
-                        <VuiTypography color="text" variant="button" fontWeight="medium">
+                        </VuiBox> */}
+                        <VuiButton
+                          variant="gradient"
+                          onClick = {onClickSetSO2}
+                          color={"secondary"}
+                          size="large">
                           SO2
-                        </VuiTypography>
+                        </VuiButton>
                       </Stack>
                     </Grid>
                     </Grid>
@@ -306,6 +346,30 @@ function Dashboard() {
             <OrderOverview />
           </Grid>
         </Grid>
+
+        <VuiBox py={5}></VuiBox>
+
+        <Grid container spacing={3} justifyContent="center" alignItems="stretch">
+        <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
+              Air Pollution Levels Around the World
+          </VuiTypography>
+        </Grid>
+
+        <VuiBox py={3}></VuiBox>
+
+        <Grid container spacing={3} justifyContent="center" alignItems="stretch">
+          <Card sx={() => ({
+            height: "680px",
+            width: "1500px",
+            py: "32px",
+            backgroundImage: `url(${gif})`,
+            backgroundSize: "cover",
+            backgroundPosition: "50%"
+            })}>
+        </Card>
+
+        </Grid>
+          
       </VuiBox>
       <Footer />
     </DashboardLayout>
