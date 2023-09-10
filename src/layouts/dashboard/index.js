@@ -586,6 +586,12 @@ function Dashboard() {
           </VuiTypography>
         </Grid>
 
+        <Grid item xs={12} md={6} lg={4}>
+        <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
+              Air Pollution Levels Around the World
+          </VuiTypography>
+          </Grid>
+
         <VuiBox py={3}></VuiBox>
 
         <Grid container spacing={3} justifyContent="center" alignItems="stretch">
