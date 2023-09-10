@@ -80,7 +80,7 @@ export default styled("div")(({ theme, ownerState }) => {
       borderBottomLeftRadius: "0px",
       backgroundColor: `${disabled ? grey[600] : inputColors2.backgroundColor} !important`,
       "& ::placeholder": {
-        color: `${black} !important`,
+        color: `black !important`,
         fontSize: "18px !important",
       },
     },

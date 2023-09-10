@@ -69,7 +69,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     focusedBorderColorValue = inputColors.success;
   }
 
-  let focusedPaddingLeftValue = pxToRem(18);
+  let focusedPaddingLeftValue = pxToRem(12);
 
   // if (direction === "rtl" && iconDirection === "left") {
   //   focusedPaddingLeftValue = pxToRem(18);
@@ -81,7 +81,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   //   focusedPaddingLeftValue = pxToRem(18);
   // }
 
-  let focusedPaddingRightValue = pxToRem(18);
+  let focusedPaddingRightValue = pxToRem(12);
 
   // if (direction === "rtl" && iconDirection === "left") {
   //   focusedPaddingRightValue = pxToRem(18);
@@ -177,7 +177,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     ...(success && successStyles()),
     ...((iconDirection === "left" || iconDirection === "right") && withIconStyles()),
     "& ::placeholder": {
-      color: "white", // Change text color based on the presence of an icon
+      color: "white !important", // Change text color based on the presence of an icon
 
       fontSize: "12px",
     },

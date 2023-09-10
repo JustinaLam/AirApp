@@ -44,10 +44,10 @@ function OrdersOverview() {
         <VuiBox mb={2}>
           <VuiBox display="flex" alignItems="center">
             <BsCheckCircleFill color="green" size="15px" mr="5px" />
-            <VuiTypography variant="button" color="text" fontWeight="regular">
-              How to make
+            <VuiTypography variant="button" color="text" fontWeight="regular" ml="5px" mr="2px">
+               How to make
             </VuiTypography>
-            <VuiTypography variant="button" color="text" fontWeight="medium" ml="5px" mr="2px">
+            <VuiTypography variant="button" color="text" fontWeight="medium" >
               Positive Change
             </VuiTypography>{" "}
           </VuiBox>
