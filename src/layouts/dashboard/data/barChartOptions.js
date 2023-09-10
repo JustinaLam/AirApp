@@ -36,7 +36,15 @@ export const barChartOptionsDashboard = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    categories: ["Seven Days Ago",
+    "Six Days Ago",
+    "Five Days Ago",
+    "Four Days Ago",
+    "Three Days Ago",
+    "Two Days Ago",
+    "Yesterday",
+    "Today"
+    ], //["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     show: false,
     labels: {
       show: false,
