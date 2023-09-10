@@ -73,26 +73,26 @@ function Dashboard() {
   const { gradients } = colors;
   const { cardContent } = gradients;
   const [ zipcode, setZipcode ] = useState("19104");
-  const { type, setType } = useState("O2");
+  const [ pollt, setPollt ] = useState("CO");
   
   const onClickSetCO = () => {
-    setType('CO')
+    setPollt('CO')
   }
 
   const onClickSetNO2 = () => {
-    setType('NO2')
+    setPollt('NO2')
   }
 
   const onClickSetO3 = () => {
-    setType('O3')
+    setPollt('O3')
   }
 
   const onClickSetSO2 = () => {
-    setType('SO2')
+    setPollt('SO2')
   }
 
   const onClickColorChanger = () => {
-
+    
   }
   const [ city, setCity ] = useState("Philadelphia")
   const [ latitude, setLatitude ] = useState(34.0901)
@@ -188,6 +188,11 @@ function Dashboard() {
   
   const [ currConcs, setCurrConcs ] = useState([30, 40, 50, 60, 70, 80, 80, 70])
   const [ currXLabels, setCurrXLabels ] = useState([])
+
+  const [ co, setCo ] = useState([])
+  const [ no2, setNo2 ] = useState([])
+  const [ o3, setO3 ] = useState([])
+  const [ so2, setSo2 ] = useState([])
   
   
   // console.log(concsMap.get('co'))
@@ -236,6 +241,62 @@ function Dashboard() {
         // Get pollution data
         callOpenWeatherPollutionAPI()
       })
+  }
+
+  const callOpenWeatherWideRangeAPI = () => {
+    var weekBack = new Date(Date.now())
+    weekBack.setHours(weekBack.getHours() - 175)
+    
+    var startDtUnix = Math.floor(weekBack.getTime() / 1000)
+    var endDtUnix = Math.floor(endDt.getTime() / 1000)
+
+    console.log("weekBack: ", startDtUnix, " ", weekBack.toUTCString())
+    console.log("endDt: ", endDtUnix, " ", new Date(endDt).toUTCString())
+
+    var request = 'http://api.openweathermap.org/data/2.5/air_pollution/history?'
+    request += 'lat=' + latitude + '&lon=' + longitude 
+    request += '&start=' + startDtUnix + '&end=' + endDtUnix 
+    request += '&appid=' + process.env.REACT_APP_OPENWEATHER_API_KEY
+
+    fetch(request, { method: 'GET' })
+      .then(response => response.json()) // Parsing the data into a JavaScript object
+      .then(data => {
+        console.log(data)
+        
+        if (data.list.length > 0) {
+          for (var i = data.list.length - 1; i >= 0; i--) {
+            var dat = new Date(data.list[i].dt * 1000)
+              if (dat.getHours() != 1) {
+                continue
+              }
+            // Iterate over components in this time point
+            for (const [pollutant, resConc] of Object.entries(data.list[i].components)) {
+              if (pollutant == "co") {
+                // setCo([...co, resConc])
+                co.push(resConc)
+              } else if (pollutant == "no2") {
+                // setNo2([...no2, resConc])
+                no2.push(resConc)
+              } else if (pollutant == "o3") {
+                // setO3([...o3, resConc])
+                o3.push(resConc)
+              } else if (pollutant == "so2") {
+                // setSo2([...so2, resConc])
+                so2.push(resConc)
+              }
+            }
+          }
+        }
+        setCo(co)
+        setNo2(no2)
+        setO3(o3)
+        setSo2(so2)
+        console.log("CO", co)
+        console.log("NO2", no2)
+        console.log("O3", o3)
+        console.log("SO2", so2)
+      })
+
   }
   
   // OpenWeather Air Pollution API: 
@@ -311,7 +372,7 @@ function Dashboard() {
           //   data: [],
           // })))
         }
-        setConcsMap(concsMapCleared)
+        setConcsMap(map => new Map(concsMapCleared))
         console.log("CONCS MAP CLEARED")
         console.log(concsMap)
         return data
@@ -332,19 +393,21 @@ function Dashboard() {
             // setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: [concsMap.get(pollutant).data, resConc]}))
             // setXLabels([xLabels, new Date(data.list[i].dt * 1000).toUTCString()])
 
-            // xLabels.push(new Date(data.list[i].dt * 1000).toUTCString())
-            setXLabels(xLabels.concat(new Date(data.list[i].dt * 1000)))
+            xLabels.push(new Date(data.list[i].dt * 1000).toUTCString())
+            // setXLabels(xLabels.concat(new Date(data.list[i].dt * 1000)))
           }
-          // setConcsMap(concsMap)
-          // setXLabels(xLabels)
+          setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
+          setConcsMap(concsMap)
+          setXLabels(xLabels)
         }
-        // setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
+        setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
 
         // console.log("AQIs: ", aqis)
         // console.log("XLabels: ", xLabels)
         console.log("ConcsMap: ", concsMap)
         console.log("PmConcsMap: ", pmConcs)
 
+        callOpenWeatherWideRangeAPI();
         // lineChartOptionsDashboard.xaxis.categories = xLabels
       })
   }
@@ -451,7 +514,8 @@ function Dashboard() {
                     <BarChart
                       // barChartData={barChartDataDashboard}
                       // barChartOptions={barChartOptionsDashboard}
-                      barChartData={[{name: "AQI", data: currConcs}]}
+                      // barChartData={[{name: "AQI", data: currConcs}]}
+                      barChartData={[{name: {pollt}, data: co}]}
                       barChartOptions={barChartOptionsDashboard}
                     />
                   </VuiBox>
@@ -460,7 +524,7 @@ function Dashboard() {
                   </VuiTypography>
                   <VuiBox display="flex" alignItems="center" mb="40px">
                     <VuiTypography variant="button" color="success" fontWeight="bold">
-                      {type}{" "}
+                      {pollt}{" "}
                       <VuiTypography variant="button" color="text" fontWeight="regular">
                         levels in the last week
                       </VuiTypography>
