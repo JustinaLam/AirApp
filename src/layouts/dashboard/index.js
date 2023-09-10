@@ -16,7 +16,7 @@
 
 */
 
-import React from "react";
+import React, { useState } from "react";
 import VuiInput from "components/VuiInput";
 
 // @mui material components
@@ -28,6 +28,8 @@ import { Card, LinearProgress, Stack } from "@mui/material";
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
 import VuiProgress from "components/VuiProgress";
+// import InputField from "components/VuiInput";
+// import ZipcodeInput from "components/VuiInput";
 
 // Vision UI Dashboard React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -66,15 +68,13 @@ import { barChartOptionsDashboard } from "layouts/dashboard/data/barChartOptions
 function Dashboard() {
   const { gradients } = colors;
   const { cardContent } = gradients;
-
+  const [ zipcode, setZipcode ] = useState("")
+  
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <VuiBox py={3}>
-        {/*<VuiBox mb={3}>
-
-              
-
+        {/* <VuiBox mb={3}>
            <Grid container spacing={3}>
             <Grid item xs={12} md={6} xl={3}>
               <MiniStatisticsCard
@@ -109,18 +109,18 @@ function Dashboard() {
               />
             </Grid>
           </Grid> 
+        </VuiBox> */}
 
-
-
-        </VuiBox>*/}
-
-
+        <VuiBox mb={3}></VuiBox>
 
         <VuiBox mb={3}>
           <Grid container spacing="18px">
             
             <Grid item xs={12} lg={12} xl={5}>
-              <WelcomeMark />
+              <WelcomeMark
+                zipcode={zipcode}
+                setZipcode={setZipcode}
+              />
             </Grid>
             <Grid item xs={12} lg={6} xl={3}>
               <SatisfactionRate />
@@ -133,10 +133,13 @@ function Dashboard() {
         <VuiBox mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={6} xl={7}>
+
+              {/* Pollutant curve graphs */}
+              {/* const timestampMillis = Date.now(); */}
               <Card>
                 <VuiBox sx={{ height: "100%" }}>
                   <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-                    Sales Overview
+                    Air Concentration of Fine Particles and Coarse Particulate Matter (μg/m<sup>3</sup>)
                   </VuiTypography>
                   <VuiBox display="flex" alignItems="center" mb="40px">
                     <VuiTypography variant="button" color="success" fontWeight="bold">
