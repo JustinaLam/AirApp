@@ -30,7 +30,8 @@ const getLineChartXCategories = () => {
 
   console.log(currDtMillis.toUTCString())
   
-  var count = lineChartDataDashboard.length;
+  var count = 23;
+  //lineChartDataDashboard.length;
   for (var i = count; i > 0; i--)
   {
       tempDt.setHours(tempDt.getHours() - 1)

@@ -24,7 +24,7 @@ import VuiInput from "components/VuiInput";
 
 import gif from "assets/images/welcome-profile.png";
 
-const WelcomeMark = ({zipcode, setZipcode}) => {
+const WelcomeMark = ({city, zipcode, setZipcode}) => {
   // Function: onChange for Zipcode input field 
   const zipcodeInputOnChange = (e) => {
     // console.log(e.key, e.keyCode)
@@ -50,7 +50,7 @@ const WelcomeMark = ({zipcode, setZipcode}) => {
           Showing results for
           </VuiTypography>
           <VuiTypography color="white" variant="h1" fontWeight="bold" mb="8px">
-          Philadelphia
+          {city}
           </VuiTypography>
           <VuiTypography color="text" variant="h5" fontWeight="regular" mb="auto">
           Greetings!
