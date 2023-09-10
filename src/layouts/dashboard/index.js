@@ -16,7 +16,7 @@
 
 */
 
-import React from "react";
+import React, { useState } from "react";
 import VuiInput from "components/VuiInput";
 
 // @mui material components
@@ -28,6 +28,8 @@ import { Card, LinearProgress, Stack } from "@mui/material";
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
 import VuiProgress from "components/VuiProgress";
+// import InputField from "components/VuiInput";
+// import ZipcodeInput from "components/VuiInput";
 
 // Vision UI Dashboard React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -66,15 +68,23 @@ import { barChartOptionsDashboard } from "layouts/dashboard/data/barChartOptions
 function Dashboard() {
   const { gradients } = colors;
   const { cardContent } = gradients;
+  const [ zipcode, setZipcode ] = useState("")
 
+  // onChange for Zipcode input field
+  const zipcodeInputOnChange = (e) => {
+    console.log(e.key, e.keyCode)
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        // Enter pressed
+        setZipcode(e.target.value)
+        console.log("User entered zipcode: ", e.target.value)
+    }
+  }
+  
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <VuiBox py={3}>
-        {/*<VuiBox mb={3}>
-
-              
-
+        {/* <VuiBox mb={3}>
            <Grid container spacing={3}>
             <Grid item xs={12} md={6} xl={3}>
               <MiniStatisticsCard
@@ -109,14 +119,13 @@ function Dashboard() {
               />
             </Grid>
           </Grid> 
+        </VuiBox> */}
 
-
-
-        </VuiBox>*/}
-
-        {/* PUT SEARCH INPUT BOX HERE */}
+        {/* --------------------- ZIP CODE INPUT BOX --------------------- */}
         <VuiInput
                 placeholder="Enter your zip code"
+                onKeyDown={zipcodeInputOnChange}
+
                 icon={{ component: "search", direction: "left" }}
                 sx={({ breakpoints }) => ({
                   [breakpoints.down("sm")]: {
@@ -128,8 +137,9 @@ function Dashboard() {
                   backgroundColor: "info.main !important",
                 })}
               />
+        {/* --------------------------------------------------------------- */}
 
-<VuiBox mb={3}></VuiBox>
+        <VuiBox mb={3}></VuiBox>
 
         <VuiBox mb={3}>
           <Grid container spacing="18px">
