@@ -29,13 +29,13 @@ const WelcomeMark = ({zipcode, setZipcode}) => {
     })}>
       <VuiBox height="100%" display="flex" flexDirection="column" justifyContent="space-between">
         <VuiBox>
-          <VuiTypography color="text" variant="button" fontWeight="regular" mb="12px">
+          <VuiTypography color="text" variant="h6" fontWeight="regular" mb="0px">
           Showing results for
           </VuiTypography>
-          <VuiTypography color="white" variant="h3" fontWeight="bold" mb="18px">
+          <VuiTypography color="white" variant="h1" fontWeight="bold" mb="8px">
           Philadelphia
           </VuiTypography>
-          <VuiTypography color="text" variant="h6" fontWeight="regular" mb="auto">
+          <VuiTypography color="text" variant="h5" fontWeight="regular" mb="auto">
             Glad to see you again!
             <br /> Ask me anything.
           </VuiTypography>
@@ -56,6 +56,8 @@ const WelcomeMark = ({zipcode, setZipcode}) => {
                   },
                   backgroundColor: "info.main !important",
                 })}
+                size="large"
+                textSize="large"
               />
         {/* --------------------------------------------------------------- */}
 

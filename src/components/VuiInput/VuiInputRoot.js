@@ -16,6 +16,9 @@
 
 */
 
+//REMPACED ALL 18px WITH 18px
+
+
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
 
@@ -42,17 +45,19 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   // styles for the input with size="small"
   const smallStyles = () => ({
     fontSize: fontSize.xs,
-    padding: `${pxToRem(4)} ${pxToRem(12)}`,
+    padding: `${pxToRem(4)} ${pxToRem(18)}`,
   });
 
   // styles for the input with size="medium"
   const mediumStyles = () => ({
-    padding: `${pxToRem(8)} ${pxToRem(12)}`,
+    fontSize: "18px",
+    padding: `${pxToRem(8)} ${pxToRem(18)}`,
   });
 
   // styles for the input with size="large"
   const largeStyles = () => ({
-    padding: pxToRem(12),
+    fontSize: "18px",
+    padding: pxToRem(18),
   });
 
   // styles for the focused state of the input
@@ -67,25 +72,25 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   let focusedPaddingLeftValue;
 
   if (direction === "rtl" && iconDirection === "left") {
-    focusedPaddingLeftValue = pxToRem(12);
+    focusedPaddingLeftValue = pxToRem(18);
   } else if (direction === "rtl" && iconDirection === "right") {
-    focusedPaddingLeftValue = pxToRem(12);
+    focusedPaddingLeftValue = pxToRem(18);
   } else if (direction === "ltr" && iconDirection === "right") {
-    focusedPaddingLeftValue = pxToRem(12);
+    focusedPaddingLeftValue = pxToRem(18);
   } else if (direction === "ltr" && iconDirection === "left") {
-    focusedPaddingLeftValue = pxToRem(12);
+    focusedPaddingLeftValue = pxToRem(18);
   }
 
   let focusedPaddingRightValue;
 
   if (direction === "rtl" && iconDirection === "left") {
-    focusedPaddingRightValue = pxToRem(12);
+    focusedPaddingRightValue = pxToRem(18);
   } else if (direction === "rtl" && iconDirection === "right") {
-    focusedPaddingRightValue = pxToRem(12);
+    focusedPaddingRightValue = pxToRem(18);
   } else if (direction === "ltr" && iconDirection === "right") {
-    focusedPaddingRightValue = pxToRem(12);
+    focusedPaddingRightValue = pxToRem(18);
   } else if (direction === "ltr" && iconDirection === "left") {
-    focusedPaddingRightValue = pxToRem(12);
+    focusedPaddingRightValue = pxToRem(18);
   }
 
   let focusedBoxShadowValue = boxShadow([0, 0], [0, 2], inputColors.boxShadow, 1);
@@ -99,9 +104,9 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   // styles for the input with error={true}
   const errorStyles = () => ({
     backgroundImage:
-      "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23fd5c70' viewBox='0 0 12 12'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23fd5c70' stroke='none'/%3E%3C/svg%3E\")",
+      "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%23fd5c70' viewBox='0 0 18 18'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23fd5c70' stroke='none'/%3E%3C/svg%3E\")",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: `right ${pxToRem(12)} center`,
+    backgroundPosition: `right ${pxToRem(18)} center`,
     backgroundSize: `${pxToRem(16)} ${pxToRem(16)}`,
     borderColor: inputColors.error,
   });
@@ -111,7 +116,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     backgroundImage:
       "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath fill='%2366d432' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E\")",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: `right ${pxToRem(12)} center`,
+    backgroundPosition: `right ${pxToRem(18)} center`,
     backgroundSize: `${pxToRem(16)} ${pxToRem(16)}`,
     borderColor: inputColors.success,
   });
@@ -132,9 +137,9 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     if (direction === "rtl" && iconDirection === "left") {
       withIconPaddingLeftValue = 0;
     } else if (direction === "rtl" && iconDirection === "right") {
-      withIconPaddingLeftValue = pxToRem(12);
+      withIconPaddingLeftValue = pxToRem(18);
     } else if (direction === "ltr" && iconDirection === "right") {
-      withIconPaddingLeftValue = pxToRem(12);
+      withIconPaddingLeftValue = pxToRem(18);
     } else if (direction === "ltr" && iconDirection === "left") {
       withIconPaddingLeftValue = 0;
     }
@@ -142,13 +147,13 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     let withIconPaddingRightValue;
 
     if (direction === "rtl" && iconDirection === "left") {
-      withIconPaddingRightValue = pxToRem(12);
+      withIconPaddingRightValue = pxToRem(18);
     } else if (direction === "rtl" && iconDirection === "right") {
       withIconPaddingRightValue = 0;
     } else if (direction === "ltr" && iconDirection === "right") {
       withIconPaddingRightValue = 0;
     } else if (direction === "ltr" && iconDirection === "left") {
-      withIconPaddingRightValue = pxToRem(12);
+      withIconPaddingRightValue = pxToRem(18);
     }
 
     return {
@@ -173,7 +178,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     "& ::placeholder": {
       color: iconDirection !== "none" ? `${black.main} !important` : `${white.main} !important`, // Change text color based on the presence of an icon
 
-      fontSize: "12px",
+      fontSize: "18px",
     },
 
     "&.Mui-focused": {
@@ -185,7 +190,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     },
 
     "&.MuiInputBase-multiline": {
-      padding: `${pxToRem(10)} ${pxToRem(12)}`,
+      padding: `${pxToRem(10)} ${pxToRem(18)}`,
     },
   };
 });

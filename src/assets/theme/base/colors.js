@@ -427,7 +427,7 @@ export default {
   },
 
   inputColors2: {
-    backgroundColor: "#96c5ff",
+    backgroundColor: "white",
     borderColor: { main: "rgba(226, 232, 240, 0.3)", focus: "rgba(226, 232, 240, 0.6)" },
     boxShadow: "#628fc2",
     error: "#fd5c70",
