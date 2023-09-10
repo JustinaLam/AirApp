@@ -1,14 +1,13 @@
 /*!
 
 =========================================================
-* Vision UI Free React - v1.0.0
+* PennApps Contest - AirApp - v1.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
 
-* Design and Coded by Simmmple & Creative Tim
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
 
 =========================================================
 
@@ -21,13 +20,12 @@ import VuiInput from "components/VuiInput";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
-import Icon from "@mui/material/Icon";
 import { Card, LinearProgress, Stack } from "@mui/material";
 
 // Vision UI Dashboard React components
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
-import VuiProgress from "components/VuiProgress";
+import VuiButton from "components/VuiButton";
 // import InputField from "components/VuiInput";
 // import ZipcodeInput from "components/VuiInput";
 
@@ -35,11 +33,9 @@ import VuiProgress from "components/VuiProgress";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
 import linearGradient from "assets/theme/functions/linearGradient";
 
 // Vision UI Dashboard React base styles
-import typography from "assets/theme/base/typography";
 import colors from "assets/theme/base/colors";
 
 // Dashboard layout components
@@ -47,15 +43,10 @@ import WelcomeMark from "layouts/dashboard/components/WelcomeMark";
 import Projects from "layouts/dashboard/components/Projects";
 import OrderOverview from "layouts/dashboard/components/OrderOverview";
 import SatisfactionRate from "layouts/dashboard/components/SatisfactionRate";
-import ReferralTracking from "layouts/dashboard/components/ReferralTracking";
+import Three from "layouts/dashboard/components/Three";
 
 // React icons
-import { IoIosRocket } from "react-icons/io";
-import { IoGlobe } from "react-icons/io5";
-import { IoBuild } from "react-icons/io5";
-import { IoWallet } from "react-icons/io5";
-import { IoDocumentText } from "react-icons/io5";
-import { FaShoppingCart } from "react-icons/fa";
+import gif from "assets/images/HeatMap.png";
 
 // Data
 import LineChart from "examples/Charts/LineCharts/LineChart";
@@ -72,7 +63,28 @@ require('dotenv').config()
 function Dashboard() {
   const { gradients } = colors;
   const { cardContent } = gradients;
-  const [ zipcode, setZipcode ] = useState("19104")
+  const [ zipcode, setZipcode ] = useState("19104");
+  const { type, setType } = useState("O2");
+  
+  const onClickSetCO = () => {
+    setType('CO')
+  }
+
+  const onClickSetNO2 = () => {
+    setType('NO2')
+  }
+
+  const onClickSetO3 = () => {
+    setType('O3')
+  }
+
+  const onClickSetSO2 = () => {
+    setType('SO2')
+  }
+
+  const onClickColorChanger = () => {
+
+  }
   const [ city, setCity ] = useState("Philadelphia")
   const [ latitude, setLatitude ] = useState(34.0901)
   const [ longitude, setLongitude ] = useState(-118.4065)
@@ -138,8 +150,11 @@ function Dashboard() {
     data: [200, 230, 300, 350, 370, 420, 550, 350, 400, 500, 330, 550],
   })
 
-  const [ concsMap, setConcsMap ] = useState(concsMapCleared)
+  const [ concsMap, setConcsMap ] = useState(concsMapInitial)
   const [ pmConcs, setPmConcs ] = useState([])
+
+  const [ currConcs, setCurrConcs ] = useState([30, 40, 50, 60, 70, 80, 80, 70])
+  const [ currXLabels, setCurrXLabels ] = useState([])
   
   
   // console.log(concsMap.get('co'))
@@ -157,6 +172,7 @@ function Dashboard() {
       callGeocodeAPI()
     }
   }, [ zipcode ]);
+  
   // When concs map is updated
   useEffect( function(){
     setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
@@ -178,28 +194,54 @@ function Dashboard() {
         setLatitude(data.lat)
         setLongitude(data.lon)
 
-        // Clear existing historical pollutant concs
-        // for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
-        //   concsMap.get(pollutant).data = []
-        //   setConcsMap(concsMap)
-        //   // setConcsMap(new Map(concsMap.set(pollutant, {
-        //   //   name: pollutInfo.name,
-        //   //   data: [],
-        //   // })))
-        // }
-        setConcsMap(concsMapCleared)
-        console.log("CONCS MAP CLEARED")
-        console.log(concsMap)
-
         // Get pollution data
         callOpenWeatherPollutionAPI()
       })
   }
   
   // OpenWeather Air Pollution API: 
+  // Get current pollution data
+  const callOpenWeatherCurrPollutionAPI = () => {
+    var request = 'http://api.openweathermap.org/data/2.5/air_pollution?'
+    request += 'lat=' + latitude + '&lon=' + longitude 
+    request += '&appid=' + process.env.REACT_APP_OPENWEATHER_API_KEY
+
+    console.log(request)
+
+    fetch(request, { method: 'GET' })
+      .then(response => response.json()) // Parsing the data into a JavaScript object
+      .then(data => {
+        console.log(data)
+        
+        if (data.list.length > 0) {
+          // Iterate over components in this time point
+          var tempCurrConcs = []
+          var currX = []
+          for (const [pollutant, resConc] of Object.entries(data.list[0].components)) {
+            // setCurrConcs([tempCurrConcs, resConc])
+            tempCurrConcs.push(resConc)
+            currX.push(pollutant)
+            // console.log("pollutant: ", pollutant)
+            // concsMap.get(pollutant).data.push(resConc)
+            // setConcsMap(concsMap)
+            // setCurrConc(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: [concsMap.get(pollutant).data, resConc]}))
+            // setXLabels([xLabels, new Date(data.list[i].dt * 1000).toUTCString()])
+          }
+          setCurrConcs(tempCurrConcs)
+          setCurrXLabels(currX)
+        }
+
+        // console.log("AQIs: ", aqis)
+        console.log("XLabels: ", currX)
+        console.log("CurrConcs: ", tempCurrConcs)
+        
+
+        // lineChartOptionsDashboard.xaxis.categories = xLabels
+      }) 
+  }
+
   // Get past 12 hours of pollution data
   const callOpenWeatherPollutionAPI = () => {
-    
     var startDtUnix = Math.floor(startDt.getTime() / 1000)
     var endDtUnix = Math.floor(endDt.getTime() / 1000)
 
@@ -213,39 +255,64 @@ function Dashboard() {
 
     console.log(request)
 
+    // Clear existing historical pollutant concs
+    // for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
+    //   concsMap.get(pollutant).data = []
+    //   setConcsMap(concsMap)
+    //   // setConcsMap(new Map(concsMap.set(pollutant, {
+    //   //   name: pollutInfo.name,
+    //   //   data: [],
+    //   // })))
+    // }
+    setConcsMap(concsMapCleared)
+    console.log("CONCS MAP CLEARED")
+    console.log(concsMap)
+
+
     fetch(request, { method: 'GET' })
       .then(response => response.json()) // Parsing the data into a JavaScript object
       .then(data => {
         console.log(data)
         setXLabels([])
-        // var aqis = []
+        // Clear existing historical pollutant concs
+        for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
+          // concsMap.get(pollutant).data = []
+          // setConcsMap(concsMap)
+          setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: []}))
+          // setConcsMap(new Map(concsMap.set(pollutant, {
+          //   name: pollutInfo.name,
+          //   data: [],
+          // })))
+        }
+
         // Iterate over each time point in list of historical data, in reverse order (least to most recent)
         for (var i = data.list.length - 1; i >= 0; i--) {
           // Iterate over components in this time point
           for (const [pollutant, resConc] of Object.entries(data.list[i].components)) {
             // console.log("pollutant: ", pollutant)
-            concsMap.get(pollutant).data.push(resConc)
-            setConcsMap(concsMap)
-            // setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: [concsMap.get(pollutant).data, resConc]}))
+            // concsMap.get(pollutant).data.push(resConc)
+            // setConcsMap(concsMap)
+            setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: [concsMap.get(pollutant).data, resConc]}))
             setXLabels([xLabels, new Date(data.list[i].dt * 1000).toUTCString()])
-
-            // aqis.push(data.list.main.aqi)
           }
         }
+        setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
+
         // console.log("AQIs: ", aqis)
         console.log("XLabels: ", xLabels)
         console.log("ConcsMap: ", concsMap)
 
-        lineChartOptionsDashboard.xaxis.categories = xLabels
+        // lineChartOptionsDashboard.xaxis.categories = xLabels
       }) 
   }
 
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <VuiBox py={3}>
-        {/* <VuiBox mb={3}>
-           <Grid container spacing={3}>
+
+        <VuiBox py={3}>
+          {/* <VuiBox mb={3}>
+            <Grid container spacing={3}>
             <Grid item xs={12} md={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "today's money", fontWeight: "regular" }}
@@ -278,8 +345,8 @@ function Dashboard() {
                 icon={{ color: "info", component: <FaShoppingCart size="20px" color="white" /> }}
               />
             </Grid>
-          </Grid> 
-        </VuiBox> */}
+            </Grid> 
+          </VuiBox> */}
 
         <VuiBox mb={3}></VuiBox>
 
@@ -293,18 +360,34 @@ function Dashboard() {
                 setZipcode={setZipcode}
               />
             </Grid>
+
             <Grid item xs={12} lg={6} xl={3}>
               <SatisfactionRate />
             </Grid>
+
             <Grid item xs={12} lg={6} xl={4}>
-              <ReferralTracking />
+              {/* <ReferralTracking /> */}
+              <Card
+                  sx={{
+                    height: '100%',
+                    background: linearGradient(gradients.cardDark.main, gradients.cardDark.state, gradients.cardDark.deg)
+                  }}>
+                    {/* <ReferralTracking /> */}
+                <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
+                  Amount of Particles in the Air - Visualized
+                </VuiTypography>
+                  <Three />
+              </Card>
             </Grid>
           </Grid>
         </VuiBox>
+
+
         <VuiBox mb={3}>
           <Grid container spacing={3}>
-            <Grid item xs={12} lg={6} xl={7}>
 
+
+            <Grid item xs={12} lg={6} xl={7}>
               {/* Pollutant curve graphs */}
               {/* const timestampMillis = Date.now(); */}
               <Card>
@@ -322,20 +405,22 @@ function Dashboard() {
                   </VuiBox>
                   <VuiBox sx={{ height: "310px" }}>
                     <LineChart
-                      lineChartData={[concsMap.get('pm2_5'), concsMap.get('pm10')]}
-                      // lineChartData={pmConcs}
+                      // lineChartData={[concsMap.get('pm2_5'), concsMap.get('pm10')]}
+                      lineChartData={pmConcs}
                       lineChartOptions={lineChartOptionsDashboard}
                     />
                   </VuiBox>
                 </VuiBox>
               </Card>
             </Grid>
+
+
             <Grid item xs={12} lg={6} xl={5}>
               <Card>
                 <VuiBox>
                   <VuiBox
                     mb="24px"
-                    height="220px"
+                    height="232px"
                     sx={{
                       background: linearGradient(
                         cardContent.main,
@@ -346,18 +431,20 @@ function Dashboard() {
                     }}
                   >
                     <BarChart
-                      barChartData={barChartDataDashboard}
+                      // barChartData={barChartDataDashboard}
+                      // barChartOptions={barChartOptionsDashboard}
+                      barChartData={[{name: "AQI", data: currConcs}]}
                       barChartOptions={barChartOptionsDashboard}
                     />
                   </VuiBox>
                   <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-                    Active Users
+                    Historical Data
                   </VuiTypography>
                   <VuiBox display="flex" alignItems="center" mb="40px">
                     <VuiTypography variant="button" color="success" fontWeight="bold">
-                      (+23){" "}
+                      {type}{" "}
                       <VuiTypography variant="button" color="text" fontWeight="regular">
-                        than last week
+                        levels in the last week
                       </VuiTypography>
                     </VuiTypography>
                   </VuiBox>
@@ -368,102 +455,109 @@ function Dashboard() {
                         spacing={{ sm: "10px", xl: "4px", xxl: "10px" }}
                         mb="6px"
                       >
-                        <VuiBox
+                        {/* <VuiBox
                           bgColor="info"
                           display="flex"
                           justifyContent="center"
                           alignItems="center"
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
-                          <IoWallet color="#fff" size="12px" />
-                        </VuiBox>
-                        <VuiTypography color="text" variant="button" fontWeight="medium">
-                          Users
-                        </VuiTypography>
+                          <TbLetterC color="#fff" size="12px" />
+                        </VuiBox> */}
+                        <VuiButton
+                          variant="gradient"
+                          onClick={onClickSetCO}
+                          color="info"
+                          size="medium">
+                          CO Levels
+                        </VuiButton>
                       </Stack>
-                      <VuiTypography color="white" variant="lg" fontWeight="bold" mb="8px">
-                        32,984
-                      </VuiTypography>
-                      <VuiProgress value={60} color="info" sx={{ background: "#2D2E5F" }} />
                     </Grid>
+
                     <Grid item xs={6} md={3} lg={3}>
                       <Stack
                         direction="row"
                         spacing={{ sm: "10px", xl: "4px", xxl: "10px" }}
                         mb="6px"
                       >
-                        <VuiBox
+                        {/* <VuiBox
                           bgColor="info"
                           display="flex"
                           justifyContent="center"
                           alignItems="center"
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
-                          <IoIosRocket color="#fff" size="12px" />
-                        </VuiBox>
-                        <VuiTypography color="text" variant="button" fontWeight="medium">
-                          Clicks
-                        </VuiTypography>
+                          <TbLetterN color="#fff" size="12px" />
+                        </VuiBox> */}
+                        
+                        <VuiButton
+                          variant="gradient"
+                          onClick = {onClickSetNO2}
+                          color="secondary"
+                          size="medium">
+                          NO2 Levels
+                        </VuiButton>
                       </Stack>
-                      <VuiTypography color="white" variant="lg" fontWeight="bold" mb="8px">
-                        2,42M
-                      </VuiTypography>
-                      <VuiProgress value={60} color="info" sx={{ background: "#2D2E5F" }} />
                     </Grid>
+
                     <Grid item xs={6} md={3} lg={3}>
                       <Stack
                         direction="row"
                         spacing={{ sm: "10px", xl: "4px", xxl: "10px" }}
                         mb="6px"
                       >
-                        <VuiBox
+                        {/* <VuiBox
                           bgColor="info"
                           display="flex"
                           justifyContent="center"
                           alignItems="center"
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
-                          <FaShoppingCart color="#fff" size="12px" />
-                        </VuiBox>
-                        <VuiTypography color="text" variant="button" fontWeight="medium">
-                          Sales
-                        </VuiTypography>
+                          <TbLetterO color="#fff" size="12px" />
+                        </VuiBox> */}
+                        <VuiButton
+                          variant="gradient"
+                          onClick = {onClickSetO3}
+                          color="secondary"
+                          size="medium">
+                          O3 Levels
+                        </VuiButton>
                       </Stack>
-                      <VuiTypography color="white" variant="lg" fontWeight="bold" mb="8px">
-                        2,400$
-                      </VuiTypography>
-                      <VuiProgress value={60} color="info" sx={{ background: "#2D2E5F" }} />
                     </Grid>
+
                     <Grid item xs={6} md={3} lg={3}>
                       <Stack
                         direction="row"
                         spacing={{ sm: "10px", xl: "4px", xxl: "10px" }}
                         mb="6px"
                       >
-                        <VuiBox
+                        {/* <VuiBox
                           bgColor="info"
                           display="flex"
                           justifyContent="center"
                           alignItems="center"
                           sx={{ borderRadius: "6px", width: "25px", height: "25px" }}
                         >
-                          <IoBuild color="#fff" size="12px" />
-                        </VuiBox>
-                        <VuiTypography color="text" variant="button" fontWeight="medium">
-                          Items
-                        </VuiTypography>
+                          <TbLetterS color="#fff" size="12px" />
+                        </VuiBox> */}
+                        <VuiButton
+                          variant="gradient"
+                          onClick = {onClickSetSO2}
+                          color={"secondary"}
+                          size="medium">
+                          SO2 Levels
+                        </VuiButton>
                       </Stack>
-                      <VuiTypography color="white" variant="lg" fontWeight="bold" mb="8px">
-                        320
-                      </VuiTypography>
-                      <VuiProgress value={60} color="info" sx={{ background: "#2D2E5F" }} />
                     </Grid>
-                  </Grid>
+                    </Grid>
                 </VuiBox>
               </Card>
             </Grid>
+
           </Grid>
         </VuiBox>
+
+
         <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
           {/* Ways to Reduce AQI Card */}
           <Grid item xs={12} md={6} lg={4}>
@@ -474,6 +568,30 @@ function Dashboard() {
              <Projects />
           </Grid>
         </Grid>
+
+        <VuiBox py={5}></VuiBox>
+
+        <Grid container spacing={3} justifyContent="center" alignItems="stretch">
+        <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
+              Air Pollution Levels Around the World
+          </VuiTypography>
+        </Grid>
+
+        <VuiBox py={3}></VuiBox>
+
+        <Grid container spacing={3} justifyContent="center" alignItems="stretch">
+          <Card sx={() => ({
+            height: "680px",
+            width: "1500px",
+            py: "32px",
+            backgroundImage: `url(${gif})`,
+            backgroundSize: "cover",
+            backgroundPosition: "50%"
+            })}>
+        </Card>
+
+        </Grid>
+          
       </VuiBox>
       <Footer />
     </DashboardLayout>

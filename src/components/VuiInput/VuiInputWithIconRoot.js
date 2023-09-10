@@ -1,14 +1,13 @@
 /*!
 
 =========================================================
-* Vision UI Free React - v1.0.0
+* PennApps Contest - AirApp - v1.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
 
-* Design and Coded by Simmmple & Creative Tim
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
 
 =========================================================
 
@@ -17,13 +16,15 @@
 */
 
 import { styled } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
 
 export default styled("div")(({ theme, ownerState }) => {
-  const { palette, functions, borders } = theme;
+  const { palette, functions, borders, boxShadows } = theme;
   const { error, success, disabled } = ownerState;
+  const { inputBoxShadow } = boxShadows;
+  const { pxToRem, boxShadow } = functions;
 
   const { inputColors, inputColors2, grey, black } = palette;
-  const { pxToRem } = functions;
   const { borderRadius, borderWidth } = borders;
 
   // border color value
@@ -38,28 +39,62 @@ export default styled("div")(({ theme, ownerState }) => {
   return {
     display: "flex",
     alignItems: "center",
-    backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
+    backgroundColor: disabled ? grey[1000] : inputColors2.backgroundColor,
     border: `${borderWidth[1]} solid`,
     borderRadius: borderRadius.lg,
-    borderColor: borderColorValue,
+    borderColor: "white !important",
+    //padding: pxToRem(18),
+      borderColor: "white !important",
+      border: `${borderWidth[1]} solid`,
     "& .MuiIcon-root": {
+      borderColorValue: "white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[0]} solid`,
+      borderWidth: "0px",
       color: "black",
     },
 
     "& .MuiInputBase-input": {
+      fontSize: "18px !important",
       color: "black",
       height: "100%",
       paddingX: pxToRem(20),
-      backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
+      backgroundColor: disabled ? grey[1000] : inputColors2.backgroundColor,
+      
+      borderColorValue: "white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[0]} solid`,
+      
+
+
+
+
     },
+
+    "&.Mui-focused": {
+      borderColor:"white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[1]} solid`,
+      borderWidth: "10px",
+    },
+
+
     "& .MuiInputBase-root": {
-      border: `unset`,
-      borderRadius: borderRadius.lg,
+      borderColorValue: "white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[1]} solid`,
+      // border: `unset`,
+      // borderRadius: borderRadius.lg,
       borderTopLeftRadius: "0px",
       borderBottomLeftRadius: "0px",
-      backgroundColor: `${disabled ? grey[600] : inputColors2.backgroundColor} !important`,
+      borderWidth: "10px",
+      backgroundColor: `${disabled ? grey[1000] : inputColors2.backgroundColor} !important`,
       "& ::placeholder": {
-        color: `${black} !important`,
+        color: `black !important`,
+        fontSize: "18px !important",
+        borderColorValue: "white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[1]} solid`,
       },
     },
   };

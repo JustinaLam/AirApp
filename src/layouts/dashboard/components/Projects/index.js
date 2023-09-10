@@ -1,14 +1,13 @@
 /*!
 
 =========================================================
-* Vision UI Free React - v1.0.0
+* PennApps Contest - AirApp - v1.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
 
-* Design and Coded by Simmmple & Creative Tim
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
 
 =========================================================
 
@@ -17,6 +16,7 @@
 */
 
 import { useState } from "react";
+import { FaWind } from "react-icons/fa";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -72,12 +72,12 @@ function Projects() {
       <VuiBox display="flex" justifyContent="space-between" alignItems="center" mb="32px">
         <VuiBox mb="auto">
           <VuiTypography color="white" variant="lg" mb="6px" gutterBottom>
-            Projects
+            Past Air Quality Data
           </VuiTypography>
           <VuiBox display="flex" alignItems="center" lineHeight={0}>
-            <BsCheckCircleFill color="green" size="15px" />
+            <FaWind color="light" size="15px" />
             <VuiTypography variant="button" fontWeight="regular" color="text" ml="5px">
-              &nbsp;<strong>30 done</strong> this month
+              &nbsp;<strong>µg/m³</strong> micrograms per cubic meter
             </VuiTypography>
           </VuiBox>
         </VuiBox>

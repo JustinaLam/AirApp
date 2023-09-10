@@ -1,3 +1,20 @@
+/*!
+
+=========================================================
+* PennApps Contest - AirApp - v1.0.0
+=========================================================
+
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
+
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+
 import React from "react";
 
 import { Card, Icon } from "@mui/material";
@@ -29,15 +46,15 @@ const WelcomeMark = ({zipcode, setZipcode}) => {
     })}>
       <VuiBox height="100%" display="flex" flexDirection="column" justifyContent="space-between">
         <VuiBox>
-          <VuiTypography color="text" variant="button" fontWeight="regular" mb="12px">
+          <VuiTypography color="text" variant="h6" fontWeight="regular" mb="0px">
           Showing results for
           </VuiTypography>
-          <VuiTypography color="white" variant="h3" fontWeight="bold" mb="18px">
+          <VuiTypography color="white" variant="h1" fontWeight="bold" mb="8px">
           Philadelphia
           </VuiTypography>
-          <VuiTypography color="text" variant="h6" fontWeight="regular" mb="auto">
-            Glad to see you again!
-            <br /> Ask me anything.
+          <VuiTypography color="text" variant="h5" fontWeight="regular" mb="auto">
+          Greetings!
+            <br /> Let's check the skies.
           </VuiTypography>
         </VuiBox>
 
@@ -56,6 +73,8 @@ const WelcomeMark = ({zipcode, setZipcode}) => {
                   },
                   backgroundColor: "info.main !important",
                 })}
+                size="large"
+                textSize="large"
               />
         {/* --------------------------------------------------------------- */}
 

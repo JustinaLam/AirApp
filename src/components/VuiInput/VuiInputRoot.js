@@ -1,20 +1,22 @@
 /*!
 
 =========================================================
-* Vision UI Free React - v1.0.0
+* PennApps Contest - AirApp - v1.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
 
-* Design and Coded by Simmmple & Creative Tim
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
 
 =========================================================
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
+//REPACED ALL 12px WITH 18px
+
 
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
@@ -47,12 +49,14 @@ export default styled(InputBase)(({ theme, ownerState }) => {
 
   // styles for the input with size="medium"
   const mediumStyles = () => ({
+    fontSize: "12px",
     padding: `${pxToRem(8)} ${pxToRem(12)}`,
   });
 
   // styles for the input with size="large"
   const largeStyles = () => ({
-    padding: pxToRem(12),
+    fontSize: "12px",
+    //padding: pxToRem(12), //DONT CHANGE
   });
 
   // styles for the focused state of the input
@@ -64,29 +68,29 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     focusedBorderColorValue = inputColors.success;
   }
 
-  let focusedPaddingLeftValue;
+  let focusedPaddingLeftValue = pxToRem(12);
 
-  if (direction === "rtl" && iconDirection === "left") {
-    focusedPaddingLeftValue = pxToRem(12);
-  } else if (direction === "rtl" && iconDirection === "right") {
-    focusedPaddingLeftValue = pxToRem(12);
-  } else if (direction === "ltr" && iconDirection === "right") {
-    focusedPaddingLeftValue = pxToRem(12);
-  } else if (direction === "ltr" && iconDirection === "left") {
-    focusedPaddingLeftValue = pxToRem(12);
-  }
+  // if (direction === "rtl" && iconDirection === "left") {
+  //   focusedPaddingLeftValue = pxToRem(18);
+  // } else if (direction === "rtl" && iconDirection === "right") {
+  //   focusedPaddingLeftValue = pxToRem(18);
+  // } else if (direction === "ltr" && iconDirection === "right") {
+  //   focusedPaddingLeftValue = pxToRem(18);
+  // } else if (direction === "ltr" && iconDirection === "left") {
+  //   focusedPaddingLeftValue = pxToRem(18);
+  // }
 
-  let focusedPaddingRightValue;
+  let focusedPaddingRightValue = pxToRem(12);
 
-  if (direction === "rtl" && iconDirection === "left") {
-    focusedPaddingRightValue = pxToRem(12);
-  } else if (direction === "rtl" && iconDirection === "right") {
-    focusedPaddingRightValue = pxToRem(12);
-  } else if (direction === "ltr" && iconDirection === "right") {
-    focusedPaddingRightValue = pxToRem(12);
-  } else if (direction === "ltr" && iconDirection === "left") {
-    focusedPaddingRightValue = pxToRem(12);
-  }
+  // if (direction === "rtl" && iconDirection === "left") {
+  //   focusedPaddingRightValue = pxToRem(18);
+  // } else if (direction === "rtl" && iconDirection === "right") {
+  //   focusedPaddingRightValue = pxToRem(18);
+  // } else if (direction === "ltr" && iconDirection === "right") {
+  //   focusedPaddingRightValue = pxToRem(18);
+  // } else if (direction === "ltr" && iconDirection === "left") {
+  //   focusedPaddingRightValue = pxToRem(18);
+  // }
 
   let focusedBoxShadowValue = boxShadow([0, 0], [0, 2], inputColors.boxShadow, 1);
 
@@ -99,9 +103,9 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   // styles for the input with error={true}
   const errorStyles = () => ({
     backgroundImage:
-      "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23fd5c70' viewBox='0 0 12 12'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23fd5c70' stroke='none'/%3E%3C/svg%3E\")",
+      "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%23fd5c70' viewBox='0 0 18 18'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23fd5c70' stroke='none'/%3E%3C/svg%3E\")",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: `right ${pxToRem(12)} center`,
+    backgroundPosition: `right ${pxToRem(18)} center`,
     backgroundSize: `${pxToRem(16)} ${pxToRem(16)}`,
     borderColor: inputColors.error,
   });
@@ -111,7 +115,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     backgroundImage:
       "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath fill='%2366d432' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E\")",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: `right ${pxToRem(12)} center`,
+    backgroundPosition: `right ${pxToRem(18)} center`,
     backgroundSize: `${pxToRem(16)} ${pxToRem(16)}`,
     borderColor: inputColors.success,
   });
@@ -132,9 +136,9 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     if (direction === "rtl" && iconDirection === "left") {
       withIconPaddingLeftValue = 0;
     } else if (direction === "rtl" && iconDirection === "right") {
-      withIconPaddingLeftValue = pxToRem(12);
+      withIconPaddingLeftValue = pxToRem(18);
     } else if (direction === "ltr" && iconDirection === "right") {
-      withIconPaddingLeftValue = pxToRem(12);
+      withIconPaddingLeftValue = pxToRem(18);
     } else if (direction === "ltr" && iconDirection === "left") {
       withIconPaddingLeftValue = 0;
     }
@@ -142,13 +146,13 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     let withIconPaddingRightValue;
 
     if (direction === "rtl" && iconDirection === "left") {
-      withIconPaddingRightValue = pxToRem(12);
+      withIconPaddingRightValue = pxToRem(18);
     } else if (direction === "rtl" && iconDirection === "right") {
       withIconPaddingRightValue = 0;
     } else if (direction === "ltr" && iconDirection === "right") {
       withIconPaddingRightValue = 0;
     } else if (direction === "ltr" && iconDirection === "left") {
-      withIconPaddingRightValue = pxToRem(12);
+      withIconPaddingRightValue = pxToRem(18);
     }
 
     return {
@@ -158,12 +162,13 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   };
 
   return {
-    backgroundColor: disabled ? `${grey[200]} !important` : white.main,
+    backgroundColor: disabled ? `${grey[1000]} !important` : white.main,
     pointerEvents: disabled ? "none" : "auto",
-    backgroundColor: `${disabled ? grey[600] : inputColors.backgroundColor} !important`,
+    backgroundColor: `${disabled ? grey[1000] : inputColors.backgroundColor} !important`,
     color:  `${white.main} !important`, // Change text color based on the presence of an icon
+    fontSize: iconDirection !== "none" ? "18px" : "12px !important",
     borderRadius: borderRadius.lg,
-    border: `0.5px solid ${grey[600]}`,
+    border: `0.5px solid ${grey[1000]}`,
     ...(size === "small" && smallStyles()),
     ...(size === "medium" && mediumStyles()),
     ...(size === "large" && largeStyles()),
@@ -171,7 +176,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     ...(success && successStyles()),
     ...((iconDirection === "left" || iconDirection === "right") && withIconStyles()),
     "& ::placeholder": {
-      color: iconDirection !== "none" ? `${black.main} !important` : `${white.main} !important`, // Change text color based on the presence of an icon
+      color: "white !important", // Change text color based on the presence of an icon
 
       fontSize: "12px",
     },
@@ -185,7 +190,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
     },
 
     "&.MuiInputBase-multiline": {
-      padding: `${pxToRem(10)} ${pxToRem(12)}`,
+      padding: `${pxToRem(10)} ${pxToRem(18)}`,
     },
   };
 });

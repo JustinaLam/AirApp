@@ -1,14 +1,13 @@
 /*!
 
 =========================================================
-* Vision UI Free React - v1.0.0
+* PennApps Contest - AirApp - v1.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
 
-* Design and Coded by Simmmple & Creative Tim
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
 
 =========================================================
 
@@ -43,14 +42,13 @@ function OrdersOverview() {
         </VuiTypography>
         <VuiBox mb={2}>
           <VuiBox display="flex" alignItems="center">
-            <BsCheckCircleFill color="green" size="15px" mr="5px" />
-            <VuiTypography variant="button" color="text" fontWeight="medium" ml="5px" mr="2px">
-              +30%
-            </VuiTypography>{" "}
-            <VuiTypography variant="button" color="text" fontWeight="regular">
-              {" "}
-              this month
+            <BsCheckCircleFill color="light" size="15px" mr="5px" />
+            <VuiTypography variant="button" color="text" fontWeight="regular" ml="5px" mr="2px">
+               How to make
             </VuiTypography>
+            <VuiTypography variant="button" color="text" fontWeight="medium" >
+              Positive Change
+            </VuiTypography>{" "}
           </VuiBox>
         </VuiBox>
       </VuiBox>

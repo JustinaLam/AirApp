@@ -1,14 +1,13 @@
 /*!
 
 =========================================================
-* Vision UI Free React - v1.0.0
+* PennApps Contest - AirApp - v1.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
 
-* Design and Coded by Simmmple & Creative Tim
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
 
 =========================================================
 
@@ -18,12 +17,16 @@
 
 import { lineChartDataDashboard } from "./lineChartData";
 
+const x = 12;
+
+
 const getLineChartXCategories = () => {
   console.log("HI")
   var categories = Array(count)
-  var currDtMillis = Date.now()
+  var currDtMillis = new Date(Date.now())
   currDtMillis.setMinutes(0)
-  var tempDt = currDtMillis
+  currDtMillis.setSeconds(0)
+  var tempDt = Math.floor(currDtMillis / 1000)
 
   console.log(currDtMillis.toUTCString())
   
@@ -59,20 +62,32 @@ export const lineChartOptionsDashboard = {
       // x.forEach((data) => data.a = data.a.toFixed(3));
       // categories: lineChartDataDashboard[0].data.map(({ a, b }) => ({ a: a.toFixed(3), b }))
 
-    // categories: getLineChartXCategories,
+    categories: getLineChartXCategories,
     // categories: [
-    //   "Jan",
-    //   "Feb",
-    //   "Mar",
-    //   "Apr",
-    //   "May",
-    //   "Jun",
-    //   "Jul",
-    //   "Aug",
-    //   "Sep",
-    //   "Oct",
-    //   "Nov",
-    //   "Dec",
+    //   x-11,
+    //   x-10,
+    //   x-9,
+    //   x-8,
+    //   x-7,
+    //   x-6,
+    //   x-5,
+    //   x-4,
+    //   x-3,
+    //   x-2,
+    //   x-1,
+    //   x
+    //   // "Jan",
+    //   // "Feb",
+    //   // "Mar",
+    //   // "Apr",
+    //   // "May",
+    //   // "Jun",
+    //   // "Jul",
+    //   // "Aug",
+    //   // "Sep",
+    //   // "Oct",
+    //   // "Nov",
+    //   // "Dec",
     // ],
     labels: {
       style: {

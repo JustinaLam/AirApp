@@ -1,14 +1,13 @@
 /*!
 
 =========================================================
-* Vision UI Free React - v1.0.0
+* PennApps Contest - AirApp - v1.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
 
-* Design and Coded by Simmmple & Creative Tim
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
 
 =========================================================
 
@@ -40,7 +39,7 @@ const VuiInput = forwardRef(({ size, icon, error, success, disabled, ...rest }, 
     template = (
       <VuiInputWithIconRoot ref={ref} ownerState={{ error, success, disabled }}>
         <VuiInputIconBoxRoot ownerState={{ size }}>
-          <VuiInputIconRoot fontSize="small" ownerState={{ size }}>
+          <VuiInputIconRoot fontSize="large" ownerState={{ size }}>
             {icon.component}
           </VuiInputIconRoot>
         </VuiInputIconBoxRoot>
@@ -73,7 +72,7 @@ const VuiInput = forwardRef(({ size, icon, error, success, disabled, ...rest }, 
 
 // Setting default values for the props of VuiInput
 VuiInput.defaultProps = {
-  size: "medium",
+  size: "large",
   icon: {
     component: false,
     direction: "none",

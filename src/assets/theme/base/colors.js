@@ -1,17 +1,17 @@
-/** 
+/*!
 
 =========================================================
-* Vision UI  React - v1.0.0
+* PennApps Contest - AirApp - v1.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-pro-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
+* GitHub Repository: https://github.com/JustinaLam/AirApp
+* Licensed under MIT (https://github.com/JustinaLam/AirApp/blob/main/LICENSE.md LICENSE.md)
 
-* Design and Coded by Simmmple & Creative Tim
+* Design and Coded by Justina Lam, Jeffrey Gao, & Christina Qiu
 
 =========================================================
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Visionware.
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
 
@@ -419,7 +419,7 @@ export default {
   },
 
   inputColors: {
-    backgroundColor: "#0f1535",
+    backgroundColor: "#4065C2",
     borderColor: { main: "rgba(226, 232, 240, 0.3)", focus: "rgba(226, 232, 240, 0.6)" },
     boxShadow: "#628fc2",
     error: "#fd5c70",
@@ -427,7 +427,7 @@ export default {
   },
 
   inputColors2: {
-    backgroundColor: "#96c5ff",
+    backgroundColor: "white",
     borderColor: { main: "rgba(226, 232, 240, 0.3)", focus: "rgba(226, 232, 240, 0.6)" },
     boxShadow: "#628fc2",
     error: "#fd5c70",
