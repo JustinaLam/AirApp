@@ -48,9 +48,7 @@ import WelcomeMark from "layouts/dashboard/components/WelcomeMark";
 import Projects from "layouts/dashboard/components/Projects";
 import OrderOverview from "layouts/dashboard/components/OrderOverview";
 import SatisfactionRate from "layouts/dashboard/components/SatisfactionRate";
-import ReferralTracking from "layouts/dashboard/components/ReferralTracking";
 import Three from "layouts/dashboard/components/Three";
-import Map from "layouts/dashboard/components/Map"
 
 // React icons
 import { TbLetterC, TbLetterN, TbLetterO, TbLetterS } from "react-icons/tb";

@@ -36,8 +36,8 @@ const WelcomeMark = ({zipcode, setZipcode}) => {
           Philadelphia
           </VuiTypography>
           <VuiTypography color="text" variant="h5" fontWeight="regular" mb="auto">
-            Check the Air Quality!
-            <br /> Enter any zip code.
+          Greetings!
+            <br /> Let's check the skies.
           </VuiTypography>
         </VuiBox>
 
