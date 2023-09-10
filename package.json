@@ -42,11 +42,12 @@
 		"styled-components": "^6.0.7",
 		"stylis": "4.0.10",
 		"stylis-plugin-rtl": "2.1.0",
+		"three": "^0.156.1",
 		"uuid": "8.3.2",
 		"web-vitals": "1.0.1"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "react-scripts --openssl-legacy-provider start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",

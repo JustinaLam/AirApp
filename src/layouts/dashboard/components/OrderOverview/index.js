@@ -44,13 +44,12 @@ function OrdersOverview() {
         <VuiBox mb={2}>
           <VuiBox display="flex" alignItems="center">
             <BsCheckCircleFill color="green" size="15px" mr="5px" />
-            <VuiTypography variant="button" color="text" fontWeight="medium" ml="5px" mr="2px">
-              +30%
-            </VuiTypography>{" "}
             <VuiTypography variant="button" color="text" fontWeight="regular">
-              {" "}
-              this month
+              How to make
             </VuiTypography>
+            <VuiTypography variant="button" color="text" fontWeight="medium" ml="5px" mr="2px">
+              Positive Change
+            </VuiTypography>{" "}
           </VuiBox>
         </VuiBox>
       </VuiBox>
