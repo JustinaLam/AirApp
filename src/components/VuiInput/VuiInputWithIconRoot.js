@@ -43,9 +43,15 @@ export default styled("div")(({ theme, ownerState }) => {
     backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
     border: `${borderWidth[1]} solid`,
     borderRadius: borderRadius.lg,
-    borderColor: borderColorValue,
+    borderColor: "white !important",
     //padding: pxToRem(18),
+      borderColor: "white !important",
+      border: `${borderWidth[1]} solid`,
     "& .MuiIcon-root": {
+      borderColorValue: "white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[0]} solid`,
+      borderWidth: "0px",
       color: "black",
     },
 
@@ -56,7 +62,10 @@ export default styled("div")(({ theme, ownerState }) => {
       paddingX: pxToRem(20),
       backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
       
-
+      borderColorValue: "white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[0]} solid`,
+      
 
 
 
@@ -64,24 +73,29 @@ export default styled("div")(({ theme, ownerState }) => {
     },
 
     "&.Mui-focused": {
-      borderColor: inputColors.borderColor.focus,
-      paddingLeft: pxToRem(18),
-      paddingRight: pxToRem(18),
-      boxShadow: boxShadow([0, 0], [0, 2], inputColors.boxShadow, 1),
-      outline: 0,
+      borderColor:"white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[1]} solid`,
+      borderWidth: "10px",
     },
 
 
     "& .MuiInputBase-root": {
-      
-      border: `unset`,
-      borderRadius: borderRadius.lg,
+      borderColorValue: "white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[1]} solid`,
+      // border: `unset`,
+      // borderRadius: borderRadius.lg,
       borderTopLeftRadius: "0px",
       borderBottomLeftRadius: "0px",
+      borderWidth: "10px",
       backgroundColor: `${disabled ? grey[600] : inputColors2.backgroundColor} !important`,
       "& ::placeholder": {
         color: `black !important`,
         fontSize: "18px !important",
+        borderColorValue: "white !important",
+      borderColor: "white !important",
+      border: `${borderWidth[1]} solid`,
       },
     },
   };

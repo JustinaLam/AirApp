@@ -43,7 +43,7 @@ function OrdersOverview() {
         </VuiTypography>
         <VuiBox mb={2}>
           <VuiBox display="flex" alignItems="center">
-            <BsCheckCircleFill color="green" size="15px" mr="5px" />
+            <BsCheckCircleFill color="light" size="15px" mr="5px" />
             <VuiTypography variant="button" color="text" fontWeight="regular" ml="5px" mr="2px">
                How to make
             </VuiTypography>
