@@ -25,11 +25,7 @@ import VuiTypography from "components/VuiTypography";
 
 // React icons
 import { BsCheckCircleFill } from "react-icons/bs";
-import { FaBell } from "react-icons/fa";
-import { IoLogoCss3 } from "react-icons/io";
-import { FaShoppingCart } from "react-icons/fa";
-import { BsCreditCardFill } from "react-icons/bs";
-import { SiDropbox } from "react-icons/si";
+import { FaAirFreshener, FaCar, FaSolarPanel, FaFire, FaTree, FaRecycle } from "react-icons/fa";
 
 // Vision UI Dashboard React example components
 import TimelineItem from "examples/Timeline/TimelineItem";
@@ -43,7 +39,7 @@ function OrdersOverview() {
     <Card className="h-100">
       <VuiBox mb="16px">
         <VuiTypography variant="lg" fontWeight="bold" mb="5px" color="white">
-          Orders overview
+          Ways to reduce AQI
         </VuiTypography>
         <VuiBox mb={2}>
           <VuiBox display="flex" alignItems="center">
@@ -60,31 +56,40 @@ function OrdersOverview() {
       </VuiBox>
       <VuiBox>
         <TimelineItem
-          icon={<FaBell size="16px" color={palette.info.main} />}
-          title="$2400, Design changes"
-          dateTime="22 DEC 7:20 PM"
+          icon={<FaCar size="16px" color={palette.info.main} />}
+          title="Reduce Vehicle Emissions"
+          dateTime="Use public transportation, carpool, bike, or walk instead of driving alone.
+          Choose vehicles with low emissions or use electric vehicles."
         />
         <TimelineItem
-          icon={<IoLogoCss3 size="16px" color={palette.error.main} />}
-          title="New order #1832412"
-          dateTime="21 DEC 11 PM"
+          icon={<FaSolarPanel size="16px" color={palette.warning.main} />}
+          title="Promote Renewable Energy"
+          dateTime="Support and invest in renewable energy sources like wind and solar power.
+          Reduce reliance on fossil fuels for electricity generation."
         />
         <TimelineItem
-          icon={<FaShoppingCart size="16px" color={palette.lightblue.main} />}
-          title="Server payments for April"
-          dateTime="21 DEC 9:34 PM"
+          icon={<FaFire size="16px" color={palette.error.main} />}
+          title="Reduce Wood and Biomass Burning"
+          dateTime="Limit the use of wood-burning stoves and fireplaces.
+          Promote cleaner alternatives for heating."
         />
         <TimelineItem
-          icon={<BsCreditCardFill size="16px" color={palette.warning.main} />}
-          title="New card added for order #4395133"
-          dateTime="20 DEC 2:20 AM"
+          icon={<FaAirFreshener size="16px" color={palette.primary.focus} />}
+          title="Limit Indoor Air Pollution"
+          dateTime="Properly ventilate your home to reduce indoor air pollutants.
+          Use air purifiers and filters to improve indoor air quality."
         />
         <TimelineItem
-          icon={<SiDropbox size="16px" color={palette.primary.focus} />}
-          title="New card added for order #4395133"
-          dateTime="18 DEC 4:54 AM"
+          icon={<FaTree size="16px" color="green" />}
+          title="Tree Planting and Green Spaces"
+          dateTime="Plant trees and create green spaces to improve air quality and absorb pollutants.
+          Support reforestation and afforestation efforts."
         />
-        <TimelineItem icon={<AdobeXD size="20px" />} title="New order #9583120" dateTime="17 DEC" />
+        <TimelineItem 
+        icon={<FaRecycle size="20px" color={palette.lightblue.main}/>} 
+        title="Reduce Waste and Recycling" 
+        dateTime="Reduce, reuse, and recycle to minimize waste and associated air pollution.
+        Properly dispose of hazardous materials." />
       </VuiBox>
     </Card>
   );

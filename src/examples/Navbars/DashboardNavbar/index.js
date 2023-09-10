@@ -165,9 +165,9 @@ function DashboardNavbar({ absolute, light, isMini }) {
             </VuiBox>
 
            <VuiTypography
-                    variant="h6"
+                    fontSize="3rem"
                     fontWeight="medium"
-                    color={light ? "white" : "dark"}
+                    color="white"
                   >
                     AirWatch
                   </VuiTypography> 

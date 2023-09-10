@@ -3,8 +3,9 @@ import React from "react";
 import { Card, Icon } from "@mui/material";
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
+import VuiInput from "components/VuiInput";
 
-import gif from "assets/images/cardimgfree.png";
+import gif from "assets/images/welcome-profile.png";
 
 const WelcomeMark = () => {
   return (
@@ -28,7 +29,21 @@ const WelcomeMark = () => {
             <br /> Ask me anything.
           </VuiTypography>
         </VuiBox>
-        <VuiTypography
+
+        <VuiInput
+                placeholder="Enter your zip code"
+                icon={{ component: "search", direction: "left" }}
+                sx={({ breakpoints }) => ({
+                  [breakpoints.down("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  [breakpoints.only("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  backgroundColor: "info.main !important",
+                })}
+              />
+        {/* <VuiTypography
           component="a"
           href="#"
           variant="button"
@@ -53,7 +68,7 @@ const WelcomeMark = () => {
         >
           Tap to expand
           <Icon sx={{ fontWeight: "bold", ml: "5px" }}>arrow_forward</Icon>
-        </VuiTypography>
+        </VuiTypography> */}
       </VuiBox>
     </Card>
   );

@@ -19,9 +19,15 @@
 // Vision UI Dashboard React components
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
+import VuiInput from "components/VuiInput"; 
+import VuiButton from "components/VuiButton"; 
 
 function Footer() {
   return (
+
+    <VuiBox>
+
+
     <VuiBox
       display="flex"
       flexDirection={{ xs: "column", lg: "row" }}
@@ -31,6 +37,73 @@ function Footer() {
       py={2}
       pb={0}
     >
+        <VuiBox pr={1}>
+              <VuiInput
+                placeholder="Phone #"
+                sx={({ breakpoints }) => ({
+                  [breakpoints.down("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  [breakpoints.only("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  backgroundColor: "info.main !important",
+                })}
+              />
+            </VuiBox>
+
+            <VuiBox pr={1}>
+              <VuiInput
+                placeholder="Zip Code (optional)"
+                sx={({ breakpoints }) => ({
+                  [breakpoints.down("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  [breakpoints.only("sm")]: {
+                    maxWidth: "80px",
+                  },
+                  backgroundColor: "info.main !important",
+                })}
+              />
+            </VuiBox>
+
+            <VuiBox pr={1}></VuiBox>
+
+            <VuiBox pr={1}>
+              <VuiButton
+                variant="gradient"
+                color="warning"
+                size="medium">
+                Unsubscribe from text alerts
+              </VuiButton>
+
+            </VuiBox>
+      </VuiBox>
+
+
+    <VuiBox
+      display="flex"
+      flexDirection={{ xs: "column", lg: "row" }}
+      justifyContent="center"
+      direction="row"
+      component="footer"
+      py={2}
+      pb={0}
+    >
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
       <VuiBox item xs={12} sx={{ textAlign: "center" }}>
         <VuiTypography
           variant="button"
@@ -41,7 +114,7 @@ function Footer() {
           <VuiTypography
             component="a"
             variant="button"
-            href="https://simmmple.com/"
+            href="https://www.linkedin.com/in/justina-lam-cs/"
             sx={{ textAlign: "center", fontWeight: "500 !important" }}
             color="white"
             mr="2px"
@@ -54,7 +127,7 @@ function Footer() {
             mr="2px"
             component="a"
             variant="button"
-            href="https://www.creative-tim.com/"
+            href="https://www.linkedin.com/in/jeffrey-gao-88589215b/"
             sx={{ textAlign: "center", fontWeight: "500 !important" }}
             color="white"
           >
@@ -66,7 +139,7 @@ function Footer() {
             mr="2px"
             component="a"
             variant="button"
-            href="https://www.creative-tim.com/"
+            href="https://www.linkedin.com/in/christina-qiu-6094301b6/"
             sx={{ textAlign: "center", fontWeight: "500 !important" }}
             color="white"
           >
@@ -108,6 +181,7 @@ function Footer() {
           </VuiBox>
         </VuiBox> */}
       </VuiBox>
+    </VuiBox>
     </VuiBox>
   );
 }
