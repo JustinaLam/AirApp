@@ -27,6 +27,6 @@ export default styled(Icon)(({ theme, ownerState }) => {
 
   return {
     fontWeight: fontWeightBold,
-    fontSize: size === "small" && `${fontSize.md} !important`,
+    fontSize: size === "large" && `${fontSize.md} !important`,
   };
 });

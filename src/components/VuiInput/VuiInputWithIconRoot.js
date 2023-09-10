@@ -47,12 +47,15 @@ export default styled("div")(({ theme, ownerState }) => {
     },
 
     "& .MuiInputBase-input": {
+      fontSize: "18px",
       color: "black",
       height: "100%",
-      paddingX: pxToRem(20),
+      paddingX: pxToRem(18),
       backgroundColor: disabled ? grey[600] : inputColors2.backgroundColor,
+      
     },
     "& .MuiInputBase-root": {
+      
       border: `unset`,
       borderRadius: borderRadius.lg,
       borderTopLeftRadius: "0px",

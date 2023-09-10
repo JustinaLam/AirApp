@@ -40,7 +40,7 @@ const VuiInput = forwardRef(({ size, icon, error, success, disabled, ...rest }, 
     template = (
       <VuiInputWithIconRoot ref={ref} ownerState={{ error, success, disabled }}>
         <VuiInputIconBoxRoot ownerState={{ size }}>
-          <VuiInputIconRoot fontSize="small" ownerState={{ size }}>
+          <VuiInputIconRoot fontSize="large" ownerState={{ size }}>
             {icon.component}
           </VuiInputIconRoot>
         </VuiInputIconBoxRoot>
@@ -58,7 +58,7 @@ const VuiInput = forwardRef(({ size, icon, error, success, disabled, ...rest }, 
           ownerState={{ size, error, success, iconDirection, direction, disabled }}
         />
         <VuiInputIconBoxRoot ownerState={{ size }}>
-          <VuiInputIconRoot fontSize="small" ownerState={{ size }}>
+          <VuiInputIconRoot fontSize="large" ownerState={{ size }}>
             {icon.component}
           </VuiInputIconRoot>
         </VuiInputIconBoxRoot>
@@ -73,7 +73,7 @@ const VuiInput = forwardRef(({ size, icon, error, success, disabled, ...rest }, 
 
 // Setting default values for the props of VuiInput
 VuiInput.defaultProps = {
-  size: "medium",
+  size: "large",
   icon: {
     component: false,
     direction: "none",
