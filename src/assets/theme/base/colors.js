@@ -426,6 +426,14 @@ export default {
     success: "#66d432",
   },
 
+  inputColors2: {
+    backgroundColor: "white",
+    borderColor: { main: "rgba(226, 232, 240, 0.3)", focus: "rgba(226, 232, 240, 0.6)" },
+    boxShadow: "#628fc2",
+    error: "#fd5c70",
+    success: "#66d432",
+  },
+
   sliderColors: {
     thumb: { borderColor: "#d9d9d9" },
   },

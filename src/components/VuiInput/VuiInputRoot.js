@@ -23,7 +23,7 @@ export default styled(InputBase)(({ theme, ownerState }) => {
   const { palette, boxShadows, functions, typography, borders } = theme;
   const { size, error, success, iconDirection, direction, disabled } = ownerState;
 
-  const { inputColors, white, grey } = palette;
+  const { inputColors, inputColors2, white, grey } = palette;
   const { inputBoxShadow } = boxShadows;
   const { pxToRem, boxShadow } = functions;
   const { size: fontSize } = typography;

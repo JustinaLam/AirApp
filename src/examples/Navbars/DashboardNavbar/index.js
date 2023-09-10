@@ -161,16 +161,25 @@ function DashboardNavbar({ absolute, light, isMini }) {
           </icon>
             
             
-            <VuiBox pr={1}>
+            <VuiBox pr={2}>
             </VuiBox>
 
-          <VuiTypography
+           <VuiTypography
                     variant="h6"
                     fontWeight="medium"
                     color={light ? "white" : "dark"}
                   >
                     AirWatch
-                  </VuiTypography>
+                  </VuiTypography> 
+
+                {/*  <icon
+            sx={({ palette: { dark, white } }) => ({
+              color: light ? white.main : dark.main,
+              fontSize: "3rem",
+              fontweight: "bold",
+            })}
+          
+          > AirWatch </icon>*/}
 
             
             
