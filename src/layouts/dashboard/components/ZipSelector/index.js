@@ -24,7 +24,7 @@ import VuiInput from "components/VuiInput";
 
 import gif from "assets/images/welcome-profile.png";
 
-const WelcomeMark = ({city, zipcode, setZipcode}) => {
+const ZipSelector = ({city, zipcode, setZipcode}) => {
   // Function: onChange for Zipcode input field 
   const zipcodeInputOnChange = (e) => {
     // console.log(e.key, e.keyCode)
@@ -110,4 +110,4 @@ const WelcomeMark = ({city, zipcode, setZipcode}) => {
   );
 };
 
-export default WelcomeMark;
+export default ZipSelector;
