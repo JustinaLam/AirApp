@@ -44,10 +44,10 @@ import typography from "assets/theme/base/typography";
 import colors from "assets/theme/base/colors";
 
 // Dashboard layout components
-import WelcomeMark from "layouts/dashboard/components/WelcomeMark";
-import Projects from "layouts/dashboard/components/Projects";
-import OrderOverview from "layouts/dashboard/components/OrderOverview";
-import SatisfactionRate from "layouts/dashboard/components/SatisfactionRate";
+import ZipSelector from "layouts/dashboard/components/ZipSelector";
+import AirQualityData from "layouts/dashboard/components/AirQualityData";
+import PMOverview from "layouts/dashboard/components/PMOverview";
+import AirQualityIndex from "layouts/dashboard/components/AirQualityIndex";
 import Three from "layouts/dashboard/components/Three";
 
 // React icons
@@ -63,7 +63,7 @@ import { barChartDataDashboard } from "layouts/dashboard/data/barChartData";
 import { barChartOptionsDashboard } from "layouts/dashboard/data/barChartOptions";
 
 // Environment variables
-require('dotenv').config()
+// require('dotenv').config()
 // { path: '/.env' }
 
 function Dashboard() {
@@ -361,24 +361,22 @@ function Dashboard() {
 
             {/* Primary card */}
             <Grid item xs={12} lg={12} xl={5}>
-              <WelcomeMark
+              <ZipSelector
                 zipcode={zipcode}
                 setZipcode={setZipcode}
               />
             </Grid>
 
             <Grid item xs={12} lg={6} xl={3}>
-              <SatisfactionRate />
+              <AirQualityIndex />
             </Grid>
 
             <Grid item xs={12} lg={6} xl={4}>
-              {/* <ReferralTracking /> */}
               <Card
                   sx={{
                     height: '100%',
                     background: linearGradient(gradients.cardDark.main, gradients.cardDark.state, gradients.cardDark.deg)
                   }}>
-                    {/* <ReferralTracking /> */}
                 <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
                   Amount of Particles in the Air
                 </VuiTypography>
@@ -570,11 +568,11 @@ function Dashboard() {
         <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
           {/* Ways to Reduce AQI Card */}
           <Grid item xs={12} md={6} lg={4}>
-            <OrderOverview />
+            <PMOverview />
           </Grid>
-          {/* Projects Card */}
+          {/* AirQualityData Card */}
           <Grid item xs={12} md={6} lg={8}>
-             <Projects />
+            <AirQualityData />
           </Grid>
         </Grid>
 

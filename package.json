@@ -26,7 +26,6 @@
 		"@testing-library/user-event": "12.1.10",
 		"apexcharts": "^3.30.0",
 		"chroma-js": "2.1.2",
-		"dotenv": "^16.3.1",
 		"eslint": "^7.11.0",
 		"install": "^0.13.0",
 		"npm": "^9.6.5",
@@ -48,7 +47,7 @@
 		"web-vitals": "1.0.1"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "react-scripts --openssl-legacy-provider start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",

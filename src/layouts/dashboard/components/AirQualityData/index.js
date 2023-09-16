@@ -16,6 +16,7 @@
 */
 
 import { useState } from "react";
+import { FaWind } from "react-icons/fa";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -32,9 +33,9 @@ import VuiTypography from "components/VuiTypography";
 import Table from "examples/Tables/Table";
 
 // Data
-import data from "layouts/rtl/components/Projects/data";
+import data from "layouts/dashboard/components/AirQualityData/data";
 
-function Projects() {
+function AirQualityData() {
   const { columns, rows } = data();
   const [menu, setMenu] = useState(null);
 
@@ -56,43 +57,47 @@ function Projects() {
       open={Boolean(menu)}
       onClose={closeMenu}
     >
-      <MenuItem onClick={closeMenu}>عمل</MenuItem>
-      <MenuItem onClick={closeMenu}>عمل آخر</MenuItem>
-      <MenuItem onClick={closeMenu}>شيء آخر</MenuItem>
+      <MenuItem onClick={closeMenu}>Action</MenuItem>
+      <MenuItem onClick={closeMenu}>Another action</MenuItem>
+      <MenuItem onClick={closeMenu}>Something else</MenuItem>
     </Menu>
   );
 
   return (
-    <Card>
+    <Card
+      sx={{
+        height: "100% !important",
+      }}
+    >
       <VuiBox display="flex" justifyContent="space-between" alignItems="center" mb="32px">
-        <VuiBox>
+        <VuiBox mb="auto">
           <VuiTypography color="white" variant="lg" mb="6px" gutterBottom>
-            المشاريع
+            Past Air Quality Data
           </VuiTypography>
           <VuiBox display="flex" alignItems="center" lineHeight={0}>
-            <BsCheckCircleFill color="green" size="15px" />
+            <FaWind color="light" size="15px" />
             <VuiTypography variant="button" fontWeight="regular" color="text" ml="5px">
-              &nbsp;<strong>30 انتهى</strong> هذا الشهر
+              &nbsp;<strong>µg/m³</strong> micrograms per cubic meter
             </VuiTypography>
           </VuiBox>
         </VuiBox>
         <VuiBox color="text" px={2}>
-          <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
+          {/* <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
             more_vert
-          </Icon>
+          </Icon> */}
         </VuiBox>
         {renderMenu}
       </VuiBox>
       <VuiBox
         sx={{
           "& th": {
-            borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-              `${borderWidth[1]} solid ${borderColor.grey}`,
+            borderBottom: ({ borders: { borderWidth }, palette: { grey } }) =>
+              `${borderWidth[1]} solid ${grey[700]}`,
           },
           "& .MuiTableRow-root:not(:last-child)": {
             "& td": {
-              borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                `${borderWidth[1]} solid ${borderColor.grey}`,
+              borderBottom: ({ borders: { borderWidth }, palette: { grey } }) =>
+                `${borderWidth[1]} solid ${grey[700]}`,
             },
           },
         }}
@@ -103,4 +108,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default AirQualityData;

@@ -17,15 +17,15 @@
 
 import React from 'react';
 
-import { Card, Stack } from '@mui/material';
+import { Card } from '@mui/material';
 import VuiBox from 'components/VuiBox';
 import VuiTypography from 'components/VuiTypography';
-import CircularProgress from '@mui/material/CircularProgress';
-import { IoHappy } from 'react-icons/io5';
+import { WiDust } from 'react-icons/wi';
 import colors from 'assets/theme/base/colors';
 import linearGradient from 'assets/theme/functions/linearGradient';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const SatisfactionRate = () => {
+const AirQualityIndex = () => {
 	const { info, gradients } = colors;
 	const { cardContent } = gradients;
 
@@ -33,14 +33,56 @@ const SatisfactionRate = () => {
 		<Card sx={{ height: '340px' }}>
 			<VuiBox display='flex' flexDirection='column'>
 				<VuiTypography variant='lg' color='white' fontWeight='bold' mb='4px'>
-					معدل الرضا
+					Air Quality Index
 				</VuiTypography>
 				<VuiTypography variant='button' color='text' fontWeight='regular' mb='20px'>
-					من جميع المشاريع
+					From most recent data
 				</VuiTypography>
 				<VuiBox sx={{ alignSelf: 'center', justifySelf: 'center', zIndex: '-1' }}>
 					<VuiBox sx={{ position: 'relative', display: 'inline-flex' }}>
-						<CircularProgress variant='determinate' value={60} size={170} color='info' />
+					<VuiBox sx={{
+								top: 0,
+								left: 0,
+								bottom: 0,
+								right: 0,
+								position: 'absolute',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center'
+							}}>
+								<CircularProgress variant='determinate' value={100} size={170} color='secondary'/>
+						</VuiBox>
+
+
+						<VuiBox sx={{
+								top: 0,
+								left: 0,
+								bottom: 0,
+								right: 0,
+								position: 'absolute',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center'
+							}}>
+								<CircularProgress variant='determinate' value={80} size={170} color='primary'/>
+						</VuiBox>
+
+						<VuiBox sx={{
+								top: 0,
+								left: 0,
+								bottom: 0,
+								right: 0,
+								position: 'absolute',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center'
+							}}>
+								<CircularProgress variant='determinate' value={70} size={170} color='secondary'/>
+						</VuiBox>
+
+						<CircularProgress variant='determinate' value={0} size={170} color='primary'/>
+
+
 						<VuiBox
 							sx={{
 								top: 0,
@@ -63,12 +105,12 @@ const SatisfactionRate = () => {
 									justifyContent: 'center',
 									alignItems: 'center'
 								}}>
-								<IoHappy size='30px' color='#fff' />
+								<WiDust size='30px' color='#fff' />
 							</VuiBox>
 						</VuiBox>
 					</VuiBox>
 				</VuiBox>
-				<Stack
+				<VuiBox
 					sx={({ breakpoints }) => ({
 						width: '90%',
 						padding: '18px 22px',
@@ -83,7 +125,7 @@ const SatisfactionRate = () => {
 						zIndex: '1000'
 					})}>
 					<VuiTypography color='text' variant='caption' display='inline-block' fontWeight='regular'>
-						0%
+						0
 					</VuiTypography>
 					<VuiBox
 						flexDirection='column'
@@ -92,19 +134,19 @@ const SatisfactionRate = () => {
 						alignItems='center'
 						sx={{ minWidth: '80px' }}>
 						<VuiTypography color='white' variant='h3'>
-							95%
+							47
 						</VuiTypography>
 						<VuiTypography color='text' variant='caption' fontWeight='regular'>
-							بناء على الإعجابات
+							Based on combined metrics
 						</VuiTypography>
 					</VuiBox>
 					<VuiTypography color='text' variant='caption' display='inline-block' fontWeight='regular'>
-						100%
+						500
 					</VuiTypography>
-				</Stack>
+				</VuiBox>
 			</VuiBox>
 		</Card>
 	);
 };
 
-export default SatisfactionRate;
+export default AirQualityIndex;

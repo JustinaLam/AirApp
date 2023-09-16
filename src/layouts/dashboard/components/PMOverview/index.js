@@ -28,12 +28,11 @@ import { FaAirFreshener, FaCar, FaSolarPanel, FaFire, FaTree, FaRecycle } from "
 
 // Vision UI Dashboard React example components
 import TimelineItem from "examples/Timeline/TimelineItem";
-import AdobeXD from "examples/Icons/AdobeXD";
 
 // Vision UI Dashboard theme imports
 import palette from "assets/theme/base/colors";
 
-function OrdersOverview() {
+function PMOverview() {
   return (
     <Card className="h-100">
       <VuiBox mb="16px">
@@ -44,7 +43,7 @@ function OrdersOverview() {
           <VuiBox display="flex" alignItems="center">
             <BsCheckCircleFill color="light" size="15px" mr="5px" />
             <VuiTypography variant="button" color="text" fontWeight="regular" ml="5px" mr="2px">
-               How to make
+                How to make
             </VuiTypography>
             <VuiTypography variant="button" color="text" fontWeight="medium" >
               Positive Change
@@ -93,4 +92,4 @@ function OrdersOverview() {
   );
 }
 
-export default OrdersOverview;
+export default PMOverview;
