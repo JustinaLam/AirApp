@@ -61,6 +61,7 @@ import team2 from "assets/images/team-2.jpg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 import VuiButton from "components/VuiButton";
 import VuiAvatar from "components/VuiAvatar";
+import { Air } from "@mui/icons-material";
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
@@ -114,26 +115,27 @@ function DashboardNavbar({ absolute, light, isMini }) {
       sx={{ mt: 2 }}
     >
       <NotificationItem
-        image={<img src={team2} alt="person" />}
-        title={["New message", "from Laur"]}
+        image={<img src={ team2 } alt="person" />}
+        title={["Unhealthy Air Quality Detected", ""]}
         date="13 minutes ago"
         onClick={handleCloseMenu}
       />
       <NotificationItem
-        image={<img src={logoSpotify} alt="person" />}
-        title={["New album", "by Travis Scott"]}
-        date="1 day"
+        image={<img src={team2} alt="person" />}
+        title={["Hazardous:", "avoid outdoor activity"]}
+        date="3 days ago"
         onClick={handleCloseMenu}
       />
       <NotificationItem
         color="text"
-        image={
-          <Icon fontSize="small" sx={{ color: ({ palette: { white } }) => white.main }}>
-            payment
-          </Icon>
-        }
-        title={["", "Payment successfully completed"]}
-        date="2 days"
+        image={<img src={team2} alt="person" />}
+        // image={
+        //   <Icon fontSize="small" sx={{ color: ({ palette: { white } }) => white.main }}>
+        //     payment
+        //   </Icon>
+        // }
+        title={["", "Unhealthy for sensitive groups"]}
+        date="2 weeks ago"
         onClick={handleCloseMenu}
       />
     </Menu>
@@ -154,8 +156,11 @@ function DashboardNavbar({ absolute, light, isMini }) {
               color: light ? white.main : dark.main,
             })}
           >
-            <img src="https://github.com/JustinaLam/AirApp/assets/113264414/5f05111e-3a1f-47e2-8c8a-0a7aa11e8d60
-" alt="logo" width="50" height="75" />
+
+{/* https://github.com/JustinaLam/AirApp/assets/113264414/206650a0-4d23-4990-8333-8e27f62e6062 */}
+            <img src=
+            "https://github.com/JustinaLam/AirApp/assets/113264414/aa1540f0-d907-4531-b241-9bc98774bd95" 
+            alt="logo" width="50" height="75" />
 
           </icon>
             
@@ -179,16 +184,9 @@ function DashboardNavbar({ absolute, light, isMini }) {
             })}
           
           > AirWatch </icon>*/}
-
-            
             
             <VuiBox pr={1}>
             </VuiBox>
-
-
-            
-
-
 
         </VuiBox>
         {isMini ? null : (

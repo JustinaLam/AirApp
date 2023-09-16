@@ -81,7 +81,7 @@ export default function data() {
         ),
         Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
-            $14,000
+            9
           </VuiTypography>
         ),
         Risk_Level: (
@@ -104,7 +104,7 @@ export default function data() {
         ),
         Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
-            $3,000
+            6
           </VuiTypography>
         ),
         Risk_Level: (
@@ -127,15 +127,15 @@ export default function data() {
         ),
         Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
-            Not set
+            7
           </VuiTypography>
         ),
         Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
-              100%
+              80%
             </VuiTypography>
-            <VuiProgress value={100} color="info" label={false} sx={{ background: "#2D2E5F" }} />
+            <VuiProgress value={80} color="info" label={false} sx={{ background: "#2D2E5F" }} />
           </VuiBox>
         ),
       },
@@ -150,15 +150,15 @@ export default function data() {
         ),
         Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
-            $20,500
+            10
           </VuiTypography>
         ),
         Risk_Level: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
-              100%
+              70%
             </VuiTypography>
-            <VuiProgress value={100} color="info" label={false} sx={{ background: "#2D2E5F" }} />
+            <VuiProgress value={70} color="info" label={false} sx={{ background: "#2D2E5F" }} />
           </VuiBox>
         ),
       },
@@ -173,7 +173,7 @@ export default function data() {
         ),
         Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
-            $500
+            5
           </VuiTypography>
         ),
         Risk_Level: (
@@ -196,7 +196,7 @@ export default function data() {
         ),
         Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
-            $2,000
+            7
           </VuiTypography>
         ),
         Risk_Level: (
@@ -219,7 +219,7 @@ export default function data() {
         ),
         Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
-            $2,000
+            2
           </VuiTypography>
         ),
         Risk_Level: (
@@ -242,7 +242,7 @@ export default function data() {
         ),
         Concentration: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
-            $2,000
+            8
           </VuiTypography>
         ),
         Risk_Level: (
