@@ -27,7 +27,7 @@ function MyThree() {
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth / 3.45, window.innerHeight / 3.55);
+    renderer.setSize(window.innerWidth / 3.2, window.innerHeight / 7);
     // renderer.setSize(props.width, props.height);
     // document.body.appendChild( renderer.domElement );
     // use ref as a mount point of the Three.js scene instead of the document.body

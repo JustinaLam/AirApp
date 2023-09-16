@@ -29,7 +29,6 @@ import Icon from "@mui/material/Icon";
 import VuiBox from "components/VuiBox";
 
 // Vision UI Dashboard React example components
-import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
 
 // Vision UI Dashboard React themes
@@ -49,7 +48,7 @@ import { useVisionUIController, setMiniSidenav, setOpenConfigurator } from "cont
 
 export default function App() {
   const [controller, dispatch] = useVisionUIController();
-  const { miniSidenav, direction, layout, openConfigurator, sidenavColor } = controller;
+  const { direction, layout, openConfigurator } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
@@ -63,16 +62,6 @@ export default function App() {
 
     setRtlCache(cacheRtl);
   }, []);
-
-  // Open sidenav when mouse enter on mini sidenav
-  const handleOnMouseEnter = () => {
-    
-  };
-
-  // Close sidenav when mouse leave mini sidenav
-  const handleOnMouseLeave = () => {
-    
-  };
 
   // Change the openConfigurator state
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
@@ -147,16 +136,6 @@ export default function App() {
       <CssBaseline />
       {layout === "dashboard" && (
         <>
-          {/* <Sidenav
-            color={sidenavColor}
-            brand=""
-            brandName="VISION UI FREE"
-            routes={routes}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
-          /> */}
-          {/* <Configurator /> */}
-          {/* {configsButton} */}
         </>
       )}
       {layout === "vr" && <Configurator />}

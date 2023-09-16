@@ -17,18 +17,19 @@
 */
 
 import React, { useState, useEffect } from "react";
+// import { useStateContext } from '../../state/context'
 import VuiInput from "components/VuiInput";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
-import Icon from "@mui/material/Icon";
-import { Card, LinearProgress, Stack } from "@mui/material";
+import { Card, Stack } from "@mui/material";
 
 // Vision UI Dashboard React components
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
-import VuiProgress from "components/VuiProgress";
 import VuiButton from "components/VuiButton";
+import PMCurves from "components/PMCurves/PMCurves";
+import PolltBars from "components/PolltBars/PolltBars";
 // import InputField from "components/VuiInput";
 // import ZipcodeInput from "components/VuiInput";
 
@@ -36,7 +37,6 @@ import VuiButton from "components/VuiButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
 import linearGradient from "assets/theme/functions/linearGradient";
 
 // Vision UI Dashboard React base styles
@@ -44,14 +44,14 @@ import typography from "assets/theme/base/typography";
 import colors from "assets/theme/base/colors";
 
 // Dashboard layout components
-import WelcomeMark from "layouts/dashboard/components/WelcomeMark";
-import Projects from "layouts/dashboard/components/Projects";
-import OrderOverview from "layouts/dashboard/components/OrderOverview";
-import SatisfactionRate from "layouts/dashboard/components/SatisfactionRate";
+import ZipSelector from "layouts/dashboard/components/ZipSelector";
+import AirQualityData from "layouts/dashboard/components/AirQualityData";
+import PMOverview from "layouts/dashboard/components/PMOverview";
+import AirQualityIndex from "layouts/dashboard/components/AirQualityIndex";
+import ParticleVisualizer from "layouts/dashboard/components/ParticleVisualizer";
 import Three from "layouts/dashboard/components/Three";
 
 // React icons
-import { TbLetterC, TbLetterN, TbLetterO, TbLetterS } from "react-icons/tb";
 import gif from "assets/images/HeatMap.png";
 
 // Data
@@ -63,33 +63,52 @@ import { barChartDataDashboard } from "layouts/dashboard/data/barChartData";
 import { barChartOptionsDashboard } from "layouts/dashboard/data/barChartOptions";
 
 // Environment variables
-require('dotenv').config()
+// const webpack = require('webpack');
+// require('dotenv').config()
 // { path: '/.env' }
 
-function Dashboard() {
+// function Dashboard() {
+const Dashboard = () => {
   const { gradients } = colors;
   const { cardContent } = gradients;
   const [ zipcode, setZipcode ] = useState("19104");
-  const { type, setType } = useState("O2");
+  const [ pollt, setPollt ] = useState("CO");
+  const [ currType, setCurrType ] = useState([])
+
+  const [ co, setCo ] = useState([])
+  const [ no2, setNo2 ] = useState([])
+  const [ o3, setO3 ] = useState([])
+  const [ so2, setSo2 ] = useState([])
+
+  const pollutantNameMap = new Map([
+    ["CO", co],
+    ["NO2", no2],
+    ["O3", o3],
+    ["SO2", so2],
+  ])
   
   const onClickSetCO = () => {
-    setType('CO')
+    setPollt('CO')
+    setCurrType(co)
   }
 
   const onClickSetNO2 = () => {
-    setType('NO2')
+    setPollt('NO2')
+    setCurrType(no2)
   }
 
   const onClickSetO3 = () => {
-    setType('O3')
+    setPollt('O3')
+    setCurrType(o3)
   }
 
   const onClickSetSO2 = () => {
-    setType('SO2')
+    setPollt('SO2')
+    setCurrType(so2)
   }
 
   const onClickColorChanger = () => {
-
+    
   }
   const [ city, setCity ] = useState("Philadelphia")
   const [ latitude, setLatitude ] = useState(34.0901)
@@ -125,10 +144,12 @@ function Dashboard() {
   const concsMapInitial = new Map()
   concsMapInitial.set('pm2_5', {
     name: "PM_2.5 (Fine Particles Matter)", 
+    // data: [],
     data: [500, 250, 300, 220, 500, 250, 300, 230, 300, 350, 250, 400],
   })
   concsMapInitial.set('pm10', {
     name: "PM_10 (Coarse Particulate Matter)",
+    // data: [],
     data: [200, 230, 300, 350, 370, 420, 550, 350, 400, 500, 330, 550],
   })
   concsMapInitial.set('co', {
@@ -157,23 +178,44 @@ function Dashboard() {
   })
 
   const [ concsMap, setConcsMap ] = useState(concsMapInitial)
-  const [ pmConcs, setPmConcs ] = useState([])
+  // const [ concsMap, setConcsMap ] = useState(concsMapCleared)
+  const [ pmConcs, setPmConcs ] = useState([])      // [ {name: "PM 2.5", data: []}, {}]
+  
+  // const [ concsToday, setConcsToday] = useState(new Map());   // for each, < substance, [{conc: "", }]
 
+  const updateConcsMap = (pollutant, conc) => {
+    var polName = concsMap.get(pollutant).name
+    var dataNow = concsMap.get(pollutant).data
+    // setExistingChats(existingChats.concat({username: response.data.groupId}));
+    setConcsMap(map => new Map(map.set(pollutant, {name: polName, data: [...dataNow, conc]})));
+    
+    const newPmConcs = pmConcs.map(pm => {
+      // console.log("Pm: ", pm)
+      if (concsMap.get(pollutant).name == pm.name) {
+        return {name: pm.name, data: [...dataNow,conc]}
+      }
+      else {
+        // console.log("pm name: ", pm.name, " ", pm, " ", pollutant)
+        return pm
+      }
+    })
+    setPmConcs(newPmConcs)
+  }
+  
   const [ currConcs, setCurrConcs ] = useState([30, 40, 50, 60, 70, 80, 80, 70])
   const [ currXLabels, setCurrXLabels ] = useState([])
+
   
   
-  // console.log(concsMap.get('co'))
-  // console.log(concsMap.get('co').data)
-  // concsMap.get('co').data.push(100)
-  // setConcsMap(concsMap)
 
   // Historical graph x-axis labels (dates)
   const [ xLabels, setXLabels ] = useState([])
 
   // When zipcode is entered/updated
   useEffect( function(){
-    console.log("New zip: ", zipcode)  
+    console.log("New zip: ", zipcode) 
+    // this.forceUpdate()
+    setZipcode(zipcode)
     if (zipcode.length > 0) {
       callGeocodeAPI()
     }
@@ -184,12 +226,33 @@ function Dashboard() {
     setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
   }, [ concsMap ]);
 
+  useEffect(() => {
+    const interval = setInterval(() => refresh(), 5000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const refresh = () => {
+    setConcsMap(concsMap)
+    
+    setCo(co.splice(-7))
+    setNo2(no2.splice(-7))
+    setO3(o3.splice(-7))
+    setSo2(so2.splice(-7))
+
+    setPollt(pollt)
+    
+   // callGeocodeAPI();
+  }
+
   // API Calls
 
   // Geocode API: Get lat, long, and city name from zipcode
   const callGeocodeAPI = () => {
-    console.log("Geocode API Key: ", process.env.REACT_APP_GEOCODE_API_KEY)
-    fetch('http://api.openweathermap.org/geo/1.0/zip?zip=' + zipcode + '&appid=' + process.env.REACT_APP_OPENWEATHER_API_KEY, { method: 'GET' })
+    var GEOCODE_API_KEY = `${process.env.REACT_APP_OPENWEATHER_API_KEY}`
+    console.log("Geocode API Key: ", `${process.env.REACT_APP_OPENWEATHER_API_KEY}`)
+    fetch('http://api.openweathermap.org/geo/1.0/zip?zip=' + zipcode + '&appid=' + GEOCODE_API_KEY, { method: 'GET' })
       .then(response => response.json()) // Parsing the data into a JavaScript object
       .then(data => {
         console.log(data)
@@ -200,9 +263,69 @@ function Dashboard() {
         setLatitude(data.lat)
         setLongitude(data.lon)
 
+        // Clear existing historical pollutant concs
+        for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
+          setConcsMap(map => new Map(map.set(pollutant, {name: pollutInfo.name, data: pollutInfo.filter(a => false)})))
+        }
         // Get pollution data
         callOpenWeatherPollutionAPI()
       })
+  }
+
+  const callOpenWeatherWideRangeAPI = () => {
+    var weekBack = new Date(Date.now())
+    weekBack.setHours(weekBack.getHours() - 175)
+    
+    var startDtUnix = Math.floor(weekBack.getTime() / 1000)
+    var endDtUnix = Math.floor(endDt.getTime() / 1000)
+
+    console.log("weekBack: ", startDtUnix, " ", weekBack.toUTCString())
+    console.log("endDt: ", endDtUnix, " ", new Date(endDt).toUTCString())
+
+    var request = 'http://api.openweathermap.org/data/2.5/air_pollution/history?'
+    request += 'lat=' + latitude + '&lon=' + longitude 
+    request += '&start=' + startDtUnix + '&end=' + endDtUnix 
+    request += '&appid=' + process.env.REACT_APP_OPENWEATHER_API_KEY
+
+    fetch(request, { method: 'GET' })
+      .then(response => response.json()) // Parsing the data into a JavaScript object
+      .then(data => {
+        console.log(data)
+        
+        if (data.list.length > 0) {
+          for (var i = data.list.length - 1; i >= 0; i--) {
+            var dat = new Date(data.list[i].dt * 1000)
+              if (dat.getHours() != 1) {
+                continue
+              }
+            // Iterate over components in this time point
+            for (const [pollutant, resConc] of Object.entries(data.list[i].components)) {
+              if (pollutant == "co") {
+                // setCo([...co, resConc])
+                co.push(resConc)
+              } else if (pollutant == "no2") {
+                // setNo2([...no2, resConc])
+                no2.push(resConc)
+              } else if (pollutant == "o3") {
+                // setO3([...o3, resConc])
+                o3.push(resConc)
+              } else if (pollutant == "so2") {
+                // setSo2([...so2, resConc])
+                so2.push(resConc)
+              }
+            }
+          }
+        }
+        setCo(co)
+        setNo2(no2)
+        setO3(o3)
+        setSo2(so2)
+        console.log("CO", co)
+        console.log("NO2", no2)
+        console.log("O3", o3)
+        console.log("SO2", so2)
+      })
+
   }
   
   // OpenWeather Air Pollution API: 
@@ -241,7 +364,7 @@ function Dashboard() {
         console.log("XLabels: ", currX)
         console.log("CurrConcs: ", tempCurrConcs)
         
-
+        // setExistingChats(existingChats.concat({username: response.data.groupId}));
         // lineChartOptionsDashboard.xaxis.categories = xLabels
       }) 
   }
@@ -261,55 +384,61 @@ function Dashboard() {
 
     console.log(request)
 
-    // Clear existing historical pollutant concs
-    // for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
-    //   concsMap.get(pollutant).data = []
-    //   setConcsMap(concsMap)
-    //   // setConcsMap(new Map(concsMap.set(pollutant, {
-    //   //   name: pollutInfo.name,
-    //   //   data: [],
-    //   // })))
-    // }
-    setConcsMap(concsMapCleared)
-    console.log("CONCS MAP CLEARED")
-    console.log(concsMap)
-
 
     fetch(request, { method: 'GET' })
       .then(response => response.json()) // Parsing the data into a JavaScript object
       .then(data => {
         console.log(data)
-        setXLabels([])
+        setXLabels(xLabels.filter(x => false))
         // Clear existing historical pollutant concs
-        for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
-          // concsMap.get(pollutant).data = []
+        // for (const [pollutant, pollutInfo] of Object.entries(concsMap)) {
+        //   concsMap.get(pollutant).data = []
           // setConcsMap(concsMap)
-          setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: []}))
+          
+          // setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: []}))
           // setConcsMap(new Map(concsMap.set(pollutant, {
           //   name: pollutInfo.name,
           //   data: [],
           // })))
-        }
+        // }
+        setConcsMap(map => new Map(concsMapCleared))
+        console.log("CONCS MAP CLEARED")
+        console.log(concsMap)
+        return data
+      }).then(data => {
 
         // Iterate over each time point in list of historical data, in reverse order (least to most recent)
         for (var i = data.list.length - 1; i >= 0; i--) {
           // Iterate over components in this time point
           for (const [pollutant, resConc] of Object.entries(data.list[i].components)) {
-            // console.log("pollutant: ", pollutant)
-            // concsMap.get(pollutant).data.push(resConc)
-            // setConcsMap(concsMap)
-            setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: [concsMap.get(pollutant).data, resConc]}))
-            setXLabels([xLabels, new Date(data.list[i].dt * 1000).toUTCString()])
+            // console.log("pollutant: ", pollutant, "conc: ", resConc)
+            // setConcsMap(map => new Map(map.set(pollutant, {name: concsMap.get(pollutant).name, data: [...concsMap.get(pollutant).data, resConc]})));
+            // setConcsMap(map => new Map(map.set(pollutant, {name: concsMap.get(pollutant).name, data: concsMap.get(pollutant).data.concat(resConc)})));
+            updateConcsMap(pollutant, resConc)
+            concsMap.get(pollutant).data.push(resConc)
+            concsMap.get(pollutant).data = concsMap.get(pollutant).data.splice(-24)
+            
+            setConcsMap(concsMap)
+            // setConcsMap(concsMap.set(pollutant, {name: concsMap.get(pollutant).name, data: [concsMap.get(pollutant).data, resConc]}))
+            // setXLabels([xLabels, new Date(data.list[i].dt * 1000).toUTCString()])
+
+            // xLabels.push(new Date(data.list[i].dt * 1000).toUTCString())
+            // setXLabels(xLabels.concat(new Date(data.list[i].dt * 1000)))
           }
+          setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
+          setConcsMap(concsMap)
+          // setXLabels(xLabels)
         }
         setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
 
         // console.log("AQIs: ", aqis)
-        console.log("XLabels: ", xLabels)
+        // console.log("XLabels: ", xLabels)
         console.log("ConcsMap: ", concsMap)
+        console.log("PmConcsMap: ", pmConcs)
 
+        callOpenWeatherWideRangeAPI();
         // lineChartOptionsDashboard.xaxis.categories = xLabels
-      }) 
+      })
   }
 
   return (
@@ -317,42 +446,6 @@ function Dashboard() {
       <DashboardNavbar />
 
         <VuiBox py={3}>
-          {/* <VuiBox mb={3}>
-            <Grid container spacing={3}>
-            <Grid item xs={12} md={6} xl={3}>
-              <MiniStatisticsCard
-                title={{ text: "today's money", fontWeight: "regular" }}
-                count="$53,000"
-                percentage={{ color: "success", text: "+55%" }}
-                icon={{ color: "info", component: <IoWallet size="22px" color="white" /> }}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} xl={3}>
-              <MiniStatisticsCard
-                title={{ text: "today's users" }}
-                count="2,300"
-                percentage={{ color: "success", text: "+3%" }}
-                icon={{ color: "info", component: <IoGlobe size="22px" color="white" /> }}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} xl={3}>
-              <MiniStatisticsCard
-                title={{ text: "new clients" }}
-                count="+3,462"
-                percentage={{ color: "error", text: "-2%" }}
-                icon={{ color: "info", component: <IoDocumentText size="22px" color="white" /> }}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} xl={3}>
-              <MiniStatisticsCard
-                title={{ text: "total sales" }}
-                count="$103,430"
-                percentage={{ color: "success", text: "+5%" }}
-                icon={{ color: "info", component: <FaShoppingCart size="20px" color="white" /> }}
-              />
-            </Grid>
-            </Grid> 
-          </VuiBox> */}
 
         <VuiBox mb={3}></VuiBox>
 
@@ -361,68 +454,41 @@ function Dashboard() {
 
             {/* Primary card */}
             <Grid item xs={12} lg={12} xl={5}>
-              <WelcomeMark
+
+              <ZipSelector
+                city={city}
                 zipcode={zipcode}
                 setZipcode={setZipcode}
               />
+
             </Grid>
 
+            {/* Current Air Quality Index (Score Wheel) */}
             <Grid item xs={12} lg={6} xl={3}>
-              <SatisfactionRate />
+              <AirQualityIndex />
             </Grid>
 
             <Grid item xs={12} lg={6} xl={4}>
-              {/* <ReferralTracking /> */}
-              <Card
-                  sx={{
-                    height: '100%',
-                    background: linearGradient(gradients.cardDark.main, gradients.cardDark.state, gradients.cardDark.deg)
-                  }}>
-                    {/* <ReferralTracking /> */}
-                <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-                  Amount of Particles in the Air
-                </VuiTypography>
-                <VuiTypography variant='button' color='text' fontWeight='regular' mb='20px'>
-					        Visualized
-				        </VuiTypography>
-                    <Three />
-              </Card>
+              <ParticleVisualizer />
             </Grid>
           </Grid>
         </VuiBox>
 
-
         <VuiBox mb={3}>
           <Grid container spacing={3}>
-
-
             <Grid item xs={12} lg={6} xl={7}>
+
               {/* Pollutant curve graphs */}
               {/* const timestampMillis = Date.now(); */}
               <Card>
-                <VuiBox sx={{ height: "100%" }}>
-                  <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-                    Air Concentration of Fine Particles and Coarse Particulate Matter (μg/m<sup>3</sup>)
-                  </VuiTypography>
-                  <VuiBox display="flex" alignItems="center" mb="40px">
-                    <VuiTypography variant="button" color="success" fontWeight="bold">
-                      {city}{" "}
-                      <VuiTypography variant="button" color="text" fontWeight="regular">
-                      {zipcode}
-                      </VuiTypography>
-                    </VuiTypography>
-                  </VuiBox>
-                  <VuiBox sx={{ height: "310px" }}>
-                    <LineChart
-                      // lineChartData={[concsMap.get('pm2_5'), concsMap.get('pm10')]}
-                      lineChartData={pmConcs}
-                      lineChartOptions={lineChartOptionsDashboard}
-                    />
-                  </VuiBox>
-                </VuiBox>
+                {<PMCurves
+                  concsMap={concsMap}
+                  city={city}
+                  zipcode={zipcode}
+                />}
+                
               </Card>
             </Grid>
-
 
             <Grid item xs={12} lg={6} xl={5}>
               <Card>
@@ -439,19 +505,25 @@ function Dashboard() {
                       borderRadius: "20px",
                     }}
                   >
-                    <BarChart
-                      // barChartData={barChartDataDashboard}
+                    {/* Pollutant concentration levels bar chart */}
+                    {<PolltBars
+                      pollt={pollt}
+                      currType={currType}
+                    />}
+                    {/* <BarChart
+                      barChartData={barChartDataDashboard}
                       // barChartOptions={barChartOptionsDashboard}
-                      barChartData={[{name: "AQI", data: currConcs}]}
+                      // barChartData={[{name: "AQI", data: co}]}
+                      // barChartData={[{name: pollt, data: pollutantNameMap.get(pollt)}]}
                       barChartOptions={barChartOptionsDashboard}
-                    />
+                    /> */}
                   </VuiBox>
                   <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
                     Historical Data
                   </VuiTypography>
                   <VuiBox display="flex" alignItems="center" mb="40px">
                     <VuiTypography variant="button" color="success" fontWeight="bold">
-                      {type}{" "}
+                      {pollt}{" "}
                       <VuiTypography variant="button" color="text" fontWeight="regular">
                         levels in the last week
                       </VuiTypography>
@@ -568,26 +640,30 @@ function Dashboard() {
 
 
         <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
-          
-          {/* Projects Card */}
-          <Grid item xs={12} md={6} lg={8}>
-             <Projects />
-          </Grid>
+        
           {/* Ways to Reduce AQI Card */}
           <Grid item xs={12} md={6} lg={4}>
-            <OrderOverview />
+            <PMOverview />
           </Grid>
+
+          {/* AirQualityData Card */}
+          <Grid item xs={12} md={6} lg={8}>
+            <AirQualityData />
+          </Grid>
+
         </Grid>
 
         <VuiBox py={5}></VuiBox>
 
         <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
-        <Card sx={() => ({width: "1500px",})}>
-        <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px" alignItems="center" textAlign="center">
-              Air Pollution Levels Around the World
-          </VuiTypography>
+          <Card sx={() => ({width: "1500px",})}>
+            <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px" alignItems="center" textAlign="center">
+                Air Pollution Levels Around the World
+            </VuiTypography>
           </Card>
-          </Grid>
+        </Grid>
+
+
         <VuiBox py={3}></VuiBox>
 
         <Grid container spacing={3} justifyContent="center" alignItems="stretch">

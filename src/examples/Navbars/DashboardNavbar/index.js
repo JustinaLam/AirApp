@@ -87,8 +87,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
     }
 
     /** 
-     The event listener that's calling the handleTransparentNavbar function when 
-     scrolling the window.
+    The event listener that's calling the handleTransparentNavbar function when 
+    scrolling the window.
     */
     window.addEventListener("scroll", handleTransparentNavbar);
 

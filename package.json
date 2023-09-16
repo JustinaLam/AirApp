@@ -26,7 +26,6 @@
 		"@testing-library/user-event": "12.1.10",
 		"apexcharts": "^3.30.0",
 		"chroma-js": "2.1.2",
-		"dotenv": "^16.3.1",
 		"eslint": "^7.11.0",
 		"install": "^0.13.0",
 		"npm": "^9.6.5",
@@ -39,7 +38,7 @@
 		"react-github-btn": "1.2.1",
 		"react-icons": "^4.3.1",
 		"react-router-dom": "5.2.0",
-		"react-scripts": "^5.0.1",
+		"react-scripts": "4.0.3",
 		"styled-components": "^6.0.7",
 		"stylis": "4.0.10",
 		"stylis-plugin-rtl": "2.1.0",
@@ -48,11 +47,11 @@
 		"web-vitals": "1.0.1"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "react-scripts --openssl-legacy-provider start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
+		"install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install"
 	},
 	"eslintConfig": {
 		"extends": [

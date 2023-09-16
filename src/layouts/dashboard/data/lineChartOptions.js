@@ -26,15 +26,15 @@ const getLineChartXCategories = () => {
   var currDtMillis = new Date(Date.now())
   currDtMillis.setMinutes(0)
   currDtMillis.setSeconds(0)
-  var tempDt = Math.floor(currDtMillis / 1000)
 
   console.log(currDtMillis.toUTCString())
   
-  var count = lineChartDataDashboard.length;
+  var count = 23;
+  //lineChartDataDashboard.length;
   for (var i = count; i > 0; i--)
   {
-      tempDt.setHours(tempDt.getHours() - 1)
-      categories[i] = tempDt
+    currDtMillis.setHours(currDtMillis.getHours() - 1)
+      categories[i] = currDtMillis.toUTCString()
   }
 
   return categories
@@ -62,7 +62,7 @@ export const lineChartOptionsDashboard = {
       // x.forEach((data) => data.a = data.a.toFixed(3));
       // categories: lineChartDataDashboard[0].data.map(({ a, b }) => ({ a: a.toFixed(3), b }))
 
-    categories: getLineChartXCategories,
+    categories: getLineChartXCategories(),
     // categories: [
     //   x-11,
     //   x-10,
@@ -116,6 +116,7 @@ export const lineChartOptionsDashboard = {
   grid: {
     strokeDashArray: 5,
     borderColor: "#56577A",
+    zIndex: -1,
   },
   fill: {
     type: "gradient",
@@ -126,7 +127,7 @@ export const lineChartOptionsDashboard = {
       gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
       inverseColors: true,
       opacityFrom: 0.8,
-      opacityTo: 0,
+      opacityTo: 0.5,
       stops: [],
     },
     colors: ["#0075FF", "#2CD9FF"],
