@@ -61,7 +61,9 @@ import team2 from "assets/images/team-2.jpg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 import VuiButton from "components/VuiButton";
 import VuiAvatar from "components/VuiAvatar";
-import { Air } from "@mui/icons-material";
+import { Air } from "@mui/icons-material";import w_blue from "assets/images/icons8-box-important-48.png";
+import w_yellow from "assets/images/icons8-high-priority-48.png";
+import w_red from "assets/images/icons8-error-48.png";
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
@@ -69,6 +71,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator } = controller;
   const [openMenu, setOpenMenu] = useState(false);
   const route = useLocation().pathname.split("/").slice(1);
+
 
   useEffect(() => {
     // Setting the navbar type
@@ -115,20 +118,20 @@ function DashboardNavbar({ absolute, light, isMini }) {
       sx={{ mt: 2 }}
     >
       <NotificationItem
-        image={<img src={ team2 } alt="person" />}
+        image={<img src={ w_yellow } alt="person" />}
         title={["Unhealthy Air Quality Detected", ""]}
         date="13 minutes ago"
         onClick={handleCloseMenu}
       />
       <NotificationItem
-        image={<img src={team2} alt="person" />}
+        image={<img src={w_red} alt="person" />}
         title={["Hazardous:", "avoid outdoor activity"]}
         date="3 days ago"
         onClick={handleCloseMenu}
       />
       <NotificationItem
         color="text"
-        image={<img src={team2} alt="person" />}
+        image={<img src={w_blue} alt="person" />}
         // image={
         //   <Icon fontSize="small" sx={{ color: ({ palette: { white } }) => white.main }}>
         //     payment
