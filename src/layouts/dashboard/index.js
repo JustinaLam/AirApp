@@ -70,26 +70,44 @@ import { barChartOptionsDashboard } from "layouts/dashboard/data/barChartOptions
 // require('dotenv').config()
 // { path: '/.env' }
 
-function Dashboard() {
+// function Dashboard() {
+const Dashboard = () => {
   const { gradients } = colors;
   const { cardContent } = gradients;
   const [ zipcode, setZipcode ] = useState("19104");
   const [ pollt, setPollt ] = useState("CO");
+  const [ currType, setCurrType ] = useState([])
+
+  const [ co, setCo ] = useState([])
+  const [ no2, setNo2 ] = useState([])
+  const [ o3, setO3 ] = useState([])
+  const [ so2, setSo2 ] = useState([])
+
+  const pollutantNameMap = new Map([
+    ["CO", co],
+    ["NO2", no2],
+    ["O3", o3],
+    ["SO2", so2],
+  ])
   
   const onClickSetCO = () => {
     setPollt('CO')
+    setCurrType(co)
   }
 
   const onClickSetNO2 = () => {
     setPollt('NO2')
+    setCurrType(no2)
   }
 
   const onClickSetO3 = () => {
     setPollt('O3')
+    setCurrType(o3)
   }
 
   const onClickSetSO2 = () => {
     setPollt('SO2')
+    setCurrType(so2)
   }
 
   const onClickColorChanger = () => {
@@ -190,17 +208,6 @@ function Dashboard() {
   const [ currConcs, setCurrConcs ] = useState([30, 40, 50, 60, 70, 80, 80, 70])
   const [ currXLabels, setCurrXLabels ] = useState([])
 
-  const [ co, setCo ] = useState([])
-  const [ no2, setNo2 ] = useState([])
-  const [ o3, setO3 ] = useState([])
-  const [ so2, setSo2 ] = useState([])
-
-  const pollutantNameMap = new Map([
-    ["CO", co],
-    ["NO2", no2],
-    ["O3", o3],
-    ["SO2", so2],
-  ])
   
   
 
@@ -209,7 +216,8 @@ function Dashboard() {
 
   // When zipcode is entered/updated
   useEffect( function(){
-    console.log("New zip: ", zipcode)  
+    console.log("New zip: ", zipcode) 
+    // this.forceUpdate()
     setZipcode(zipcode)
     if (zipcode.length > 0) {
       callGeocodeAPI()
@@ -220,6 +228,26 @@ function Dashboard() {
   useEffect( function(){
     setPmConcs([concsMap.get('pm2_5'), concsMap.get('pm10')])
   }, [ concsMap ]);
+
+  useEffect(() => {
+    const interval = setInterval(() => refresh(), 5000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const refresh = () => {
+    setConcsMap(concsMap)
+    
+    setCo(co.splice(-7))
+    setNo2(no2.splice(-7))
+    setO3(o3.splice(-7))
+    setSo2(so2.splice(-7))
+
+    setPollt(pollt)
+    
+    callGeocodeAPI();
+  }
 
   // API Calls
 
@@ -460,45 +488,21 @@ function Dashboard() {
           </Grid>
         </VuiBox>
 
-
         <VuiBox mb={3}>
           <Grid container spacing={3}>
-
-
             <Grid item xs={12} lg={6} xl={7}>
+
               {/* Pollutant curve graphs */}
               {/* const timestampMillis = Date.now(); */}
               <Card>
-                <PMCurves
+                {<PMCurves
                   concsMap={concsMap}
                   city={city}
                   zipcode={zipcode}
-                />
+                />}
                 
-                {/* <VuiBox sx={{ height: "100%" }}>
-                  <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-                    Air Concentration of Fine Particles and Coarse Particulate Matter (μg/m<sup>3</sup>)
-                  </VuiTypography>
-                  <VuiBox display="flex" alignItems="center" mb="40px">
-                    <VuiTypography variant="button" color="success" fontWeight="bold">
-                      {city}{" "}
-                      <VuiTypography variant="button" color="text" fontWeight="regular">
-                      {zipcode}
-                      </VuiTypography>
-                    </VuiTypography>
-                  </VuiBox>
-                  <VuiBox sx={{ height: "310px" }}>
-                    <LineChart
-                      // lineChartData={concsMap}
-                      lineChartData={[concsMap.get('pm2_5'), concsMap.get('pm10')]}
-                      // lineChartData={pmConcs}
-                      lineChartOptions={lineChartOptionsDashboard}
-                    />
-                  </VuiBox>
-                </VuiBox> */}
               </Card>
             </Grid>
-
 
             <Grid item xs={12} lg={6} xl={5}>
               <Card>
@@ -515,15 +519,16 @@ function Dashboard() {
                       borderRadius: "20px",
                     }}
                   >
-                    <PolltBars
+                    {/* Pollutant concentration levels bar chart */}
+                    {<PolltBars
                       pollt={pollt}
-                      pollutantNameMap={pollutantNameMap}
-                    />
+                      currType={currType}
+                    />}
                     {/* <BarChart
-                      // barChartData={barChartDataDashboard}
+                      barChartData={barChartDataDashboard}
                       // barChartOptions={barChartOptionsDashboard}
                       // barChartData={[{name: "AQI", data: co}]}
-                      barChartData={[{name: pollt, data: pollutantNameMap.get(pollt)}]}
+                      // barChartData={[{name: pollt, data: pollutantNameMap.get(pollt)}]}
                       barChartOptions={barChartOptionsDashboard}
                     /> */}
                   </VuiBox>
