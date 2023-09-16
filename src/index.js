@@ -26,7 +26,6 @@ import { VisionUIControllerProvider } from "context";
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
-
 root.render(<BrowserRouter>
   <VisionUIControllerProvider>
     <App />
