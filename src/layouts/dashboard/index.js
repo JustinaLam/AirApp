@@ -22,13 +22,11 @@ import VuiInput from "components/VuiInput";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
-import Icon from "@mui/material/Icon";
-import { Card, LinearProgress, Stack } from "@mui/material";
+import { Card, Stack } from "@mui/material";
 
 // Vision UI Dashboard React components
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
-import VuiProgress from "components/VuiProgress";
 import VuiButton from "components/VuiButton";
 import PMCurves from "components/PMCurves/PMCurves";
 import PolltBars from "components/PolltBars/PolltBars";
@@ -39,7 +37,6 @@ import PolltBars from "components/PolltBars/PolltBars";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import MiniStatisticsCard from "examples/Cards/StatisticsCards/MiniStatisticsCard";
 import linearGradient from "assets/theme/functions/linearGradient";
 
 // Vision UI Dashboard React base styles
@@ -51,10 +48,10 @@ import ZipSelector from "layouts/dashboard/components/ZipSelector";
 import AirQualityData from "layouts/dashboard/components/AirQualityData";
 import PMOverview from "layouts/dashboard/components/PMOverview";
 import AirQualityIndex from "layouts/dashboard/components/AirQualityIndex";
+import ParticleVisualizer from "layouts/dashboard/components/ParticleVisualizer";
 import Three from "layouts/dashboard/components/Three";
 
 // React icons
-import { TbLetterC, TbLetterN, TbLetterO, TbLetterS } from "react-icons/tb";
 import gif from "assets/images/HeatMap.png";
 
 // Data
@@ -246,7 +243,7 @@ const Dashboard = () => {
 
     setPollt(pollt)
     
-    callGeocodeAPI();
+   // callGeocodeAPI();
   }
 
   // API Calls
@@ -457,31 +454,22 @@ const Dashboard = () => {
 
             {/* Primary card */}
             <Grid item xs={12} lg={12} xl={5}>
+
               <ZipSelector
                 city={city}
                 zipcode={zipcode}
                 setZipcode={setZipcode}
               />
+
             </Grid>
+
             {/* Current Air Quality Index (Score Wheel) */}
             <Grid item xs={12} lg={6} xl={3}>
               <AirQualityIndex />
             </Grid>
 
             <Grid item xs={12} lg={6} xl={4}>
-              <Card
-                  sx={{
-                    height: '100%',
-                    background: linearGradient(gradients.cardDark.main, gradients.cardDark.state, gradients.cardDark.deg)
-                  }}>
-                <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
-                  Amount of Particles in the Air
-                </VuiTypography>
-                <VuiTypography variant='button' color='text' fontWeight='regular' mb='20px'>
-					        Visualized
-				        </VuiTypography>
-                    <Three />
-              </Card>
+              <ParticleVisualizer />
             </Grid>
           </Grid>
         </VuiBox>
@@ -657,21 +645,25 @@ const Dashboard = () => {
           <Grid item xs={12} md={6} lg={4}>
             <PMOverview />
           </Grid>
+
           {/* AirQualityData Card */}
           <Grid item xs={12} md={6} lg={8}>
             <AirQualityData />
           </Grid>
+
         </Grid>
 
         <VuiBox py={5}></VuiBox>
 
         <Grid container spacing={3} direction="row" justifyContent="center" alignItems="stretch">
-        <Card sx={() => ({width: "1500px",})}>
-        <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px" alignItems="center" textAlign="center">
-              Air Pollution Levels Around the World
-          </VuiTypography>
+          <Card sx={() => ({width: "1500px",})}>
+            <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px" alignItems="center" textAlign="center">
+                Air Pollution Levels Around the World
+            </VuiTypography>
           </Card>
-          </Grid>
+        </Grid>
+
+
         <VuiBox py={3}></VuiBox>
 
         <Grid container spacing={3} justifyContent="center" alignItems="stretch">
